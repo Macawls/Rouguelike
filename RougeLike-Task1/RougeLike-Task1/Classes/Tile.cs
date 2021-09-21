@@ -12,24 +12,27 @@ namespace RougeLike_Task1
         //Member Variables
         protected int x;
         protected int y;
+        protected char symbol;
 
         public enum TileType
         {
             Hero,
             Enemy,
             Gold,
-            Weapon,
+            Weapon, 
         }
 
         //Constructor
-        public Tile(int xVal, int yVal)
+        public Tile(int xPos, int yPos)
         {
-            x = xVal;
-            y = yVal;
+            this.x = xPos;
+            this.y = yPos;
         }
 
         // Public Accessors
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int getX { get; set; }
+        public int getY { get; set; }
+        public char getSymbol { get; set; } 
+
     }
 }
