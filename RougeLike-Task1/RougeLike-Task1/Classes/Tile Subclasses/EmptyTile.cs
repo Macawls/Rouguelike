@@ -10,8 +10,9 @@ namespace RougeLike_Task1
     class EmptyTile : Tile
     {
         // Constructor for subclass
-        public EmptyTile() : base(default,default,default)
+        public EmptyTile() : base(int x,int y,char symbol)
         {
+            this.x = x;
 
         }
     }

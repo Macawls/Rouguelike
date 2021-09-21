@@ -46,16 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Character Subclasses\Enemy.cs" />
-    <Compile Include="Classes\Character.cs" />
-    <Compile Include="Classes\EmptyTile.cs" />
+    <Compile Include="Classes\Tile Subclasses\Character Subclasses\Enemy.cs" />
+    <Compile Include="Classes\Tile Subclasses\Character Subclasses\Enemy Subclasses\Goblin.cs" />
+    <Compile Include="Classes\Tile Subclasses\Character Subclasses\Hero.cs" />
+    <Compile Include="Classes\Tile Subclasses\Character.cs" />
+    <Compile Include="Classes\Tile Subclasses\EmptyTile.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Obstacle.cs" />
+    <Compile Include="Classes\Tile Subclasses\Obstacle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Tile.cs" />

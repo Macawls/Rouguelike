@@ -41,22 +41,31 @@ namespace RougeLike_Task1
             RIGHT,
         }
 
-        
-        
-        
-        
         // Methods
 
         // attacks a target and decreases its health by attack character's damage.
         public virtual void Attack(Character target)
         {
+            // attacked character's hp = attacked character's hp - attacker's dmg
+            this.hp = this.hp - target.damage;
 
         }
 
-
+        // check if a character is dead
         public bool IsDead()
         {
-            return false;
+            // if health is less than or equal to zero then
+
+            if (hp <= 0)
+            {
+                return true;
+            }
+            
+            else
+            {
+                return false;
+            }
+            
         }
 
         // check if target is in range of a character
@@ -64,20 +73,48 @@ namespace RougeLike_Task1
         // determine distance via DistanceTo() method
         public virtual bool CheckRange(Character target)
         {
-            return false;
+            // barehand range
+            if (DistanceTo(target) == 1)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+
         }
 
-        // diagonal is one up and one left or right = 2 steps
-        private int DistanceTo(Character target)
+        private int DistanceTo(Character target) 
         {
-            return 0;
+            
+            // 2D array [rows][collumns]
+            // x=> rows // y=>collums
+
+            // get the x the character
+            // get the x of the of target
+            // minus the target x from the character x
+            // convert that into a positive number for scalar (no direction) for e.g 0-2 = -2 => 2
+            // do the same for y
+
+            // add the two distances
+
+            int calcDistance(int origin, int destination)
+            {
+                int distance = destination - origin;
+                return Math.Abs(distance); //converts int to positive 
+            }
+
+            return ( calcDistance(this.x, target.x) + calcDistance(this.y, target.y) );
         }
 
         public void Move(MovementState move)
         {
-            switch (state)
+            switch (move)
             {
                 case MovementState.UP:
+
                     break;
                 case MovementState.DOWN:
                     break;
@@ -86,6 +123,8 @@ namespace RougeLike_Task1
                 case MovementState.RIGHT:
                     break;
             }
+
+
         }
 
         public MovementState ReturnMove(MovementState move)
