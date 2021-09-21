@@ -18,11 +18,62 @@ namespace RougeLike_Task1
         public int MaxHP { get; set; }
         public int Damage { get; set; }
 
-
-        public Character() : base(0, 0)
+        // Constructor for subclass
+        public Character() : base(0, 0, default)
         {
 
         }
+
+        // Array
+        Tile[] charVision;
+
+        public enum Movement
+        {
+            // Idle = no movement
+            Idle,
+            Down,
+            Left,
+            Right,
+        }
+
+        // Methods
+
+        public virtual Attack(int yPos, int xPos)
+        {
+
+
+        }
+
+        public bool IsDead()
+        {
+
+        }
+
+        public virtual bool CheckRange()
+        {
+
+            return false;
+        }
+
+        private int DistanceTo()
+        {
+
+        }
+
+        public void Move(Movement move)
+        {
+
+        }
+
+        public Movement ReturnMove(Movement move)
+        {
+          
+        }
+
+        public abstract override string ToString();
+
+
+
 
 
     }

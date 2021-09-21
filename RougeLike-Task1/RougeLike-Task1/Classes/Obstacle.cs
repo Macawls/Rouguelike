@@ -10,7 +10,7 @@ namespace RougeLike_Task1
     class Obstacle : Tile
     {
         // Constructor for subclass
-        public Obstacle() : base(0, 0)
+        public Obstacle() : base(0, 0, 'X')
         {
 
         }

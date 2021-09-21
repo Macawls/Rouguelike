@@ -10,8 +10,12 @@ namespace RougeLike_Task1
     abstract class Tile
     {
         //Member Variables
+        // Position
         protected int x;
         protected int y;
+
+        // Symbol
+        protected char symbol;
 
         public enum TileType
         {
@@ -22,10 +26,12 @@ namespace RougeLike_Task1
         }
 
         //Constructor
-        public Tile(int xVal, int yVal)
+        public Tile(int xVal, int yVal, char posSymbol)
         {
             x = xVal;
             y = yVal;
+            symbol = posSymbol;
+
         }
 
         // Public Accessors

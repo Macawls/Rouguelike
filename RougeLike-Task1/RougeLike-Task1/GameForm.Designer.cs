@@ -1,7 +1,7 @@
 ﻿
 namespace RougeLike_Task1
 {
-    partial class Form1
+    partial class Game
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,33 @@ namespace RougeLike_Task1
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.GameMap = new System.Windows.Forms.RichTextBox();
+            this.SuspendLayout();
+            // 
+            // GameMap
+            // 
+            this.GameMap.Location = new System.Drawing.Point(52, 50);
+            this.GameMap.Name = "GameMap";
+            this.GameMap.Size = new System.Drawing.Size(183, 276);
+            this.GameMap.TabIndex = 0;
+            this.GameMap.Text = "This is the game map to hold ascii chars";
+            // 
+            // Game
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Controls.Add(this.GameMap);
+            this.Name = "Game";
+            this.Text = "Game";
+            this.Load += new System.EventHandler(this.Game_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.RichTextBox GameMap;
     }
 }
 
