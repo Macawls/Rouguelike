@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RougeLike_Task1
 {
-    // denote an empty tile
-    class EmptyTile : Tile
+    // border map with obstacle tiles that no character can move past
+    class Obstacle : Tile
     {
         // Constructor for subclass
-        public EmptyTile() : base(0, 0, '.')
+        public Obstacle() : base(default,default,default)
         {
 
         }
