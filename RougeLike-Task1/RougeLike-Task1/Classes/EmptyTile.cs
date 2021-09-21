@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace RougeLike_Task1
 {
-    class Obstacle
+    // denote an empty tile
+    class EmptyTile : Tile
     {
+        public EmptyTile() : base(0, 0)
+        {
+
+        }
     }
 }

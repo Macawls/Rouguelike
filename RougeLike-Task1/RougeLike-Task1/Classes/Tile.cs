@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace RougeLike_Task1
 {
+    // Base Class
     abstract class Tile
     {
+        //Member Variables
         protected int x;
         protected int y;
 
@@ -19,17 +21,15 @@ namespace RougeLike_Task1
             Weapon,
         }
 
-        // Constructor
+        //Constructor
         public Tile(int xVal, int yVal)
         {
             x = xVal;
             y = yVal;
         }
 
-        //  Public accessors
+        // Public Accessors
         public int X { get; set; }
         public int Y { get; set; }
-
-        public TileType Tiletype { get; set; }
     }
 }
