@@ -8,6 +8,23 @@ namespace RougeLike_Task1.Character_Subclasses
 {
     abstract class Enemy : Character
     {
-        protected 
+        protected int randnum;
+        
+
+        public Enemy(int x, int y, char symbol, int hp, int damage) : base(x, y, symbol, hp, damage)
+        {
+
+
+        }
+
+        
     }
+        
+        
+        
+        
+        
+        
+  
+
 }

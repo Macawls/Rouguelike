@@ -21,11 +21,7 @@ namespace RougeLike_Task1
         public int MaxHP { get; set; }
         public int Damage { get; set; }
 
-        // Constructor 
-        public Character() : base(default, default, default)
-        {
 
-        }
 
         // array for characters vision {0 = up, 1 = down,2 = left, 3 = right}
         Tile[] charVision = new Tile[4];
@@ -33,7 +29,7 @@ namespace RougeLike_Task1
         //default is idle
         public enum MovementState
         {
-            // Idle = no movement
+            // IDLE = no movement
             IDLE,
             UP,
             DOWN,
@@ -41,7 +37,15 @@ namespace RougeLike_Task1
             RIGHT,
         }
 
-        // Methods
+        // Methods //
+
+        // Constructor 
+        public Character(int x, int y, char symbol, int hp, int maxHP, int damage) : base(x, y, symbol)
+        {
+            this.hp = hp;
+            this.maxHP = maxHP;
+            this.damage = damage;
+        }
 
         // attacks a target and decreases its health by attack character's damage.
         public virtual void Attack(Character target)
@@ -56,7 +60,7 @@ namespace RougeLike_Task1
         {
             // if health is less than or equal to zero then
 
-            if (hp <= 0)
+            if (this.hp <= 0)
             {
                 return true;
             }
@@ -114,23 +118,26 @@ namespace RougeLike_Task1
             switch (move)
             {
                 case MovementState.UP:
-
+                    this.x = x -1;
                     break;
                 case MovementState.DOWN:
+                    this.x = x + 1;
                     break;
                 case MovementState.LEFT:
+                    this.y = y - 1;
                     break;
                 case MovementState.RIGHT:
+                    this.y = y + 1;
                     break;
             }
 
 
         }
 
-        public MovementState ReturnMove(MovementState move)
-        {
-          
-        }
+        public abstract MovementState ReturnMove(MovementState move = 0);
+        // return a direction based on how the character should move, 
+        // based on the validity of the move against a char vision array
+        
 
         public abstract override string ToString();
 
