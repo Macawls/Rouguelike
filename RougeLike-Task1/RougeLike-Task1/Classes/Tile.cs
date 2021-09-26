@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace RougeLike_Task1
 {
+    
     // Base Class
     abstract class Tile
     {
+        public GameForm gameForm = new GameForm();
+        
         //Member Variables
         protected int x;
         protected int y;

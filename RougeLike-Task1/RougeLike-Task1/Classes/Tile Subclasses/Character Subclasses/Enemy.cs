@@ -8,23 +8,20 @@ namespace RougeLike_Task1.Character_Subclasses
 {
     abstract class Enemy : Character
     {
-        protected int randnum;
-        
-
-        public Enemy(int x, int y, char symbol, int hp, int damage) : base(x, y, symbol, hp, damage)
+       
+        // Constructor 
+        public Enemy(int x, int y, char symbol, int hp, int damage, int maxHP) : base(x, y, symbol, hp, damage, maxHP)
         {
-
 
         }
 
-        
+        public override string ToString()
+        {
+            // EnemyClassName at [X, Y] (Amount DMG)
+            return $"{this.GetType().Name} at [{this.x}, {this.y}] ({this.damage})";
+        }
+
+
     }
-        
-        
-        
-        
-        
-        
-  
 
 }

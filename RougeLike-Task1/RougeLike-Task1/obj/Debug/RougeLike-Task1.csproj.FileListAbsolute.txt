@@ -1,0 +1,10 @@
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.csproj.AssemblyReference.cache
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike_Task1.Properties.Resources.resources
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.csproj.GenerateResource.cache
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.csproj.CoreCompileInputs.cache
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike_Task1.GameForm.resources
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\bin\Debug\RougeLike-Task1.exe.config
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\bin\Debug\RougeLike-Task1.exe
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\bin\Debug\RougeLike-Task1.pdb
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.exe
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.pdb

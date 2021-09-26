@@ -14,7 +14,6 @@ namespace RougeLike_Task1
         protected int damage;
 
         // used for movement, default is idle
-        protected MovementState state;
 
         //Public Accessors
         public int HP { get; set; }
@@ -24,10 +23,11 @@ namespace RougeLike_Task1
 
 
         // array for characters vision {0 = up, 1 = down,2 = left, 3 = right}
-        Tile[] charVision = new Tile[4];
+        public Tile[] visionArray = new Tile[4];
+
 
         //default is idle
-        public enum MovementState
+        public enum MovementEnum
         {
             // IDLE = no movement
             IDLE,
@@ -40,11 +40,11 @@ namespace RougeLike_Task1
         // Methods //
 
         // Constructor 
-        public Character(int x, int y, char symbol, int hp, int maxHP, int damage) : base(x, y, symbol)
+        public Character(int x, int y, char symbol, int hp, int damage, int maxHP) : base(x, y, symbol)
         {
             this.hp = hp;
-            this.maxHP = maxHP;
             this.damage = damage;
+            this.maxHP = maxHP;
         }
 
         // attacks a target and decreases its health by attack character's damage.
@@ -113,20 +113,21 @@ namespace RougeLike_Task1
             return ( calcDistance(this.x, target.x) + calcDistance(this.y, target.y) );
         }
 
-        public void Move(MovementState move)
+        public void Move(MovementEnum move)
         {
             switch (move)
             {
-                case MovementState.UP:
+                case MovementEnum.UP:
+                    
                     this.x = x -1;
                     break;
-                case MovementState.DOWN:
+                case MovementEnum.DOWN:
                     this.x = x + 1;
                     break;
-                case MovementState.LEFT:
+                case MovementEnum.LEFT:
                     this.y = y - 1;
                     break;
-                case MovementState.RIGHT:
+                case MovementEnum.RIGHT:
                     this.y = y + 1;
                     break;
             }
@@ -134,10 +135,10 @@ namespace RougeLike_Task1
 
         }
 
-        public abstract MovementState ReturnMove(MovementState move = 0);
+        public abstract MovementEnum ReturnMove(MovementEnum move = MovementEnum.IDLE);
+        // defined by character subclasses
         // return a direction based on how the character should move, 
         // based on the validity of the move against a char vision array
-        
 
         public abstract override string ToString();
 
