@@ -22,6 +22,8 @@ namespace RougeLike_Task1
 
 
 
+
+
         // array for characters vision {0 = up, 1 = down,2 = left, 3 = right}
         public Tile[] visionArray = new Tile[4];
 
@@ -118,7 +120,6 @@ namespace RougeLike_Task1
             switch (move)
             {
                 case MovementEnum.UP:
-                    
                     this.x = x -1;
                     break;
                 case MovementEnum.DOWN:

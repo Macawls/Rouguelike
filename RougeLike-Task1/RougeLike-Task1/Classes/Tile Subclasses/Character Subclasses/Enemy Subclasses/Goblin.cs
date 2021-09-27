@@ -9,7 +9,7 @@ namespace RougeLike_Task1.Character_Subclasses
     class Goblin : Enemy
     {
         // Constructor
-        public Goblin(int x, int y, char symbol, int maxHP) : base(x, y, symbol, 10, 1, maxHP)
+        public Goblin(int x, int y, char symbol, int maxHP, int enemyID) : base(x, y, symbol, 10, 1, maxHP, enemyID)
         {
             // setting hp = 10 and dmg = 1 in constructor
         }

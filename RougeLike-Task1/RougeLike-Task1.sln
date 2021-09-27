@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RougeLike-Task1", "RougeLike-Task1\RougeLike-Task1.csproj", "{00001876-EA84-49DC-A535-ADA986A875F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "..\..\..\..\source\repos\ConsoleApp1\ConsoleApp1\ConsoleApp1.csproj", "{FBDF7F8E-1D75-476A-B099-271BBADA80AE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{00001876-EA84-49DC-A535-ADA986A875F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00001876-EA84-49DC-A535-ADA986A875F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00001876-EA84-49DC-A535-ADA986A875F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBDF7F8E-1D75-476A-B099-271BBADA80AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBDF7F8E-1D75-476A-B099-271BBADA80AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBDF7F8E-1D75-476A-B099-271BBADA80AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBDF7F8E-1D75-476A-B099-271BBADA80AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

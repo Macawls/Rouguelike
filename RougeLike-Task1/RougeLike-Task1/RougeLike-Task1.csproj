@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\GameEngine.cs" />
+    <Compile Include="Classes\Map.cs" />
     <Compile Include="Classes\Tile Subclasses\Character Subclasses\Enemy.cs" />
     <Compile Include="Classes\Tile Subclasses\Character Subclasses\Enemy Subclasses\Goblin.cs" />
     <Compile Include="Classes\Tile Subclasses\Character Subclasses\Hero.cs" />

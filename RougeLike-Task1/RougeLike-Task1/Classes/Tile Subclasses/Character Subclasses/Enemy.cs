@@ -8,11 +8,13 @@ namespace RougeLike_Task1.Character_Subclasses
 {
     abstract class Enemy : Character
     {
-       
-        // Constructor 
-        public Enemy(int x, int y, char symbol, int hp, int damage, int maxHP) : base(x, y, symbol, hp, damage, maxHP)
-        {
 
+        public int enemyID; // used to differentiate enemies
+        
+        // Constructor 
+        public Enemy(int x, int y, char symbol, int hp, int damage, int maxHP,int objectNumber) : base(x, y, symbol, hp, damage, maxHP)
+        {
+            this.enemyID = objectNumber;
         }
 
         public override string ToString()
