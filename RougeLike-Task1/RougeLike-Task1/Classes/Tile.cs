@@ -34,8 +34,17 @@ namespace RougeLike_Task1
             this.symbol = symbol;
         }
 
+        public Tile()
+        {
+            
+        }
+
         // Public Accessors
-        public int getX { get; set; }
+        public int getX { 
+            get { return x; } 
+            set { x = value; } 
+        }
+
         public int getY { get; set; }
         public char getSymbol { get; set; }
 

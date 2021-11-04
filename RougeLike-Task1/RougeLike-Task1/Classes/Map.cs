@@ -28,6 +28,12 @@ namespace RougeLike_Task1.Classes
         // Constructor
         public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int enemyAmount)
         {
+            Tile tile = new Tile(5, 6, 'c');
+            
+            int xPos = tile.getX;
+            tile.getX = 10;
+
+
             Random rnd = new Random();
 
             this.height = rnd.Next(minHeight, maxHeight + 1); // plus 1 because it rnd.Next returns max-1

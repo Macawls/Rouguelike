@@ -20,10 +20,6 @@ namespace RougeLike_Task1
         public int MaxHP { get; set; }
         public int Damage { get; set; }
 
-
-
-
-
         // array for characters vision {0 = up, 1 = down,2 = left, 3 = right}
         public Tile[] visionArray = new Tile[4];
 
