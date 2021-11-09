@@ -20,6 +20,7 @@ namespace RougeLike_Task1.Classes
 
         public Tile[,] gameMap;
         public Characters.Enemy[] enemyArray;
+        public Tiles.Item[] itemArray;
 
         private Characters.Hero hero;
 
@@ -54,7 +55,7 @@ namespace RougeLike_Task1.Classes
             set { gameMap = value; }
         }
 
-        public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int enemyAmount)
+        public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int enemyAmount, int goldDrops)
         {
             Random rnd = new Random();
            
@@ -65,6 +66,8 @@ namespace RougeLike_Task1.Classes
 
             gameMap = new Tile[mapWidth, mapHeight];
             enemyArray = new Characters.Enemy[enemyAmount];
+            //amount of gold drops used as initial size of items array
+            itemArray = new Tiles.Item[goldDrops];
 
             FillMap();
             
@@ -72,12 +75,20 @@ namespace RougeLike_Task1.Classes
             Hero = (Characters.Hero)Create(Tile.TileType.HERO);
             gameMap[Hero.X, Hero.Y] = Hero;
 
-            // Enemies
+            // Enemies (randomizes in create function
             for (int i = 0; i < enemyArray.Length; i++)
             {
                 enemyArray[i] = (Characters.Enemy)Create(Tile.TileType.ENEMY);
                 gameMap[enemyArray[i].X, enemyArray[i].Y] = enemyArray[i];
             }
+
+            // Gold
+            for (int i = 0; i < itemArray.Length; i++)
+            {
+                itemArray[i] = (Tiles.Item)Create(Tile.TileType.GOLD);
+                gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
+            }
+
 
             // updating vision
             UpdateVision();  
@@ -88,7 +99,8 @@ namespace RougeLike_Task1.Classes
             FillMap();
             gameMap[Hero.X, Hero.Y] = Hero;
 
-            for (int i = 0; i < enemyArray.Length; i++) //checks if enemies are dead
+            //checks if enemies are dead
+            for (int i = 0; i < enemyArray.Length; i++) 
             {
                 if (enemyArray[i].HP <= 0)
                 {
@@ -104,6 +116,13 @@ namespace RougeLike_Task1.Classes
             {
                 gameMap[enemyArray[i].X, enemyArray[i].Y] = enemyArray[i];
             }
+
+            // Gold
+            for (int i = 0; i < itemArray.Length; i++)
+            {
+                gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
+            }
+
 
             UpdateVision();
 
@@ -170,7 +189,7 @@ namespace RougeLike_Task1.Classes
                     
                     return new Characters.Hero(randomX, randomY);
                 
-                case (Tile.TileType.ENEMY):
+                case Tile.TileType.ENEMY:
                     // Note: more enemies in future
                     do
                     {
@@ -190,7 +209,15 @@ namespace RougeLike_Task1.Classes
                         default:
                             return null;
                     }
+                case Tile.TileType.GOLD:
+                    do
+                    {
+                        randomX = rnd.Next(1, gameMap.GetLength(0));
+                        randomY = rnd.Next(1, gameMap.GetLength(1));
 
+                    } while (isOpenTile(randomX, randomY));
+
+                    return new Tiles.Items.Gold(randomX, randomY);
 
                 default:
                     return null;

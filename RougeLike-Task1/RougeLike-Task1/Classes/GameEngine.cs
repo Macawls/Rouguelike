@@ -17,6 +17,8 @@ namespace RougeLike_Task1.Classes
         private static readonly char obstTile = 'X';
         private static readonly char goblinTile = 'G';
         private static readonly char mageTile = 'M';
+        private static readonly char goldTile = 'G';
+
 
 
         private Map map;
@@ -28,7 +30,7 @@ namespace RougeLike_Task1.Classes
         
         public GameEngine()
         {
-            map = new Map(9, 14, 9, 14, 5);
+            map = new Map(9, 14, 9, 14, 5, 4);
         }
 
         public override string ToString()
@@ -63,6 +65,11 @@ namespace RougeLike_Task1.Classes
                     if (map.TileMap[i, j].GetType() == typeof(Mage))
                     {
                         charMap[i, j] = mageTile;
+                    }
+
+                    if (map.TileMap[i, j].GetType() == typeof(Tiles.Items.Gold))
+                    {
+                        charMap[i, j] = goldTile;
                     }
 
                     stringMap += charMap[i, j];
