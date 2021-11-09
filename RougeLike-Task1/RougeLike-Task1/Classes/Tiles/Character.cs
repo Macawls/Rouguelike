@@ -119,6 +119,8 @@ namespace RougeLike_Task1
 
             return canAttack;
         }
+        //overload for items
+
 
         public int DistanceTo(Character target) 
         {
@@ -145,8 +147,24 @@ namespace RougeLike_Task1
                 int distance = destination - origin;
                 return Math.Abs(distance); //converts int to positive 
             }
-
             return calcDistance(this.x, target.X) + calcDistance(this.y, target.Y);
+        }
+
+        public virtual bool CheckRange(Gold target)
+        {
+            bool canPickup;
+            // barehand range
+            if (DistanceToItem(target) == 1)
+            {
+                canPickup = true;
+            }
+
+            else
+            {
+                canPickup = false;
+            }
+
+            return canPickup;
         }
 
 

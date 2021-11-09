@@ -221,9 +221,9 @@ namespace RougeLike_Task1
             this.helpBox.AutoSize = true;
             this.helpBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.helpBox.Controls.Add(this.helpLabel);
-            this.helpBox.Location = new System.Drawing.Point(6, 169);
+            this.helpBox.Location = new System.Drawing.Point(6, 130);
             this.helpBox.Name = "helpBox";
-            this.helpBox.Size = new System.Drawing.Size(220, 98);
+            this.helpBox.Size = new System.Drawing.Size(242, 142);
             this.helpBox.TabIndex = 3;
             this.helpBox.TabStop = false;
             this.helpBox.Text = "Help";
@@ -234,9 +234,9 @@ namespace RougeLike_Task1
             this.helpLabel.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
             this.helpLabel.Location = new System.Drawing.Point(6, 16);
             this.helpLabel.Name = "helpLabel";
-            this.helpLabel.Size = new System.Drawing.Size(208, 66);
+            this.helpLabel.Size = new System.Drawing.Size(230, 110);
             this.helpLabel.TabIndex = 0;
-            this.helpLabel.Text = "[rows, collums]\r\nrows = horizontal\r\ncollums = vertical\r\n";
+            this.helpLabel.Text = "[rows, collums]\r\n\r\nstarts at zero from:\r\nleft -> right\r\nup -> down";
             // 
             // Box
             // 
@@ -339,10 +339,10 @@ namespace RougeLike_Task1
         private System.Windows.Forms.GroupBox attackStateBox;
         private System.Windows.Forms.Label attackState;
         private System.Windows.Forms.GroupBox helpBox;
-        private System.Windows.Forms.Label helpLabel;
         private System.Windows.Forms.GroupBox Box;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox musicCheckBox;
         private System.Windows.Forms.Label bugLabel;
+        private System.Windows.Forms.Label helpLabel;
     }
 }
