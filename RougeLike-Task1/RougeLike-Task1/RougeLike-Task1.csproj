@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Classes\GameEngine.cs" />
     <Compile Include="Classes\Map.cs" />
+    <Compile Include="Classes\Tiles\Characters\Enemies\Mage.cs" />
     <Compile Include="Classes\Tiles\Characters\Enemy.cs" />
     <Compile Include="Classes\Tiles\Characters\Enemies\Goblin.cs" />
     <Compile Include="Classes\Tiles\Characters\Hero.cs" />
@@ -59,6 +60,8 @@
     <Compile Include="Classes\Presentation\GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Tiles\Item.cs" />
+    <Compile Include="Classes\Tiles\Items\Gold.cs" />
     <Compile Include="Classes\Tiles\Obstacle.cs" />
     <Compile Include="Classes\Presentation\Game.cs">
       <SubType>Form</SubType>
@@ -120,5 +123,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,6 +29,7 @@ namespace RougeLike_Task1
         {
             InitializeComponent();
             musicPlayer.URL = "battle.wav"; //https://opengameart.org/content/the-battle-of-darkness-soundtrack
+            musicPlayer.settings.volume = 50; 
         }
 
         private void Game_Load(object sender, EventArgs e)
@@ -98,10 +99,7 @@ namespace RougeLike_Task1
                         enemyDropdown.DroppedDown = true;
                         enemyDropdown.Focus();
                     }
-                    if (enemyDropdown.Visible)
-                    {
-                        enemyDropdown.Hide();
-                    }
+
                     break;
                 
                     //Attacking
@@ -157,9 +155,11 @@ namespace RougeLike_Task1
             this.Focus();
             // makes sure the keys work again
             this.KeyPreview = true;
+
+            enemyDropdown.Hide();
         }
 
-        private void musicCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void musicCheckBox_CheckedChanged(object sender, EventArgs e) //music check box
         {
             if (musicCheckBox.Checked == true)
             {

@@ -102,7 +102,7 @@ namespace RougeLike_Task1
             return canAttack;
         }
 
-        private int DistanceTo(Character target) 
+        public int DistanceTo(Character target) 
         {
             // subtract target x from the character x
             // convert that into a positive number for scalar (no direction)

@@ -8,6 +8,9 @@ namespace RougeLike_Task1.Classes
 {
     class Map
     {
+        //obj for randomizing enemy
+        Random rnd = new Random();
+        
         // map width and height
         private int mapWidth;
         private int mapHeight;
@@ -61,7 +64,6 @@ namespace RougeLike_Task1.Classes
             this.enemyAmount = enemyAmount;
 
             gameMap = new Tile[mapWidth, mapHeight];
-
             enemyArray = new Characters.Enemy[enemyAmount];
 
             FillMap();
@@ -78,8 +80,7 @@ namespace RougeLike_Task1.Classes
             }
 
             // updating vision
-            UpdateVision();
-            
+            UpdateVision();  
         }
 
         public void UpdateMap()
@@ -177,8 +178,19 @@ namespace RougeLike_Task1.Classes
                         randomY = rnd.Next(1, gameMap.GetLength(1));
 
                     } while (isOpenTile(randomX, randomY));
-                    
-                    return new Characters.Goblin(randomX, randomY);
+
+                    // random enemy type
+                    int indicator = rnd.Next(0, 2);
+                    switch (indicator)
+                    {
+                        case 0:
+                            return new Characters.Goblin(randomX, randomY);
+                        case 1:
+                            return new Characters.Mage(randomX, randomY);
+                        default:
+                            return null;
+                    }
+
 
                 default:
                     return null;

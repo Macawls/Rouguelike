@@ -109,7 +109,7 @@ namespace RougeLike_Task1
             // movementControlsBox
             // 
             this.movementControlsBox.Controls.Add(this.moveControls);
-            this.movementControlsBox.Location = new System.Drawing.Point(6, 215);
+            this.movementControlsBox.Location = new System.Drawing.Point(6, 275);
             this.movementControlsBox.Name = "movementControlsBox";
             this.movementControlsBox.Size = new System.Drawing.Size(139, 128);
             this.movementControlsBox.TabIndex = 3;
@@ -220,7 +220,7 @@ namespace RougeLike_Task1
             this.helpBox.AutoSize = true;
             this.helpBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.helpBox.Controls.Add(this.helpLabel);
-            this.helpBox.Location = new System.Drawing.Point(6, 79);
+            this.helpBox.Location = new System.Drawing.Point(6, 169);
             this.helpBox.Name = "helpBox";
             this.helpBox.Size = new System.Drawing.Size(220, 98);
             this.helpBox.TabIndex = 3;
@@ -268,11 +268,11 @@ namespace RougeLike_Task1
             // musicCheckBox
             // 
             this.musicCheckBox.AutoSize = true;
-            this.musicCheckBox.Location = new System.Drawing.Point(16, 409);
+            this.musicCheckBox.Location = new System.Drawing.Point(6, 418);
             this.musicCheckBox.Name = "musicCheckBox";
-            this.musicCheckBox.Size = new System.Drawing.Size(85, 17);
+            this.musicCheckBox.Size = new System.Drawing.Size(161, 17);
             this.musicCheckBox.TabIndex = 11;
-            this.musicCheckBox.Text = "Stop Music?";
+            this.musicCheckBox.Text = "Stop Music? ( click this box )";
             this.musicCheckBox.UseVisualStyleBackColor = true;
             this.musicCheckBox.CheckedChanged += new System.EventHandler(this.musicCheckBox_CheckedChanged);
             // 

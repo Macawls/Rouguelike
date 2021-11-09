@@ -16,6 +16,8 @@ namespace RougeLike_Task1.Classes
         private static readonly char emptyTile = '.';
         private static readonly char obstTile = 'X';
         private static readonly char goblinTile = 'G';
+        private static readonly char mageTile = 'M';
+
 
         private Map map;
 
@@ -56,6 +58,11 @@ namespace RougeLike_Task1.Classes
                     if (map.TileMap[i, j].GetType() == typeof(Goblin))
                     {
                         charMap[i, j] = goblinTile;
+                    }
+
+                    if (map.TileMap[i, j].GetType() == typeof(Mage))
+                    {
+                        charMap[i, j] = mageTile;
                     }
 
                     stringMap += charMap[i, j];
