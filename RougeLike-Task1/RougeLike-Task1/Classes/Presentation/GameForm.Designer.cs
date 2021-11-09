@@ -29,11 +29,14 @@ namespace RougeLike_Task1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.GameMap = new System.Windows.Forms.RichTextBox();
             this.keypressLabel = new System.Windows.Forms.Label();
             this.testMap = new System.Windows.Forms.Label();
             this.testMapHeader = new System.Windows.Forms.Label();
             this.controlsLabel = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.sick = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // GameMap
@@ -87,11 +90,27 @@ namespace RougeLike_Task1
             this.controlsLabel.TabIndex = 4;
             this.controlsLabel.Text = "Controls:\r\nW: up\r\nA:  left\r\nS:  down\r\nD:  right";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // sick
+            // 
+            this.sick.AutoSize = true;
+            this.sick.Location = new System.Drawing.Point(422, 294);
+            this.sick.Name = "sick";
+            this.sick.Size = new System.Drawing.Size(43, 13);
+            this.sick.TabIndex = 6;
+            this.sick.Text = "asdmsd";
+            this.sick.Click += new System.EventHandler(this.label1_Click);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 456);
+            this.Controls.Add(this.sick);
             this.Controls.Add(this.controlsLabel);
             this.Controls.Add(this.testMapHeader);
             this.Controls.Add(this.testMap);
@@ -114,6 +133,8 @@ namespace RougeLike_Task1
         private System.Windows.Forms.Label testMap;
         private System.Windows.Forms.Label testMapHeader;
         private System.Windows.Forms.Label controlsLabel;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label sick;
     }
 }
 

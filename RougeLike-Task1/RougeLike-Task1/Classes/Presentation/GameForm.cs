@@ -7,11 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RougeLike_Task1.Classes;
 
 namespace RougeLike_Task1
 {
     public partial class GameForm : Form
     {
+        public GameForm()
+        {
+            InitializeComponent();   
+        }
+
         // bools to indicate the state of key presses
         public bool keyUp = false;
         public bool keyDown = false;
@@ -21,25 +27,19 @@ namespace RougeLike_Task1
         // Test Map
         public string[,] map = new string[7, 7];
 
-
-
         //current position of Player, start in middle
         public int xPos = 3;
         public int yPos = 3;
 
 
 
-        public GameForm()
-        {
-            InitializeComponent();
-            
-        }
-
         private void Game_Load(object sender, EventArgs e)
         {
-            keypressLabel.Text = "";
+            //GameEngine gameEngine = new GameEngine();
+            //sick.Text = "";
+            //sick.Text = gameEngine.ToString();
+            //keypressLabel.Text = "";
             DrawMap();
-
         }
 
         public void MovePlayer(string direction)
@@ -124,13 +124,13 @@ namespace RougeLike_Task1
         }
         public void GameKeyPress(object sender, KeyPressEventArgs e)
         {
+            
+            char controls = e.KeyChar;
             keypressLabel.Text = "Key pressed: " + e.KeyChar;
-
-            char controls = e.KeyChar; 
-
-            switch (controls) // call move method here, // works regardless of caps lock
+            
+            switch (controls) // call move method here // works regardless of caps lock
             {
-                //up 
+                //up
                 case 'w':
                 case 'W':
                     keyUp = true;
@@ -188,6 +188,16 @@ namespace RougeLike_Task1
         }
 
         private void GameMap_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -8,3 +8,4 @@ C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\
 C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\bin\Debug\RougeLike-Task1.pdb
 C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.exe
 C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.pdb
+C:\Users\Josh\Documents\GitHub\Rouguelike-Task1\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike_Task1.Game.resources

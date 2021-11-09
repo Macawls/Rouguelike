@@ -17,7 +17,6 @@ namespace RougeLike_Task1
         protected int y;
         protected char symbol;
 
-        // written in caps because they're constants 
         public enum TileType
         {
             HERO,
@@ -34,18 +33,19 @@ namespace RougeLike_Task1
             this.symbol = symbol;
         }
 
-        public Tile()
-        {
-            
-        }
-
         // Public Accessors
-        public int getX { 
+        public int X 
+        {
             get { return x; } 
             set { x = value; } 
         }
 
-        public int getY { get; set; }
+        public int Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
+
         public char getSymbol { get; set; }
 
     }

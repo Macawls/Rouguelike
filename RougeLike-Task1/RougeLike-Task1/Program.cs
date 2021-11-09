@@ -16,7 +16,7 @@ namespace RougeLike_Task1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameForm());
+            Application.Run(new Game());
         }
     }
 }

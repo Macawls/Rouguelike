@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RougeLike_Task1.Character_Subclasses
+namespace RougeLike_Task1.Characters
 {
     class Goblin : Enemy
     {
         // Constructor
-        public Goblin(int x, int y, char symbol, int maxHP, int enemyID) : base(x, y, symbol, 10, 1, maxHP, enemyID)
+        public Goblin(int x, int y) : base(x, y, 'G', 1, 10)
         {
-            // setting hp = 10 and dmg = 1 in constructor
+
         }
 
         public override MovementEnum ReturnMove(MovementEnum move)
@@ -24,17 +24,16 @@ namespace RougeLike_Task1.Character_Subclasses
 
             int RandomDirection()
             {
-                Random rnd = new Random();
-                return rnd.Next(1, 5); //return 1 to 4, int 0 is IDLE in enum
+                return this.rnd.Next(1, 5); //return 1 to 4, int 0 is IDLE in enum
             }
 
             int i = RandomDirection();
 
-            while (this.visionArray[i].GetType().Name != "EmptyTile") // while the tile is not empty, keep checking the rest of the tiles randomly(up, down, left, right)
+            while (this.VisionArray[i].GetType() != typeof(EmptyTile)) // while the tile is not empty, keep checking the rest of the tiles randomly(up, down, left, right)
             {
                 i = RandomDirection();
 
-                if (visionArray[i].GetType().Name == "EmptyTile") // if tile is empty than character can move
+                if (this.VisionArray[i].GetType() == typeof(EmptyTile)) // if tile is empty than character can move
                 {
                     canMove = true;
                     break;

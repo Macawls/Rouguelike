@@ -48,23 +48,32 @@
   <ItemGroup>
     <Compile Include="Classes\GameEngine.cs" />
     <Compile Include="Classes\Map.cs" />
-    <Compile Include="Classes\Tile Subclasses\Character Subclasses\Enemy.cs" />
-    <Compile Include="Classes\Tile Subclasses\Character Subclasses\Enemy Subclasses\Goblin.cs" />
-    <Compile Include="Classes\Tile Subclasses\Character Subclasses\Hero.cs" />
-    <Compile Include="Classes\Tile Subclasses\Character.cs" />
-    <Compile Include="Classes\Tile Subclasses\EmptyTile.cs" />
+    <Compile Include="Classes\Tiles\Characters\Enemy.cs" />
+    <Compile Include="Classes\Tiles\Characters\Enemies\Goblin.cs" />
+    <Compile Include="Classes\Tiles\Characters\Hero.cs" />
+    <Compile Include="Classes\Tiles\Character.cs" />
+    <Compile Include="Classes\Tiles\EmptyTile.cs" />
     <Compile Include="Classes\Presentation\GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Classes\Presentation\GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Tile Subclasses\Obstacle.cs" />
+    <Compile Include="Classes\Tiles\Obstacle.cs" />
+    <Compile Include="Classes\Presentation\Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\Presentation\Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Tile.cs" />
     <EmbeddedResource Include="Classes\Presentation\GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\Presentation\Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
