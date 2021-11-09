@@ -48,6 +48,7 @@ namespace RougeLike_Task1
             this.Box = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.musicCheckBox = new System.Windows.Forms.CheckBox();
+            this.bugLabel = new System.Windows.Forms.Label();
             this.MapBox.SuspendLayout();
             this.PlayerBox.SuspendLayout();
             this.movementControlsBox.SuspendLayout();
@@ -146,7 +147,7 @@ namespace RougeLike_Task1
             // 
             this.enemyListBox.AutoSize = true;
             this.enemyListBox.Controls.Add(this.enemyDropdown);
-            this.enemyListBox.Location = new System.Drawing.Point(686, 150);
+            this.enemyListBox.Location = new System.Drawing.Point(686, 169);
             this.enemyListBox.Name = "enemyListBox";
             this.enemyListBox.Size = new System.Drawing.Size(133, 59);
             this.enemyListBox.TabIndex = 5;
@@ -167,7 +168,7 @@ namespace RougeLike_Task1
             // 
             this.enemySelectedBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.enemySelectedBox.Controls.Add(this.enemySelected);
-            this.enemySelectedBox.Location = new System.Drawing.Point(686, 215);
+            this.enemySelectedBox.Location = new System.Drawing.Point(686, 234);
             this.enemySelectedBox.Name = "enemySelectedBox";
             this.enemySelectedBox.Size = new System.Drawing.Size(340, 74);
             this.enemySelectedBox.TabIndex = 7;
@@ -179,7 +180,7 @@ namespace RougeLike_Task1
             this.attackControlsBox.Controls.Add(this.attackControls);
             this.attackControlsBox.Location = new System.Drawing.Point(686, 19);
             this.attackControlsBox.Name = "attackControlsBox";
-            this.attackControlsBox.Size = new System.Drawing.Size(340, 123);
+            this.attackControlsBox.Size = new System.Drawing.Size(340, 143);
             this.attackControlsBox.TabIndex = 4;
             this.attackControlsBox.TabStop = false;
             this.attackControlsBox.Text = "Attack Controls";
@@ -190,15 +191,15 @@ namespace RougeLike_Task1
             this.attackControls.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
             this.attackControls.Location = new System.Drawing.Point(10, 20);
             this.attackControls.Name = "attackControls";
-            this.attackControls.Size = new System.Drawing.Size(296, 88);
+            this.attackControls.Size = new System.Drawing.Size(296, 110);
             this.attackControls.TabIndex = 0;
             this.attackControls.Text = "Open selection: J\r\nNavigate:       Arrow Keys\r\nSelect enemy:   Enter\r\nAttack:    " +
-    "     F";
+    "     F\r\nPickup:         P";
             // 
             // attackStateBox
             // 
             this.attackStateBox.Controls.Add(this.attackState);
-            this.attackStateBox.Location = new System.Drawing.Point(683, 302);
+            this.attackStateBox.Location = new System.Drawing.Point(686, 314);
             this.attackStateBox.Name = "attackStateBox";
             this.attackStateBox.Size = new System.Drawing.Size(491, 124);
             this.attackStateBox.TabIndex = 8;
@@ -250,7 +251,7 @@ namespace RougeLike_Task1
             this.Box.Controls.Add(this.MapBox);
             this.Box.Location = new System.Drawing.Point(12, 112);
             this.Box.Name = "Box";
-            this.Box.Size = new System.Drawing.Size(1185, 441);
+            this.Box.Size = new System.Drawing.Size(1185, 460);
             this.Box.TabIndex = 9;
             this.Box.TabStop = false;
             // 
@@ -276,12 +277,23 @@ namespace RougeLike_Task1
             this.musicCheckBox.UseVisualStyleBackColor = true;
             this.musicCheckBox.CheckedChanged += new System.EventHandler(this.musicCheckBox_CheckedChanged);
             // 
+            // bugLabel
+            // 
+            this.bugLabel.AutoSize = true;
+            this.bugLabel.Location = new System.Drawing.Point(12, 588);
+            this.bugLabel.Name = "bugLabel";
+            this.bugLabel.Size = new System.Drawing.Size(449, 13);
+            this.bugLabel.TabIndex = 11;
+            this.bugLabel.Text = "Known bug: if you click outside the enemy list while its active, the form becomes" +
+    " unresponsive";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1209, 569);
+            this.ClientSize = new System.Drawing.Size(1209, 620);
+            this.Controls.Add(this.bugLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Box);
             this.Name = "Game";
@@ -306,6 +318,7 @@ namespace RougeLike_Task1
             this.Box.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -330,5 +343,6 @@ namespace RougeLike_Task1
         private System.Windows.Forms.GroupBox Box;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox musicCheckBox;
+        private System.Windows.Forms.Label bugLabel;
     }
 }

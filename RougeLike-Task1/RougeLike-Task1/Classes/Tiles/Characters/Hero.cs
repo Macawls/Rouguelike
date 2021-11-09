@@ -54,8 +54,9 @@ namespace RougeLike_Task1.Characters
             // Player Stats:
             // HP: HP/Max HP
             // Damage: 2
+            // Gold:
             // [X, Y]
-            return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nDamage: {this.damage} \n[{this.x}, {this.y}]";
+            return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nDamage: {this.damage} \nGold: {this.purse}\n[{this.x}, {this.y}]";
         }
     }
 }

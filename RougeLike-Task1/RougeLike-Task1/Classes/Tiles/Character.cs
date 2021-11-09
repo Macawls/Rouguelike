@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RougeLike_Task1.Classes.Tiles.Items;
+using RougeLike_Task1.Classes.Tiles;
+
 
 namespace RougeLike_Task1
 {
@@ -12,8 +15,15 @@ namespace RougeLike_Task1
         protected int hp;
         protected int maxHP;
         protected int damage;
+        protected int purse = 0;
 
         //Public Accessors
+        public int Purse
+        {
+            get { return purse; }
+            set { purse = value; }
+        }
+ 
         public int HP
         {
             get { return hp; }
@@ -60,6 +70,14 @@ namespace RougeLike_Task1
             this.damage = damage;
             this.maxHP = maxHP;
             this.hp = maxHP;
+        }
+
+        public void PickUp(Tile item)
+        {
+            if (item.GetType() == typeof(Gold))
+            {
+                purse++;
+            }
         }
 
         // attacks a target and decreases its health by attack character's damage
@@ -116,8 +134,21 @@ namespace RougeLike_Task1
                 return Math.Abs(distance); //converts int to positive 
             }
 
-            return (calcDistance(this.x, target.x) + calcDistance(this.y, target.y));
+            return calcDistance(this.x, target.x) + calcDistance(this.y, target.y);
         }
+
+        // overload for items 
+        public int DistanceToItem(Gold target)
+        {
+            int calcDistance(int origin, int destination)
+            {
+                int distance = destination - origin;
+                return Math.Abs(distance); //converts int to positive 
+            }
+
+            return calcDistance(this.x, target.X) + calcDistance(this.y, target.Y);
+        }
+
 
         public void Move(MovementEnum move)
         {

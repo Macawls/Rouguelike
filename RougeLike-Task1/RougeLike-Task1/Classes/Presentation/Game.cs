@@ -17,7 +17,10 @@ namespace RougeLike_Task1
     {
         // game engine class
         GameEngine game = new GameEngine();
-        WindowsMediaPlayer musicPlayer = new WindowsMediaPlayer();
+        
+        WindowsMediaPlayer musicPlayer = new WindowsMediaPlayer(); //background music
+        WindowsMediaPlayer effectsPlayer = new WindowsMediaPlayer(); //sound effects
+
 
 
         // bool for tracking if an enemy has been killed
@@ -44,7 +47,6 @@ namespace RougeLike_Task1
             this.KeyPreview = true;
             musicPlayer.settings.setMode("Loop", true);
             musicPlayer.controls.play();
-
         }
 
         private void DrawMap()
@@ -53,6 +55,7 @@ namespace RougeLike_Task1
             playerStats.Text = game.Map.Hero.ToString();
             //parsing enemy array into enemy dropdown
             enemyDropdown.DataSource = game.Map.enemyArray;
+
         }
 
         private void Game_KeyPress(object sender, KeyPressEventArgs e)
@@ -99,7 +102,6 @@ namespace RougeLike_Task1
                         enemyDropdown.DroppedDown = true;
                         enemyDropdown.Focus();
                     }
-
                     break;
                 
                     //Attacking
@@ -133,7 +135,27 @@ namespace RougeLike_Task1
                             attackState.Text = "Unsuccessful attack...\nmaybe try moving closer?\nor choosing an enemy? \nlol";
                         }
                     }
+                    break;
+
+                //Pickup
+                case 'P':
+                case 'p':
+
+                    //for (int i = 0; i < game.Map.itemArray.Length; i++)
+                    //{
+                    //    if (game.Map.Hero.Check)
+                    //    {
+
+                    //    }
+                    //}
                     
+                    //if (game.Map.Hero.CheckRange)
+                    //{
+
+                    //}
+                    
+                    effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
+                    effectsPlayer.controls.play();
 
                     break;
                  

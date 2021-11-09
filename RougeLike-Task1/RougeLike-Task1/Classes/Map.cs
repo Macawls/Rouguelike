@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RougeLike_Task1.Classes.Tiles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -117,7 +118,7 @@ namespace RougeLike_Task1.Classes
                 gameMap[enemyArray[i].X, enemyArray[i].Y] = enemyArray[i];
             }
 
-            // Gold
+            // Item array
             for (int i = 0; i < itemArray.Length; i++)
             {
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
@@ -155,8 +156,23 @@ namespace RougeLike_Task1.Classes
                 }
             }
         }
-        
-  
+
+
+        // not setting the element in the array to null and not returning a tile, it would break my logic.
+        // reason why is because the map needs to be filled at all times
+        // Instead going to make a new item array for the same effect
+        public void GetItem(int x, int y) 
+        {
+            for (int i = 0; i < itemArray.Length; i++)
+            {
+                if (x == itemArray[i].X && y == itemArray[i].Y)
+                {
+                    Hero.PickUp(itemArray[i]); //picks up item
+                    itemArray = itemArray.Where((source, index) => index != i).ToArray(); // new array with removed item    
+                }
+            }
+        }
+
         public Tile Create(Tile.TileType charType)
         {
             Random rnd = new Random();

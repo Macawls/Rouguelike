@@ -41,7 +41,7 @@ namespace RougeLike_Task1.Characters
                 canAttack = true;
             }
 
-            else if (DistanceTo(target) == 2) // need to cancel out if distance is 2 horizontally or vertically, if its not, I.E 2 diagonally, thats fine
+            else if (DistanceTo(target) == 2) // need to cancel out if distance is 2 horizontally or vertically
             {
                 //check if distance is 2 horizontally
                 if (checkDiagonal(target))
