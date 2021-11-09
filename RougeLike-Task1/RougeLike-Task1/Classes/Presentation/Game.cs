@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RougeLike_Task1.Classes;
 using RougeLike_Task1.Characters;
+using WMPLib; //windows media player library
 
 namespace RougeLike_Task1
 {
@@ -16,7 +17,9 @@ namespace RougeLike_Task1
     {
         // game engine class
         GameEngine game = new GameEngine();
-        
+        WindowsMediaPlayer musicPlayer = new WindowsMediaPlayer();
+
+
         // bool for tracking if an enemy has been killed
         public bool killedEnemy;
         
@@ -25,6 +28,7 @@ namespace RougeLike_Task1
         public Game()
         {
             InitializeComponent();
+            musicPlayer.URL = "battle.wav"; //https://opengameart.org/content/the-battle-of-darkness-soundtrack
         }
 
         private void Game_Load(object sender, EventArgs e)
@@ -37,6 +41,9 @@ namespace RougeLike_Task1
             enemyDropdown.Enabled = false;
             //enables controls
             this.KeyPreview = true;
+            musicPlayer.settings.setMode("Loop", true);
+            musicPlayer.controls.play();
+
         }
 
         private void DrawMap()
@@ -152,5 +159,17 @@ namespace RougeLike_Task1
             this.KeyPreview = true;
         }
 
+        private void musicCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (musicCheckBox.Checked == true)
+            {
+                musicPlayer.controls.pause();
+            }
+
+            else if (musicCheckBox.Checked == false)
+            {
+                musicPlayer.controls.play();
+            }
+        }
     }
 }

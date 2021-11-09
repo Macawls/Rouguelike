@@ -45,6 +45,9 @@ namespace RougeLike_Task1
             this.attackState = new System.Windows.Forms.Label();
             this.helpBox = new System.Windows.Forms.GroupBox();
             this.helpLabel = new System.Windows.Forms.Label();
+            this.Box = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.musicCheckBox = new System.Windows.Forms.CheckBox();
             this.MapBox.SuspendLayout();
             this.PlayerBox.SuspendLayout();
             this.movementControlsBox.SuspendLayout();
@@ -53,6 +56,8 @@ namespace RougeLike_Task1
             this.attackControlsBox.SuspendLayout();
             this.attackStateBox.SuspendLayout();
             this.helpBox.SuspendLayout();
+            this.Box.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // map
@@ -72,7 +77,7 @@ namespace RougeLike_Task1
             this.MapBox.BackColor = System.Drawing.SystemColors.Menu;
             this.MapBox.Controls.Add(this.map);
             this.MapBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.MapBox.Location = new System.Drawing.Point(388, 12);
+            this.MapBox.Location = new System.Drawing.Point(403, 19);
             this.MapBox.Name = "MapBox";
             this.MapBox.Size = new System.Drawing.Size(99, 54);
             this.MapBox.TabIndex = 1;
@@ -84,7 +89,7 @@ namespace RougeLike_Task1
             this.PlayerBox.AutoSize = true;
             this.PlayerBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PlayerBox.Controls.Add(this.playerStats);
-            this.PlayerBox.Location = new System.Drawing.Point(13, 12);
+            this.PlayerBox.Location = new System.Drawing.Point(6, 19);
             this.PlayerBox.Name = "PlayerBox";
             this.PlayerBox.Size = new System.Drawing.Size(77, 54);
             this.PlayerBox.TabIndex = 2;
@@ -104,7 +109,7 @@ namespace RougeLike_Task1
             // movementControlsBox
             // 
             this.movementControlsBox.Controls.Add(this.moveControls);
-            this.movementControlsBox.Location = new System.Drawing.Point(13, 300);
+            this.movementControlsBox.Location = new System.Drawing.Point(6, 215);
             this.movementControlsBox.Name = "movementControlsBox";
             this.movementControlsBox.Size = new System.Drawing.Size(139, 128);
             this.movementControlsBox.TabIndex = 3;
@@ -141,7 +146,7 @@ namespace RougeLike_Task1
             // 
             this.enemyListBox.AutoSize = true;
             this.enemyListBox.Controls.Add(this.enemyDropdown);
-            this.enemyListBox.Location = new System.Drawing.Point(676, 141);
+            this.enemyListBox.Location = new System.Drawing.Point(686, 150);
             this.enemyListBox.Name = "enemyListBox";
             this.enemyListBox.Size = new System.Drawing.Size(133, 59);
             this.enemyListBox.TabIndex = 5;
@@ -162,7 +167,7 @@ namespace RougeLike_Task1
             // 
             this.enemySelectedBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.enemySelectedBox.Controls.Add(this.enemySelected);
-            this.enemySelectedBox.Location = new System.Drawing.Point(676, 206);
+            this.enemySelectedBox.Location = new System.Drawing.Point(686, 215);
             this.enemySelectedBox.Name = "enemySelectedBox";
             this.enemySelectedBox.Size = new System.Drawing.Size(340, 74);
             this.enemySelectedBox.TabIndex = 7;
@@ -172,7 +177,7 @@ namespace RougeLike_Task1
             // attackControlsBox
             // 
             this.attackControlsBox.Controls.Add(this.attackControls);
-            this.attackControlsBox.Location = new System.Drawing.Point(676, 12);
+            this.attackControlsBox.Location = new System.Drawing.Point(686, 19);
             this.attackControlsBox.Name = "attackControlsBox";
             this.attackControlsBox.Size = new System.Drawing.Size(340, 123);
             this.attackControlsBox.TabIndex = 4;
@@ -193,7 +198,7 @@ namespace RougeLike_Task1
             // attackStateBox
             // 
             this.attackStateBox.Controls.Add(this.attackState);
-            this.attackStateBox.Location = new System.Drawing.Point(676, 286);
+            this.attackStateBox.Location = new System.Drawing.Point(683, 302);
             this.attackStateBox.Name = "attackStateBox";
             this.attackStateBox.Size = new System.Drawing.Size(491, 124);
             this.attackStateBox.TabIndex = 8;
@@ -215,7 +220,7 @@ namespace RougeLike_Task1
             this.helpBox.AutoSize = true;
             this.helpBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.helpBox.Controls.Add(this.helpLabel);
-            this.helpBox.Location = new System.Drawing.Point(13, 182);
+            this.helpBox.Location = new System.Drawing.Point(6, 79);
             this.helpBox.Name = "helpBox";
             this.helpBox.Size = new System.Drawing.Size(220, 98);
             this.helpBox.TabIndex = 3;
@@ -232,20 +237,53 @@ namespace RougeLike_Task1
             this.helpLabel.TabIndex = 0;
             this.helpLabel.Text = "[rows, collums]\r\nrows = horizontal\r\ncollums = vertical\r\n";
             // 
+            // Box
+            // 
+            this.Box.Controls.Add(this.musicCheckBox);
+            this.Box.Controls.Add(this.attackControlsBox);
+            this.Box.Controls.Add(this.attackStateBox);
+            this.Box.Controls.Add(this.enemyListBox);
+            this.Box.Controls.Add(this.enemySelectedBox);
+            this.Box.Controls.Add(this.helpBox);
+            this.Box.Controls.Add(this.PlayerBox);
+            this.Box.Controls.Add(this.movementControlsBox);
+            this.Box.Controls.Add(this.MapBox);
+            this.Box.Location = new System.Drawing.Point(12, 112);
+            this.Box.Name = "Box";
+            this.Box.Size = new System.Drawing.Size(1185, 441);
+            this.Box.TabIndex = 9;
+            this.Box.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::RougeLike_Task1.Properties.Resources.game;
+            this.pictureBox1.Location = new System.Drawing.Point(256, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(644, 84);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // musicCheckBox
+            // 
+            this.musicCheckBox.AutoSize = true;
+            this.musicCheckBox.Location = new System.Drawing.Point(16, 409);
+            this.musicCheckBox.Name = "musicCheckBox";
+            this.musicCheckBox.Size = new System.Drawing.Size(85, 17);
+            this.musicCheckBox.TabIndex = 11;
+            this.musicCheckBox.Text = "Stop Music?";
+            this.musicCheckBox.UseVisualStyleBackColor = true;
+            this.musicCheckBox.CheckedChanged += new System.EventHandler(this.musicCheckBox_CheckedChanged);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1179, 440);
-            this.Controls.Add(this.helpBox);
-            this.Controls.Add(this.attackStateBox);
-            this.Controls.Add(this.attackControlsBox);
-            this.Controls.Add(this.enemySelectedBox);
-            this.Controls.Add(this.enemyListBox);
-            this.Controls.Add(this.movementControlsBox);
-            this.Controls.Add(this.PlayerBox);
-            this.Controls.Add(this.MapBox);
+            this.ClientSize = new System.Drawing.Size(1209, 569);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Box);
             this.Name = "Game";
             this.Load += new System.EventHandler(this.Game_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Game_KeyPress);
@@ -264,8 +302,10 @@ namespace RougeLike_Task1
             this.attackStateBox.PerformLayout();
             this.helpBox.ResumeLayout(false);
             this.helpBox.PerformLayout();
+            this.Box.ResumeLayout(false);
+            this.Box.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -287,5 +327,8 @@ namespace RougeLike_Task1
         private System.Windows.Forms.Label attackState;
         private System.Windows.Forms.GroupBox helpBox;
         private System.Windows.Forms.Label helpLabel;
+        private System.Windows.Forms.GroupBox Box;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox musicCheckBox;
     }
 }
