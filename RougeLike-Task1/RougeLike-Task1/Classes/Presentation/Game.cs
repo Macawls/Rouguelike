@@ -11,25 +11,29 @@ using RougeLike_Task1.Classes;
 using RougeLike_Task1.Classes.Tiles.Items;
 using RougeLike_Task1.Characters;
 using WMPLib; //windows media player library
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace RougeLike_Task1
 {
-    [Serializable]
+
     public partial class Game : Form 
     {
         // game engine class
         GameEngine game = new GameEngine();
+        GameEngine newGame = new GameEngine();
         
         WindowsMediaPlayer musicPlayer = new WindowsMediaPlayer(); //background music
         WindowsMediaPlayer effectsPlayer = new WindowsMediaPlayer(); //sound effects
-
-
 
         // bool for tracking if an enemy has been killed
         public bool killedEnemy;
         
         public int playerScore;
-        
+
+        string path = "game.save";
+
         public Game()
         {
             InitializeComponent();
@@ -39,6 +43,9 @@ namespace RougeLike_Task1
 
         private void Game_Load(object sender, EventArgs e)
         {
+            // load save file
+            //newGame = (GameEngine)game.Load(path);
+
             //display stats and map
             DrawMap();
             //hides enemy window selection
@@ -272,6 +279,11 @@ namespace RougeLike_Task1
             tutorial.Checked = false;
         }
 
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            game.Save(game, path);
+        }
+
         private void moveControls_Click(object sender, EventArgs e)
         {
 
@@ -286,5 +298,7 @@ namespace RougeLike_Task1
         {
 
         }
+
+
     }
 }

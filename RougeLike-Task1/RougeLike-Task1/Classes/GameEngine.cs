@@ -6,11 +6,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RougeLike_Task1;
 using RougeLike_Task1.Characters;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RougeLike_Task1.Classes
 {
+    class DataSerializer
+    {
+        //https://youtu.be/WHKPcA_xvE0 accessed 10 November 2021
+
+
+
+    }
+    
+    [Serializable]
     class GameEngine
     {
+        // saving
+        public DataSerializer dataSerializer = new DataSerializer();
         //chars
         private static readonly char heroTile = 'H';
         private static readonly char emptyTile = '.';
@@ -18,9 +31,40 @@ namespace RougeLike_Task1.Classes
         private static readonly char goblinTile = 'G';
         private static readonly char mageTile = 'M';
         private static readonly char goldTile = '$';
-
-
         private Map map;
+
+        public void Save(object data, string filePath) // serialize
+        {
+            FileStream fileStream;
+            BinaryFormatter bf = new BinaryFormatter();
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            fileStream = File.Create(filePath);
+            bf.Serialize(fileStream, data);
+            fileStream.Close();
+        }
+
+        public object Load(string filePath) // deserialize
+        {
+            object obj = null;
+
+            FileStream fileStream;
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+            if (File.Exists(filePath))
+            {
+                fileStream = File.OpenRead(filePath);
+                obj = binaryFormatter.Deserialize(fileStream);
+                fileStream.Close();
+            }
+
+            return obj;
+        }
+
 
         public Map Map
         { 

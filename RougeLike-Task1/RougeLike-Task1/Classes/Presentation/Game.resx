@@ -122,7 +122,7 @@
 • If you click outside a list with your mouse while its opened, the keyboard controls become unresponsive,
    just click on the selected item in that case
 • In the help menu, If you click close (top right) instead of the button (bottom), the music overlaps 
-• Enemy Movement is commented out because of errors
-</value>
+• Enemy Movement is buggy becasue of visionArray
+• Save button does NOT work</value>
   </data>
 </root>
