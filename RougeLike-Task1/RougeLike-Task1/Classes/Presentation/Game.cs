@@ -85,28 +85,28 @@ namespace RougeLike_Task1
                 case 'w':
                 case 'W':
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.UP));
-                    game.Map.UpdateMap();   
+                    game.Map.MoveEnemies();
                     break;
                 
                     //left
                 case 'a':
                 case 'A':
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.LEFT));
-                    game.Map.UpdateMap();
+                    game.Map.MoveEnemies();
                     break;
 
                     //right
                 case 'd':
                 case 'D':
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.RIGHT));
-                    game.Map.UpdateMap();
+                    game.Map.MoveEnemies();
                     break;
 
                     //down
                 case 's':
                 case 'S':
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.DOWN));
-                    game.Map.UpdateMap();
+                    game.Map.MoveEnemies();
                     break;
                 
                     // Enemy Dropdown Menu

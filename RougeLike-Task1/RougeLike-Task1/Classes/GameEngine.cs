@@ -14,9 +14,6 @@ namespace RougeLike_Task1.Classes
     class DataSerializer
     {
         //https://youtu.be/WHKPcA_xvE0 accessed 10 November 2021
-
-
-
     }
     
     [Serializable]
