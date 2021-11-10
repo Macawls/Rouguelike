@@ -43,12 +43,11 @@ namespace RougeLike_Task1
             this.attackControls = new System.Windows.Forms.Label();
             this.attackStateBox = new System.Windows.Forms.GroupBox();
             this.attackState = new System.Windows.Forms.Label();
-            this.helpBox = new System.Windows.Forms.GroupBox();
-            this.helpLabel = new System.Windows.Forms.Label();
             this.Box = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.musicCheckBox = new System.Windows.Forms.CheckBox();
             this.bugLabel = new System.Windows.Forms.Label();
+            this.tutorial = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MapBox.SuspendLayout();
             this.PlayerBox.SuspendLayout();
             this.movementControlsBox.SuspendLayout();
@@ -56,7 +55,6 @@ namespace RougeLike_Task1
             this.enemySelectedBox.SuspendLayout();
             this.attackControlsBox.SuspendLayout();
             this.attackStateBox.SuspendLayout();
-            this.helpBox.SuspendLayout();
             this.Box.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -216,36 +214,12 @@ namespace RougeLike_Task1
             this.attackState.TabIndex = 0;
             this.attackState.Text = "Attack an enemy!";
             // 
-            // helpBox
-            // 
-            this.helpBox.AutoSize = true;
-            this.helpBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.helpBox.Controls.Add(this.helpLabel);
-            this.helpBox.Location = new System.Drawing.Point(6, 130);
-            this.helpBox.Name = "helpBox";
-            this.helpBox.Size = new System.Drawing.Size(242, 142);
-            this.helpBox.TabIndex = 3;
-            this.helpBox.TabStop = false;
-            this.helpBox.Text = "Help";
-            // 
-            // helpLabel
-            // 
-            this.helpLabel.AutoSize = true;
-            this.helpLabel.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
-            this.helpLabel.Location = new System.Drawing.Point(6, 16);
-            this.helpLabel.Name = "helpLabel";
-            this.helpLabel.Size = new System.Drawing.Size(230, 110);
-            this.helpLabel.TabIndex = 0;
-            this.helpLabel.Text = "[rows, collums]\r\n\r\nstarts at zero from:\r\nleft -> right\r\nup -> down";
-            // 
             // Box
             // 
-            this.Box.Controls.Add(this.musicCheckBox);
             this.Box.Controls.Add(this.attackControlsBox);
             this.Box.Controls.Add(this.attackStateBox);
             this.Box.Controls.Add(this.enemyListBox);
             this.Box.Controls.Add(this.enemySelectedBox);
-            this.Box.Controls.Add(this.helpBox);
             this.Box.Controls.Add(this.PlayerBox);
             this.Box.Controls.Add(this.movementControlsBox);
             this.Box.Controls.Add(this.MapBox);
@@ -254,6 +228,39 @@ namespace RougeLike_Task1
             this.Box.Size = new System.Drawing.Size(1185, 460);
             this.Box.TabIndex = 9;
             this.Box.TabStop = false;
+            // 
+            // musicCheckBox
+            // 
+            this.musicCheckBox.AutoSize = true;
+            this.musicCheckBox.Location = new System.Drawing.Point(12, 622);
+            this.musicCheckBox.Name = "musicCheckBox";
+            this.musicCheckBox.Size = new System.Drawing.Size(88, 17);
+            this.musicCheckBox.TabIndex = 11;
+            this.musicCheckBox.Text = "Stop Music? ";
+            this.musicCheckBox.UseVisualStyleBackColor = true;
+            this.musicCheckBox.CheckedChanged += new System.EventHandler(this.musicCheckBox_CheckedChanged);
+            // 
+            // bugLabel
+            // 
+            this.bugLabel.AutoSize = true;
+            this.bugLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bugLabel.Location = new System.Drawing.Point(12, 588);
+            this.bugLabel.Name = "bugLabel";
+            this.bugLabel.Size = new System.Drawing.Size(556, 16);
+            this.bugLabel.TabIndex = 11;
+            this.bugLabel.Text = "Known bug: if you click outside the enemy list while its active, the form becomes" +
+    " unresponsive";
+            // 
+            // tutorial
+            // 
+            this.tutorial.AutoSize = true;
+            this.tutorial.Location = new System.Drawing.Point(106, 622);
+            this.tutorial.Name = "tutorial";
+            this.tutorial.Size = new System.Drawing.Size(89, 17);
+            this.tutorial.TabIndex = 12;
+            this.tutorial.Text = "How to Play?";
+            this.tutorial.UseVisualStyleBackColor = true;
+            this.tutorial.CheckedChanged += new System.EventHandler(this.tutorial_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -266,33 +273,14 @@ namespace RougeLike_Task1
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
-            // musicCheckBox
-            // 
-            this.musicCheckBox.AutoSize = true;
-            this.musicCheckBox.Location = new System.Drawing.Point(6, 418);
-            this.musicCheckBox.Name = "musicCheckBox";
-            this.musicCheckBox.Size = new System.Drawing.Size(161, 17);
-            this.musicCheckBox.TabIndex = 11;
-            this.musicCheckBox.Text = "Stop Music? ( click this box )";
-            this.musicCheckBox.UseVisualStyleBackColor = true;
-            this.musicCheckBox.CheckedChanged += new System.EventHandler(this.musicCheckBox_CheckedChanged);
-            // 
-            // bugLabel
-            // 
-            this.bugLabel.AutoSize = true;
-            this.bugLabel.Location = new System.Drawing.Point(12, 588);
-            this.bugLabel.Name = "bugLabel";
-            this.bugLabel.Size = new System.Drawing.Size(449, 13);
-            this.bugLabel.TabIndex = 11;
-            this.bugLabel.Text = "Known bug: if you click outside the enemy list while its active, the form becomes" +
-    " unresponsive";
-            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1209, 620);
+            this.ClientSize = new System.Drawing.Size(1209, 651);
+            this.Controls.Add(this.musicCheckBox);
+            this.Controls.Add(this.tutorial);
             this.Controls.Add(this.bugLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Box);
@@ -312,8 +300,6 @@ namespace RougeLike_Task1
             this.attackControlsBox.PerformLayout();
             this.attackStateBox.ResumeLayout(false);
             this.attackStateBox.PerformLayout();
-            this.helpBox.ResumeLayout(false);
-            this.helpBox.PerformLayout();
             this.Box.ResumeLayout(false);
             this.Box.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -338,11 +324,10 @@ namespace RougeLike_Task1
         private System.Windows.Forms.Label attackControls;
         private System.Windows.Forms.GroupBox attackStateBox;
         private System.Windows.Forms.Label attackState;
-        private System.Windows.Forms.GroupBox helpBox;
         private System.Windows.Forms.GroupBox Box;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox musicCheckBox;
         private System.Windows.Forms.Label bugLabel;
-        private System.Windows.Forms.Label helpLabel;
+        private System.Windows.Forms.CheckBox tutorial;
     }
 }

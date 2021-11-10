@@ -180,18 +180,46 @@ namespace RougeLike_Task1
 
             enemyDropdown.Hide();
         }
-
+        
+        // nothing to do with the POE, just for fun :)
         private void musicCheckBox_CheckedChanged(object sender, EventArgs e) //music check box
         {
-            if (musicCheckBox.Checked == true)
+            if (musicCheckBox.Checked)
             {
                 musicPlayer.controls.pause();
             }
 
-            else if (musicCheckBox.Checked == false)
+            else if (!musicCheckBox.Checked)
             {
                 musicPlayer.controls.play();
             }
+        }
+
+        private void tutorial_CheckedChanged(object sender, EventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.FormClosed += HelpForm_FormClosed; // adding helpform close event
+
+            if (!tutorial.Checked)
+            {
+                helpForm.musicPlayer.controls.stop();
+            }
+
+            if (tutorial.Checked)
+            {
+                this.Hide();
+                helpForm.Show();
+                this.musicPlayer.controls.pause();
+            }
+              
+        }
+
+        private void HelpForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+            this.musicPlayer.controls.play();
+
+            tutorial.Checked = false;
         }
     }
 }

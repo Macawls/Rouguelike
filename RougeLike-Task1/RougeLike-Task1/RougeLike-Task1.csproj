@@ -75,6 +75,9 @@
     <EmbeddedResource Include="Classes\Presentation\Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Classes\Presentation\Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

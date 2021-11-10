@@ -13,7 +13,6 @@ C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\bin\Debug\R
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\bin\Debug\RougeLike-Task1.exe
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\bin\Debug\RougeLike-Task1.pdb
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.csproj.AssemblyReference.cache
-C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike_Task1.GameForm.resources
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike_Task1.Game.resources
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike_Task1.Properties.Resources.resources
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.csproj.GenerateResource.cache
@@ -25,3 +24,4 @@ C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\bin\Debug\A
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\Interop.WMPLib.dll
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.csproj.ResolveComReference.cache
+C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike_Task1.Classes.HelpForm.resources

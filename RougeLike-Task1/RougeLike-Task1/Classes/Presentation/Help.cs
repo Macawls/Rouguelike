@@ -7,14 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace RougeLike_Task1.Classes
 {
-    public partial class Help : Form
+    public partial class HelpForm : Form
     {
-        public Help()
+        public WindowsMediaPlayer musicPlayer = new WindowsMediaPlayer();
+
+        public HelpForm()
         {
             InitializeComponent();
+            this.musicPlayer.URL = "wait.wav"; //https://opengameart.org/content/waiting-room
+        }
+
+        private void Help_Load(object sender, EventArgs e)
+        {
+            musicPlayer.settings.setMode("Loop", true);
+            musicPlayer.controls.play();
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            musicPlayer.controls.stop();
+            this.Close();
         }
     }
 }
