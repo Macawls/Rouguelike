@@ -56,7 +56,7 @@ namespace RougeLike_Task1.Classes
             set { gameMap = value; }
         }
 
-        public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int enemyAmount, int goldDrops)
+        public Map(int minWidth, int maxWidth, int minHeight, int maxHeight, int enemyAmount, int maxGoldDrops)
         {
             Random rnd = new Random();
            
@@ -67,8 +67,9 @@ namespace RougeLike_Task1.Classes
 
             gameMap = new Tile[mapWidth, mapHeight];
             enemyArray = new Characters.Enemy[enemyAmount];
+            
             //amount of gold drops used as initial size of items array
-            itemArray = new Tiles.Item[goldDrops];
+            itemArray = new Tiles.Item[maxGoldDrops]; 
 
             FillMap();
             
@@ -83,10 +84,16 @@ namespace RougeLike_Task1.Classes
                 gameMap[enemyArray[i].X, enemyArray[i].Y] = enemyArray[i];
             }
 
-            // Gold
-            for (int i = 0; i < itemArray.Length; i++)
+            // Items
+            for (int i = 0; i < itemArray.Length; i++) // for the each element in the item array
             {
-                itemArray[i] = (Tiles.Item)Create(Tile.TileType.GOLD);
+                // creates a gold tile at a random index between the start and end of the array i.e max gold drops.
+                // If it already exists in the itemArray at that index, it will be replaced at that specific 
+                // index, so therefore, its random. Create() will check if the space is open
+                itemArray[rnd.Next(0, maxGoldDrops)] = (Tiles.Item)Create(Tile.TileType.GOLD);
+
+                itemArray = itemArray.Where((source, index) => index != i).ToArray(); //if the element is null, its removed
+
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
             }
 
@@ -225,7 +232,7 @@ namespace RougeLike_Task1.Classes
                         default:
                             return null;
                     }
-                case Tile.TileType.GOLD:
+                case Tile.TileType.GOLD: 
                     do
                     {
                         randomX = rnd.Next(1, gameMap.GetLength(0));
@@ -235,8 +242,15 @@ namespace RougeLike_Task1.Classes
 
                     return new Tiles.Items.Gold(randomX, randomY);
 
-                default:
-                    return null;
+                default: // default is an empty tile
+                    do
+                    {
+                        randomX = rnd.Next(1, gameMap.GetLength(0));
+                        randomY = rnd.Next(1, gameMap.GetLength(1));
+
+                    } while (isOpenTile(randomX, randomY));
+
+                    return new EmptyTile(randomX, randomY, '.');
             }
         }
 

@@ -117,4 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>You cannot move over OBSTACLES(X)
+or enemies
+
+You cannot pick up GOLD($) diagonally
+
+The range of the HERO(H) is 1
+i.e up, down, left, right
+
+The range of the MAGE(M) is 1
+however, they can attack diagonally
+
+The range of the GOBLIN(G) is 1
+
+
+</value>
+  </data>
 </root>

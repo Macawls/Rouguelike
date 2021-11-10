@@ -20,7 +20,8 @@ namespace RougeLike_Task1
             HERO,
             ENEMY,
             GOLD,
-            WEAPON, 
+            WEAPON,
+            NULL,
         }
 
         //Constructor

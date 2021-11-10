@@ -29,6 +29,7 @@ namespace RougeLike_Task1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.map = new System.Windows.Forms.Label();
             this.MapBox = new System.Windows.Forms.GroupBox();
             this.PlayerBox = new System.Windows.Forms.GroupBox();
@@ -110,10 +111,10 @@ namespace RougeLike_Task1
             this.movementControlsBox.Controls.Add(this.moveControls);
             this.movementControlsBox.Location = new System.Drawing.Point(6, 275);
             this.movementControlsBox.Name = "movementControlsBox";
-            this.movementControlsBox.Size = new System.Drawing.Size(139, 128);
+            this.movementControlsBox.Size = new System.Drawing.Size(157, 128);
             this.movementControlsBox.TabIndex = 3;
             this.movementControlsBox.TabStop = false;
-            this.movementControlsBox.Text = "Movement Controls";
+            this.movementControlsBox.Text = "Player Movement Controls";
             // 
             // moveControls
             // 
@@ -232,7 +233,7 @@ namespace RougeLike_Task1
             // musicCheckBox
             // 
             this.musicCheckBox.AutoSize = true;
-            this.musicCheckBox.Location = new System.Drawing.Point(12, 622);
+            this.musicCheckBox.Location = new System.Drawing.Point(18, 622);
             this.musicCheckBox.Name = "musicCheckBox";
             this.musicCheckBox.Size = new System.Drawing.Size(88, 17);
             this.musicCheckBox.TabIndex = 11;
@@ -244,17 +245,16 @@ namespace RougeLike_Task1
             // 
             this.bugLabel.AutoSize = true;
             this.bugLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bugLabel.Location = new System.Drawing.Point(12, 588);
+            this.bugLabel.Location = new System.Drawing.Point(604, 591);
             this.bugLabel.Name = "bugLabel";
-            this.bugLabel.Size = new System.Drawing.Size(556, 16);
+            this.bugLabel.Size = new System.Drawing.Size(593, 48);
             this.bugLabel.TabIndex = 11;
-            this.bugLabel.Text = "Known bug: if you click outside the enemy list while its active, the form becomes" +
-    " unresponsive";
+            this.bugLabel.Text = resources.GetString("bugLabel.Text");
             // 
             // tutorial
             // 
             this.tutorial.AutoSize = true;
-            this.tutorial.Location = new System.Drawing.Point(106, 622);
+            this.tutorial.Location = new System.Drawing.Point(112, 622);
             this.tutorial.Name = "tutorial";
             this.tutorial.Size = new System.Drawing.Size(89, 17);
             this.tutorial.TabIndex = 12;

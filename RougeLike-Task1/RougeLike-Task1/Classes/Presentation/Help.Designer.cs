@@ -29,6 +29,7 @@ namespace RougeLike_Task1.Classes
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpForm));
             this.helpBoxMap = new System.Windows.Forms.GroupBox();
             this.helpLabel = new System.Windows.Forms.Label();
             this.charHelpBox = new System.Windows.Forms.GroupBox();
@@ -46,7 +47,7 @@ namespace RougeLike_Task1.Classes
             this.helpBoxMap.AutoSize = true;
             this.helpBoxMap.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.helpBoxMap.Controls.Add(this.helpLabel);
-            this.helpBoxMap.Location = new System.Drawing.Point(12, 282);
+            this.helpBoxMap.Location = new System.Drawing.Point(717, 258);
             this.helpBoxMap.Name = "helpBoxMap";
             this.helpBoxMap.Size = new System.Drawing.Size(209, 164);
             this.helpBoxMap.TabIndex = 4;
@@ -71,7 +72,7 @@ namespace RougeLike_Task1.Classes
             this.charHelpBox.Controls.Add(this.label1);
             this.charHelpBox.Location = new System.Drawing.Point(12, 12);
             this.charHelpBox.Name = "charHelpBox";
-            this.charHelpBox.Size = new System.Drawing.Size(407, 186);
+            this.charHelpBox.Size = new System.Drawing.Size(429, 340);
             this.charHelpBox.TabIndex = 5;
             this.charHelpBox.TabStop = false;
             this.charHelpBox.Text = "Characters";
@@ -82,11 +83,9 @@ namespace RougeLike_Task1.Classes
             this.label1.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(6, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(395, 154);
+            this.label1.Size = new System.Drawing.Size(417, 308);
             this.label1.TabIndex = 0;
-            this.label1.Text = "The range of the HERO(H) is 1\r\ni.e up, down, left, right\r\n\r\nThe range of the MAGE" +
-    "(M) is 1\r\nhowever, they can attack diagonally\r\n\r\nThe range of the GOBLIN(G) is 1" +
-    "\r\n";
+            this.label1.Text = resources.GetString("label1.Text");
             // 
             // back
             // 

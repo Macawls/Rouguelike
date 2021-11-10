@@ -16,7 +16,7 @@ namespace RougeLike_Task1.Characters
 
         public override MovementEnum ReturnMove(MovementEnum move)
         {
-            //Bool to indicate if the player can move
+            //Bool to indicate if the goblin can move
             bool canMove = false;
 
             // variable for a valid direction // idle is returned if character cannot move anywhere

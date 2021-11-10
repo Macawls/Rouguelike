@@ -17,8 +17,7 @@ namespace RougeLike_Task1.Classes
         private static readonly char obstTile = 'X';
         private static readonly char goblinTile = 'G';
         private static readonly char mageTile = 'M';
-        private static readonly char goldTile = 'G';
-
+        private static readonly char goldTile = '$';
 
 
         private Map map;
@@ -30,7 +29,7 @@ namespace RougeLike_Task1.Classes
         
         public GameEngine()
         {
-            map = new Map(9, 14, 9, 14, 5, 4);
+            map = new Map(9, 14, 9, 14, 5, 5);
         }
 
         public override string ToString()
