@@ -72,11 +72,12 @@ namespace RougeLike_Task1
             this.hp = maxHP;
         }
 
-        public void PickUp(Tile item)
+        public void PickUp(Gold item)
         {
             if (item.GetType() == typeof(Gold))
             {
-                purse++;
+                purse += item.GoldAmount;
+                item.PickedUp = false;
             }
         }
 

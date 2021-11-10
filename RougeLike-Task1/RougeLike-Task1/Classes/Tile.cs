@@ -14,6 +14,7 @@ namespace RougeLike_Task1
         protected int x;
         protected int y;
         protected char symbol;
+        internal bool PickedUp;
 
         public enum TileType
         {
@@ -21,7 +22,7 @@ namespace RougeLike_Task1
             ENEMY,
             GOLD,
             WEAPON,
-            NULL,
+            EMPTY,
         }
 
         //Constructor

@@ -10,6 +10,7 @@ namespace RougeLike_Task1.Classes.Tiles.Items
     {
         private int goldAmount;
 
+
         private Random random = new Random();
            
         public int GoldAmount
@@ -17,6 +18,8 @@ namespace RougeLike_Task1.Classes.Tiles.Items
             get { return goldAmount; }
             set { goldAmount = value; }
         }
+
+
 
         public Gold(int x, int y) : base(x, y, 'O')
         {

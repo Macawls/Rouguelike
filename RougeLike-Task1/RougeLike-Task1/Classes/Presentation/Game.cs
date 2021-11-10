@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RougeLike_Task1.Classes;
+using RougeLike_Task1.Classes.Tiles.Items;
 using RougeLike_Task1.Characters;
 using WMPLib; //windows media player library
 
@@ -140,19 +141,24 @@ namespace RougeLike_Task1
                 //Pickup
                 case 'P':
                 case 'p':
-
-                    //for (int i = 0; i < game.Map.itemArray.Length; i++)
-                    //{
-                    //    if (game.Map.Hero.Check)
-                    //    {
-
-                    //    }
-                    //}
                     
-                    //if (game.Map.Hero.CheckRange)
-                    //{
+                    Gold[] pickupAble = new Gold[game.Map.itemArray.Length];
+                    
+                    for (int i = 0; i < pickupAble.GetLength(0); i++)
+                    {
+                        if (pickupAble.GetType() == typeof(Gold))
+                        {
+                            if (game.Map.Hero.DistanceToItem(pickupAble[i]) == 1) //hero can only pickup
+                            {
+                                game.Map.Hero.PickUp(pickupAble[i]);
+                                game.Map.UpdateMap();
+                            }
 
-                    //}
+                        }
+                    }
+
+
+  
                     
                     effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
                     effectsPlayer.controls.play();

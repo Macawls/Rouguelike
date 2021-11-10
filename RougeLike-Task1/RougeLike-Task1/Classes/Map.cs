@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RougeLike_Task1.Classes.Tiles.Items;
 
 namespace RougeLike_Task1.Classes
 {
@@ -21,7 +22,7 @@ namespace RougeLike_Task1.Classes
 
         public Tile[,] gameMap;
         public Characters.Enemy[] enemyArray;
-        public Tiles.Item[] itemArray;
+        public Tile[] itemArray;
 
         private Characters.Hero hero;
 
@@ -69,7 +70,7 @@ namespace RougeLike_Task1.Classes
             enemyArray = new Characters.Enemy[enemyAmount];
             
             //amount of gold drops used as initial size of items array
-            itemArray = new Tiles.Item[maxGoldDrops]; 
+            itemArray = new Tile[maxGoldDrops]; 
 
             FillMap();
             
@@ -85,14 +86,21 @@ namespace RougeLike_Task1.Classes
             }
 
             // Items
-            for (int i = 0; i < itemArray.Length; i++) // for the each element in the item array
+            for (int i = 0; i < maxGoldDrops; i++) // maxGoldDrops = itemArray.Length
             {
                 // creates a gold tile at a random index between the start and end of the array i.e max gold drops.
-                // If it already exists in the itemArray at that index, it will be replaced at that specific 
-                // index, so therefore, its random. Create() will check if the space is open
-                itemArray[rnd.Next(0, maxGoldDrops)] = (Tiles.Item)Create(Tile.TileType.GOLD);
+                // therefore amount of gold drops are random
 
-                itemArray = itemArray.Where((source, index) => index != i).ToArray(); //if the element is null, its removed
+                itemArray[rnd.Next(0, maxGoldDrops)] = (Tiles.Item)Create(Tile.TileType.GOLD);
+                
+                //itemArray = itemArray.Where((source, index) => index != i).ToArray(); //if the element is null, its removed
+                for (int j = 0; j < itemArray.Length; j++)
+                {
+                    if (itemArray[j] == null)
+                    {
+                        itemArray[j] = (Tile)Create(Tile.TileType.EMPTY);
+                    }
+                }
 
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
             }
@@ -125,12 +133,19 @@ namespace RougeLike_Task1.Classes
                 gameMap[enemyArray[i].X, enemyArray[i].Y] = enemyArray[i];
             }
 
-            // Item array
+
+            // Gold
             for (int i = 0; i < itemArray.Length; i++)
             {
+                Gold coin = (Gold)itemArray[i];
+                
+                if (coin.PickedUp == true)
+                {
+                    itemArray = itemArray.Where((source, index) => index != i).ToArray();
+                }
+
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
             }
-
 
             UpdateVision();
 
@@ -174,7 +189,8 @@ namespace RougeLike_Task1.Classes
             {
                 if (x == itemArray[i].X && y == itemArray[i].Y)
                 {
-                    Hero.PickUp(itemArray[i]); //picks up item
+                    Hero.PickUp((Tiles.Items.Gold)gameMap[x,y]); //picks up gold
+
                     itemArray = itemArray.Where((source, index) => index != i).ToArray(); // new array with removed item    
                 }
             }
@@ -242,7 +258,7 @@ namespace RougeLike_Task1.Classes
 
                     return new Tiles.Items.Gold(randomX, randomY);
 
-                default: // default is an empty tile
+                case Tile.TileType.EMPTY:
                     do
                     {
                         randomX = rnd.Next(1, gameMap.GetLength(0));
@@ -251,6 +267,8 @@ namespace RougeLike_Task1.Classes
                     } while (isOpenTile(randomX, randomY));
 
                     return new EmptyTile(randomX, randomY, '.');
+                default:
+                    return null;
             }
         }
 
