@@ -42,8 +42,10 @@ namespace RougeLike_Task1
             DrawMap();
             //hides enemy window selection
             enemyDropdown.Hide();
+            itemDropdown.Hide();
             //player hasn't selected anything on start yet
             enemyDropdown.Enabled = false;
+            itemDropdown.Enabled = false;
             //enables controls
             this.KeyPreview = true;
             musicPlayer.settings.setMode("Loop", true);
@@ -54,8 +56,10 @@ namespace RougeLike_Task1
         {
             map.Text = game.ToString();
             playerStats.Text = game.Map.Hero.ToString();
-            //parsing enemy array into enemy dropdown
+            
+            //parsing enemy array into combo boxes
             enemyDropdown.DataSource = game.Map.enemyArray;
+            itemDropdown.DataSource = game.Map.itemArray;
 
         }
 
@@ -78,14 +82,12 @@ namespace RougeLike_Task1
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.LEFT));
                     break;
 
-                
                     //right
                 case 'd':
                 case 'D':
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.RIGHT));
                     break;
 
-                
                     //down
                 case 's':
                 case 'S':
@@ -141,39 +143,44 @@ namespace RougeLike_Task1
                 //Pickup
                 case 'P':
                 case 'p':
-                    
-                    Gold[] pickupAble = new Gold[game.Map.itemArray.Length];
-                    
-                    for (int i = 0; i < pickupAble.GetLength(0); i++)
-                    {
-                        if (pickupAble.GetType() == typeof(Gold))
-                        {
-                            if (game.Map.Hero.DistanceToItem(pickupAble[i]) == 1) //hero can only pickup
-                            {
-                                game.Map.Hero.PickUp(pickupAble[i]);
-                                game.Map.UpdateMap();
-                            }
 
-                        }
-                    }
-
-
-  
+                    //Tile[] pickupAble;
+                    //pickupAble = game.Map.itemArray;
                     
+                    //for (int i = 0; i < pickupAble.GetLength(0); i++)
+                    //{
+                    //    if (pickupAble.GetType() == typeof(Tile))
+                    //    {
+                    //        if (game.Map.Hero.DistanceToItem((Gold)pickupAble[i]) == 1) //hero can only pickup in range one
+                    //        {
+                    //            game.Map.Hero.PickUp((Gold)pickupAble[i]);
+                                
+                    //        }
+                            
+
+                    //    }
+                    //}
+
+                    game.Map.UpdateMap();
                     effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
                     effectsPlayer.controls.play();
-
                     break;
-                 
+                case 'i':
+                case 'I':
+                    if (!itemDropdown.Visible)
+                    {
+                        this.KeyPreview = false;
+                        itemDropdown.Enabled = true;
+                        itemDropdown.Show();
+                        itemDropdown.DroppedDown = true;
+                        itemDropdown.Focus();
+                    }
+                    break;
+
             }
 
             game.Map.UpdateMap();
             DrawMap();
-        }
-
-        private void enemyDropdown_SelectedIndexChanged(object sender, EventArgs e)
-        {
- 
         }
 
         private void enemyDropdown_SelectionChangeCommitted(object sender, EventArgs e)
@@ -186,7 +193,15 @@ namespace RougeLike_Task1
 
             enemyDropdown.Hide();
         }
-        
+
+        private void itemDropdown_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            this.Focus();
+            this.KeyPreview = true;
+
+            itemDropdown.Hide();
+        }
+
         // nothing to do with the POE, just for fun :)
         private void musicCheckBox_CheckedChanged(object sender, EventArgs e) //music check box
         {
@@ -226,6 +241,16 @@ namespace RougeLike_Task1
             this.musicPlayer.controls.play();
 
             tutorial.Checked = false;
+        }
+
+        private void moveControls_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void attackControls_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

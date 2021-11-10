@@ -141,7 +141,7 @@ namespace RougeLike_Task1
         }
 
         // overload for items 
-        public int DistanceToItem(Gold target)
+        public int DistanceToItem(Tile target)
         {
             int calcDistance(int origin, int destination)
             {

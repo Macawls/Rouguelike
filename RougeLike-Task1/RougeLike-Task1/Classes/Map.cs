@@ -137,9 +137,7 @@ namespace RougeLike_Task1.Classes
             // Gold
             for (int i = 0; i < itemArray.Length; i++)
             {
-                Gold coin = (Gold)itemArray[i];
-                
-                if (coin.PickedUp == true)
+                if (itemArray[i].PickedUp == true)
                 {
                     itemArray = itemArray.Where((source, index) => index != i).ToArray();
                 }

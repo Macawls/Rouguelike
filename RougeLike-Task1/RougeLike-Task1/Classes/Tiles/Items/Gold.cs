@@ -28,7 +28,7 @@ namespace RougeLike_Task1.Classes.Tiles.Items
 
         public override string ToString()
         {
-            return $"{goldAmount}";
+            return $"Gold at [{this.x}, {this.y}]";
         }
     }
 }
