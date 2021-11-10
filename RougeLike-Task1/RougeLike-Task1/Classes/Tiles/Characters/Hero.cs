@@ -44,6 +44,9 @@ namespace RougeLike_Task1.Characters
                         moveDirection = MovementEnum.RIGHT;
                     }
                     break;
+                default:
+                    moveDirection = MovementEnum.IDLE;
+                    break;
             }
 
             return moveDirection;

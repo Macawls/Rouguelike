@@ -118,10 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="bugLabel.Text" xml:space="preserve">
-    <value>Known bugs: 
+    <value>Problems: 
 • If you click outside a list with your mouse while its opened, the keyboard controls become unresponsive,
    just click on the selected item in that case
-
-• In the help menu, If you click close (top right) instead of the button (bottom), the music overlaps  </value>
+• In the help menu, If you click close (top right) instead of the button (bottom), the music overlaps 
+• Enemy Movement is commented out because of errors
+</value>
   </data>
 </root>

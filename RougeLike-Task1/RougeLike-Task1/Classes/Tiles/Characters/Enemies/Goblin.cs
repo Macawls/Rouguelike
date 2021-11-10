@@ -16,39 +16,38 @@ namespace RougeLike_Task1.Characters
 
         public override MovementEnum ReturnMove(MovementEnum move)
         {
-            //Bool to indicate if the goblin can move
-            bool canMove = false;
+            // variable for a move direction, returns idle if no movement in desired direction is possible
+            MovementEnum moveDirection = MovementEnum.IDLE;
 
-            // variable for a valid direction // idle is returned if character cannot move anywhere
-            MovementEnum validDirection = MovementEnum.IDLE;
-
-            int RandomDirection()
+            switch (move)
             {
-                return this.rnd.Next(1, 5); //return 1 to 4, int 0 is IDLE in enum
-            }
-
-            int i = RandomDirection();
-
-            while (this.VisionArray[i].GetType() != typeof(EmptyTile)) // while the tile is not empty, keep checking the rest of the tiles randomly(up, down, left, right)
-            {
-                i = RandomDirection();
-
-                if (this.VisionArray[i].GetType() == typeof(EmptyTile)) // if tile is empty than character can move
-                {
-                    canMove = true;
+                case MovementEnum.UP:
+                    if (VisionArray[0].GetType() == typeof(EmptyTile))
+                    {
+                        moveDirection = MovementEnum.UP;
+                    }
                     break;
-                }
-
-                canMove = false; // can't move if none of the surrounding tiles are empty
-                break;
+                case MovementEnum.DOWN:
+                    if (VisionArray[1].GetType() == typeof(EmptyTile))
+                    {
+                        moveDirection = MovementEnum.DOWN;
+                    }
+                    break;
+                case MovementEnum.LEFT:
+                    if (VisionArray[2].GetType() == typeof(EmptyTile))
+                    {
+                        moveDirection = MovementEnum.LEFT;
+                    }
+                    break;
+                case MovementEnum.RIGHT:
+                    if (VisionArray[3].GetType() == typeof(EmptyTile))
+                    {
+                        moveDirection = MovementEnum.RIGHT;
+                    }
+                    break;
             }
 
-            if (canMove == true) 
-            {
-                validDirection = (MovementEnum)i; //casting int to enum
-            }
-
-            return validDirection;
+            return moveDirection;
         }
 
 

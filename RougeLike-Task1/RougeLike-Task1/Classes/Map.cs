@@ -114,9 +114,24 @@ namespace RougeLike_Task1.Classes
             UpdateVision();  
         }
 
+        private void MoveEnemies()
+        {
+            Random num = new Random();
+            int directionIndicator;
+
+            for (int i = 0; i < enemyArray.Length; i++)
+            {
+                directionIndicator = num.Next(0, 5); // 0 is idle, 1 is Up, 2 is Down, 3 is Left, 4 is Right
+
+                enemyArray[i].Move(enemyArray[i].ReturnMove((Character.MovementEnum)directionIndicator)); //casting
+            }
+        }
+
         public void UpdateMap()
         {
+            //MoveEnemies();
             FillMap();
+            
             gameMap[Hero.X, Hero.Y] = Hero;
 
             //checks if enemies are dead
@@ -296,17 +311,31 @@ namespace RougeLike_Task1.Classes
             foreach (Characters.Enemy enemy in enemyArray)
             {
                 //Array.Clear(enemy.VisionArray, 0, enemy.VisionArray.Length);
-                
+
                 // up
-                enemy.VisionArray[0] = gameMap[enemy.X - 1, enemy.Y];
+                if (enemy.X > 1)
+                {
+                    enemy.VisionArray[0] = gameMap[enemy.X - 1, enemy.Y];
+                }
                 // down
-                enemy.VisionArray[1] = gameMap[enemy.X + 1, enemy.Y];
-                //left
-                enemy.VisionArray[2] = gameMap[enemy.X, enemy.Y - 1];
-                //right
-                enemy.VisionArray[3] = gameMap[enemy.X, enemy.Y + 1];
+                if (enemy.X < gameMap.GetLength(0) - 1)
+                {
+                    enemy.VisionArray[1] = gameMap[enemy.X + 1, enemy.Y];
+                }
+                // left
+                if (enemy.Y > 1)
+                {
+                    enemy.VisionArray[2] = gameMap[enemy.X, enemy.Y - 1];
+                }
+                // right 
+                if (enemy.Y < gameMap.GetLength(1) - 1)
+                {
+                    enemy.VisionArray[3] = gameMap[enemy.X, enemy.Y + 1];
+                }
 
             }
+
+
 
         }
     }

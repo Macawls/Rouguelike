@@ -15,7 +15,7 @@ namespace RougeLike_Task1
         protected int x;
         protected int y;
         protected char symbol;
-        internal bool pickedUp;
+
 
         public enum TileType
         {
@@ -54,6 +54,5 @@ namespace RougeLike_Task1
         }
 
         public char getSymbol { get; set; }
-        public Gold GoldAmount { get; internal set; }
     }
 }

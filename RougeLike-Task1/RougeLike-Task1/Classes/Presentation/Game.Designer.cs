@@ -53,6 +53,7 @@ namespace RougeLike_Task1
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ItemBox = new System.Windows.Forms.GroupBox();
             this.itemSelected = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.MapBox.SuspendLayout();
             this.PlayerBox.SuspendLayout();
             this.movementControlsBox.SuspendLayout();
@@ -69,10 +70,10 @@ namespace RougeLike_Task1
             // map
             // 
             this.map.AutoSize = true;
-            this.map.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.map.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.map.Location = new System.Drawing.Point(6, 16);
             this.map.Name = "map";
-            this.map.Size = new System.Drawing.Size(110, 27);
+            this.map.Size = new System.Drawing.Size(134, 33);
             this.map.TabIndex = 0;
             this.map.Text = "GameMap";
             // 
@@ -85,7 +86,7 @@ namespace RougeLike_Task1
             this.MapBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.MapBox.Location = new System.Drawing.Point(492, 19);
             this.MapBox.Name = "MapBox";
-            this.MapBox.Size = new System.Drawing.Size(122, 59);
+            this.MapBox.Size = new System.Drawing.Size(146, 65);
             this.MapBox.TabIndex = 1;
             this.MapBox.TabStop = false;
             this.MapBox.Text = "Map";
@@ -281,11 +282,12 @@ namespace RougeLike_Task1
             // 
             this.bugLabel.AutoSize = true;
             this.bugLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bugLabel.Location = new System.Drawing.Point(703, 616);
+            this.bugLabel.Location = new System.Drawing.Point(692, 648);
             this.bugLabel.Name = "bugLabel";
             this.bugLabel.Size = new System.Drawing.Size(628, 80);
             this.bugLabel.TabIndex = 11;
             this.bugLabel.Text = resources.GetString("bugLabel.Text");
+            this.bugLabel.Click += new System.EventHandler(this.bugLabel_Click);
             // 
             // tutorial
             // 
@@ -330,12 +332,24 @@ namespace RougeLike_Task1
             this.itemSelected.TabIndex = 6;
             this.itemSelected.Text = "none";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 648);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(197, 64);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "What currently works:\r\n• Player Movement\r\n• Selecting and enemy to attack\r\n• Sele" +
+    "cting an item to pickup \r\n";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1339, 710);
+            this.ClientSize = new System.Drawing.Size(1339, 749);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.musicCheckBox);
             this.Controls.Add(this.tutorial);
             this.Controls.Add(this.bugLabel);
@@ -394,5 +408,6 @@ namespace RougeLike_Task1
         private System.Windows.Forms.ComboBox itemDropdown;
         private System.Windows.Forms.GroupBox ItemBox;
         private System.Windows.Forms.Label itemSelected;
+        private System.Windows.Forms.Label label1;
     }
 }

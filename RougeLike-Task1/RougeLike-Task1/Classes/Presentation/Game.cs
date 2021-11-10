@@ -14,6 +14,7 @@ using WMPLib; //windows media player library
 
 namespace RougeLike_Task1
 {
+    [Serializable]
     public partial class Game : Form 
     {
         // game engine class
@@ -63,6 +64,9 @@ namespace RougeLike_Task1
 
         }
 
+
+
+
         private void Game_KeyPress(object sender, KeyPressEventArgs e)
         {
             char controls = e.KeyChar;
@@ -74,24 +78,28 @@ namespace RougeLike_Task1
                 case 'w':
                 case 'W':
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.UP));
+                    game.Map.UpdateMap();   
                     break;
                 
                     //left
                 case 'a':
                 case 'A':
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.LEFT));
+                    game.Map.UpdateMap();
                     break;
 
                     //right
                 case 'd':
                 case 'D':
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.RIGHT));
+                    game.Map.UpdateMap();
                     break;
 
                     //down
                 case 's':
                 case 'S':
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.DOWN));
+                    game.Map.UpdateMap();
                     break;
                 
                     // Enemy Dropdown Menu
@@ -153,12 +161,25 @@ namespace RougeLike_Task1
                         if (game.Map.Hero.CheckRange((Gold)game.Map.itemArray[itemDropdown.SelectedIndex]))
                         {
 
-                            msg.Text = $"Alright! you picked up {(Gold)game.Map.itemArray[itemDropdown.SelectedIndex].GoldAmount}!";
+                            int firstAmount = game.Map.Hero.Purse;
+                            
                             game.Map.Hero.PickUp((Gold)game.Map.itemArray[itemDropdown.SelectedIndex]);
+                            
+                            int secAmount = game.Map.Hero.Purse;
+                            
                             game.Map.itemArray[itemDropdown.SelectedIndex].PickedUp = true;
 
                             effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
                             effectsPlayer.controls.play();
+
+                            msg.Text = $"Alright! you picked up {secAmount - firstAmount} gold!";
+
+
+                            if (game.Map.itemArray[itemDropdown.SelectedIndex].PickedUp == true)
+                            {
+                                itemSelected.Text = "none";
+                            }
+
                         }
 
                         else
@@ -257,6 +278,11 @@ namespace RougeLike_Task1
         }
 
         private void attackControls_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bugLabel_Click(object sender, EventArgs e)
         {
 
         }

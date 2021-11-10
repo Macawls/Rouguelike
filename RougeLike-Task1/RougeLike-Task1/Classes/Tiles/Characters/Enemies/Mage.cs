@@ -15,7 +15,6 @@ namespace RougeLike_Task1.Characters
 
         public override MovementEnum ReturnMove(MovementEnum move = MovementEnum.IDLE) //idle on default because mages don't move
         {
-            
             return move;
         }
 
