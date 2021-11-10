@@ -119,12 +119,12 @@ namespace RougeLike_Task1
                         if (game.Map.Hero.CheckRange(game.Map.enemyArray[enemyDropdown.SelectedIndex]))
                         {
                             game.Map.Hero.Attack(game.Map.enemyArray[enemyDropdown.SelectedIndex]);
-                            attackState.Text = $"Successful attack! {game.Map.enemyArray[enemyDropdown.SelectedIndex].GetType().Name} took {game.Map.Hero.Damage} damage!";
-                            attackState.Text += $"\n{game.Map.enemyArray[enemyDropdown.SelectedIndex].GetType().Name} is now on {game.Map.enemyArray[enemyDropdown.SelectedIndex].HP}!";
+                            msg.Text = $"Successful attack! {game.Map.enemyArray[enemyDropdown.SelectedIndex].GetType().Name} took {game.Map.Hero.Damage} damage!";
+                            msg.Text += $"\n{game.Map.enemyArray[enemyDropdown.SelectedIndex].GetType().Name} is now on {game.Map.enemyArray[enemyDropdown.SelectedIndex].HP}!";
 
                             if (game.Map.enemyArray[enemyDropdown.SelectedIndex].HP <= 0) //if selected enemy in the enemy array is dead
                             {
-                                attackState.Text = "You killed an enemy!";
+                                msg.Text = "You killed an enemy!";
                                 enemyDropdown.SelectedItem = null;
                                 enemySelected.Text = "none";
                             }
@@ -135,7 +135,7 @@ namespace RougeLike_Task1
 
                         else
                         {
-                            attackState.Text = "Unsuccessful attack...\nmaybe try moving closer?\nor choosing an enemy? \nlol";
+                            msg.Text = "Unsuccessful attack...\nmaybe try moving closer?\nor choosing an enemy? \nlol";
                         }
                     }
                     break;
@@ -143,27 +143,33 @@ namespace RougeLike_Task1
                 //Pickup
                 case 'P':
                 case 'p':
-
-                    //Tile[] pickupAble;
-                    //pickupAble = game.Map.itemArray;
                     
-                    //for (int i = 0; i < pickupAble.GetLength(0); i++)
-                    //{
-                    //    if (pickupAble.GetType() == typeof(Tile))
-                    //    {
-                    //        if (game.Map.Hero.DistanceToItem((Gold)pickupAble[i]) == 1) //hero can only pickup in range one
-                    //        {
-                    //            game.Map.Hero.PickUp((Gold)pickupAble[i]);
-                                
-                    //        }
-                            
+                    if (game.Map.itemArray[itemDropdown.SelectedIndex] == null)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        if (game.Map.Hero.CheckRange((Gold)game.Map.itemArray[itemDropdown.SelectedIndex]))
+                        {
 
-                    //    }
-                    //}
+                            msg.Text = $"Alright! you picked up {(Gold)game.Map.itemArray[itemDropdown.SelectedIndex].GoldAmount}!";
+                            game.Map.Hero.PickUp((Gold)game.Map.itemArray[itemDropdown.SelectedIndex]);
+                            game.Map.itemArray[itemDropdown.SelectedIndex].PickedUp = true;
 
-                    game.Map.UpdateMap();
-                    effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
-                    effectsPlayer.controls.play();
+                            effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
+                            effectsPlayer.controls.play();
+                        }
+
+                        else
+                        {
+                            msg.Text = $"Try moving closer or selecting \nthe item you wish to pick up";
+                        }
+
+                        game.Map.UpdateMap();
+                    }
+      
+                    
                     break;
                 case 'i':
                 case 'I':
@@ -196,6 +202,8 @@ namespace RougeLike_Task1
 
         private void itemDropdown_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            itemSelected.Text = itemDropdown.SelectedItem.ToString();
+            
             this.Focus();
             this.KeyPreview = true;
 

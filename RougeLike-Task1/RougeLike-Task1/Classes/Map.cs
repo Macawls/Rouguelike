@@ -90,8 +90,12 @@ namespace RougeLike_Task1.Classes
             {
                 // creates a gold tile at a random index between the start and end of the array i.e max gold drops.
                 // therefore amount of gold drops are random
+                // itemArray[rnd.Next(0, maxGoldDrops)] = (Tiles.Item)Create(Tile.TileType.GOLD);
+                // not sure how to implement this :(
 
-                itemArray[rnd.Next(0, maxGoldDrops)] = (Tiles.Item)Create(Tile.TileType.GOLD);
+
+                // every item in the item array is a gold tile for now
+                itemArray[i] = (Tiles.Item)Create(Tile.TileType.GOLD); 
                 
                 //itemArray = itemArray.Where((source, index) => index != i).ToArray(); //if the element is null, its removed
                 for (int j = 0; j < itemArray.Length; j++)
@@ -134,16 +138,21 @@ namespace RougeLike_Task1.Classes
             }
 
 
-            // Gold
+            // checks if gold is picked up
             for (int i = 0; i < itemArray.Length; i++)
             {
-                if (itemArray[i].PickedUp == true)
+                if (itemArray[i].PickedUp == true) // remove item in array if its picked up
                 {
                     itemArray = itemArray.Where((source, index) => index != i).ToArray();
                 }
+            }
 
+            // fills item array with gold
+            for (int i = 0; i < itemArray.Length; i++)
+            {
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
             }
+
 
             UpdateVision();
 

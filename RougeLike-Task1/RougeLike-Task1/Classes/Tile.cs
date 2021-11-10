@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RougeLike_Task1.Classes.Tiles.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,6 +54,6 @@ namespace RougeLike_Task1
         }
 
         public char getSymbol { get; set; }
-
+        public Gold GoldAmount { get; internal set; }
     }
 }

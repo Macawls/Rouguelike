@@ -119,7 +119,7 @@ namespace RougeLike_Task1.Classes
             this.label2.Size = new System.Drawing.Size(241, 198);
             this.label2.TabIndex = 0;
             this.label2.Text = "• stay alive\r\n• kill enemies\r\n• pickup gold\r\n• buy kickass weapons\r\n\r\nAND FINALLY" +
-    "\r\n• win the game\r\n\r\n...OR ELSE";
+    "\r\n• win the game!\r\n\r\n...OR ELSE";
             // 
             // HelpForm
             // 
@@ -131,6 +131,7 @@ namespace RougeLike_Task1.Classes
             this.Controls.Add(this.charHelpBox);
             this.Controls.Add(this.helpBoxMap);
             this.Name = "HelpForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Help";
             this.Load += new System.EventHandler(this.Help_Load);
             this.helpBoxMap.ResumeLayout(false);

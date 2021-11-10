@@ -120,8 +120,24 @@ namespace RougeLike_Task1
 
             return canAttack;
         }
+        
         //overload for items
+        public virtual bool CheckRange(Gold target)
+        {
+            bool canPickup;
+            // barehand range
+            if (DistanceToItem(target) == 1)
+            {
+                canPickup = true;
+            }
 
+            else
+            {
+                canPickup = false;
+            }
+
+            return canPickup;
+        }
 
         public int DistanceTo(Character target) 
         {
@@ -151,22 +167,7 @@ namespace RougeLike_Task1
             return calcDistance(this.x, target.X) + calcDistance(this.y, target.Y);
         }
 
-        public virtual bool CheckRange(Gold target)
-        {
-            bool canPickup;
-            // barehand range
-            if (DistanceToItem(target) == 1)
-            {
-                canPickup = true;
-            }
 
-            else
-            {
-                canPickup = false;
-            }
-
-            return canPickup;
-        }
 
 
         public void Move(MovementEnum move)
