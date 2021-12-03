@@ -25,6 +25,7 @@ namespace RougeLike_Task1.Classes
         public Tile[] itemArray;
 
         private Characters.Hero hero;
+        private Characters.Leader leader;
 
         public Characters.Hero Hero
         {
@@ -78,35 +79,34 @@ namespace RougeLike_Task1.Classes
             Hero = (Characters.Hero)Create(Tile.TileType.HERO);
             gameMap[Hero.X, Hero.Y] = Hero;
 
-            // Enemies (randomizes in create function)
+            // Enemies (randomizes in create function), only one leader
             for (int i = 0; i < enemyArray.Length; i++)
             {
                 enemyArray[i] = (Characters.Enemy)Create(Tile.TileType.ENEMY);
                 gameMap[enemyArray[i].X, enemyArray[i].Y] = enemyArray[i];
             }
 
+            // Creating Leader
+            leader = (Characters.Leader)Create(Tile.TileType.LEADER);
+            int leaderIndex = rnd.Next(0, enemyArray.Length); 
+            enemyArray[leaderIndex] = leader; //replace random enemy with leader
+
+            gameMap[leader.X, leader.Y] = leader;
+            
+            //set target of leader
+            leader.Target = Hero;
+
+
             // Items
             for (int i = 0; i < maxGoldDrops; i++) // maxGoldDrops = itemArray.Length
             {
-                // creates a gold tile at a random index between the start and end of the array i.e max gold drops.
-                // therefore amount of gold drops are random
-                // itemArray[rnd.Next(0, maxGoldDrops)] = (Tiles.Item)Create(Tile.TileType.GOLD);
-                // not sure how to implement this :(
-
-
-                // every item in the item array is a gold tile for now
-                itemArray[i] = (Tiles.Item)Create(Tile.TileType.GOLD); 
-                
-                //itemArray = itemArray.Where((source, index) => index != i).ToArray(); //if the element is null, its removed
-                for (int j = 0; j < itemArray.Length; j++)
-                {
-                    if (itemArray[j] == null)
-                    {
-                        itemArray[j] = (Tile)Create(Tile.TileType.EMPTY);
-                    }
-                }
-
+                itemArray[i] = (Tiles.Item)Create(Tile.TileType.GOLD);
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
+            }
+
+            for (int i = 0; i < itemArray.Length; i++)
+            {
+                itemArray[i].PickedUp = false;
             }
 
 
@@ -121,24 +121,33 @@ namespace RougeLike_Task1.Classes
 
             for (int i = 0; i < enemyArray.Length; i++)
             {
-                directionIndicator = num.Next(0, 5); // 0 is idle, 1 is Up, 2 is Down, 3 is Left, 4 is Right
+                if (enemyArray[i].GetType() != typeof(Characters.Leader))
+                {
+                    directionIndicator = num.Next(0, 5); // 0 is idle, 1 is Up, 2 is Down, 3 is Left, 4 is Right
+                    enemyArray[i].Move(enemyArray[i].ReturnMove((Character.MovementEnum)directionIndicator)); //casting
+                }
 
-                enemyArray[i].Move(enemyArray[i].ReturnMove((Character.MovementEnum)directionIndicator)); //casting
+                leader.Move(leader.ReturnMove(default));
+ 
+                UpdateVision();
             }
 
-            UpdateVision();
+
         }
 
         public void UpdateMap()
         {
             FillMap();
+            
             gameMap[Hero.X, Hero.Y] = Hero;
+            gameMap[leader.X, leader.Y] = leader;
+
             
 
             //checks if enemies are dead
             for (int i = 0; i < enemyArray.Length; i++) 
             {
-                if (enemyArray[i].HP <= 0)
+                if (enemyArray[i].IsDead())
                 {
                     //makes new array WITHOUT dead enemies
                     enemyArray = enemyArray.Where((source, index) => index != i).ToArray();
@@ -152,17 +161,6 @@ namespace RougeLike_Task1.Classes
             {
                 gameMap[enemyArray[i].X, enemyArray[i].Y] = enemyArray[i];
             }
-            
-            
-
-            // checks if gold is picked up
-            for (int i = 0; i < itemArray.Length; i++)
-            {
-                if (itemArray[i].PickedUp == true) // remove item in array if its picked up
-                {
-                    itemArray = itemArray.Where((source, index) => index != i).ToArray();
-                }
-            }
 
             // fills item array with gold
             for (int i = 0; i < itemArray.Length; i++)
@@ -170,8 +168,36 @@ namespace RougeLike_Task1.Classes
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
             }
 
+            // checks if gold is picked up
+            for (int i = 0; i < itemArray.Length; i++)
+            {
+                if (GetItemAtPosition(itemArray[i].X, itemArray[i].Y) == null) // remove item in array if its picked up
+                {
+                    itemArray = itemArray.Where((source, index) => index != i).ToArray();
+                }
+            }
+
+            // enemies will attack hero and pickup items
+            foreach (var enemy in enemyArray)
+            {
+                if (enemy.CheckRange(Hero))
+                {
+                    enemy.Attack(Hero);
+                }
+
+                if (GetItemAtPosition(enemy.X, enemy.Y) != null)
+                {
+                    enemy.PickUp((Gold)gameMap[enemy.X, enemy.Y]);
+                }
+            }
+
+            // Hero Pickup item
+            if (GetItemAtPosition(hero.X, hero.Y) != null)
+            {
+                hero.PickUp((Gold)gameMap[hero.X, hero.Y]);
+            }
+
             UpdateVision();
-            
 
         }
 
@@ -203,20 +229,24 @@ namespace RougeLike_Task1.Classes
             }
         }
 
-
-      
-        // ignore
-        public void GetItem(int x, int y) 
+        public Item GetItemAtPosition(int x, int y) 
         {
+            Item returnedItem;
+            
             for (int i = 0; i < itemArray.Length; i++)
             {
-                if (x == itemArray[i].X && y == itemArray[i].Y)
+                if (itemArray[i].X == x && itemArray[i].Y == y)
                 {
-                    Hero.PickUp((Tiles.Items.Gold)gameMap[x,y]); //picks up gold
+                    returnedItem = (Item)itemArray[i];
+                    itemArray[i] = null;
 
-                    itemArray = itemArray.Where((source, index) => index != i).ToArray(); // new array with removed item    
+                    itemArray = itemArray.Where(z => z != null).ToArray();
+                    return returnedItem;
                 }
             }
+
+            return null;
+
         }
 
         public Tile Create(Tile.TileType charType)
@@ -250,7 +280,18 @@ namespace RougeLike_Task1.Classes
                     } while (isOpenTile(randomX, randomY));
                     
                     return new Characters.Hero(randomX, randomY);
-                
+
+                case Tile.TileType.LEADER:
+                    do
+                    {
+                        randomX = rnd.Next(1, gameMap.GetLength(0) - 1);
+                        randomY = rnd.Next(1, gameMap.GetLength(1) - 1);
+
+                    } while (isOpenTile(randomX, randomY));
+
+                    return new Characters.Leader(randomX, randomY);
+
+
                 case Tile.TileType.ENEMY:
                     do
                     {
@@ -270,6 +311,7 @@ namespace RougeLike_Task1.Classes
                         default:
                             return null;
                     }
+
                 case Tile.TileType.GOLD: 
                     do
                     {
@@ -306,31 +348,18 @@ namespace RougeLike_Task1.Classes
             //right
             hero.VisionArray[3] = gameMap[hero.X, hero.Y + 1];
 
-            //foreach (Characters.Enemy enemy in enemyArray)
-            //{
-            //    //Array.Clear(enemy.VisionArray, 0, enemy.VisionArray.Length);
-
-            //    // up
-            //    enemy.VisionArray[0] = gameMap[enemy.X - 1, enemy.Y];
-            //    // down
-            //    enemy.VisionArray[1] = gameMap[enemy.X + 1, enemy.Y];
-            //    // left
-            //    enemy.VisionArray[2] = gameMap[enemy.X, enemy.Y - 1];
-            //    // right 
-            //    enemy.VisionArray[3] = gameMap[enemy.X, enemy.Y + 1];
-            //}
-
-            for (int i = 0; i < enemyArray.Length; i++)
+            foreach (Characters.Enemy enemy in enemyArray)
             {
-   
-                enemyArray[i].VisionArray[0] = gameMap[enemyArray[i].X - 1, enemyArray[i].Y];
-                enemyArray[i].VisionArray[1] = gameMap[enemyArray[i].X + 1, enemyArray[i].Y];
-                enemyArray[i].VisionArray[2] = gameMap[enemyArray[i].X, enemyArray[i].Y - 1];
-                enemyArray[i].VisionArray[3] = gameMap[enemyArray[i].X, enemyArray[i].Y + 1];
+                // up
+                enemy.VisionArray[0] = gameMap[enemy.X - 1, enemy.Y];
+                // down
+                enemy.VisionArray[1] = gameMap[enemy.X + 1, enemy.Y];
+                // left
+                enemy.VisionArray[2] = gameMap[enemy.X, enemy.Y - 1];
+                // right
+                enemy.VisionArray[3] = gameMap[enemy.X, enemy.Y + 1];
 
-            }
-
-
+            }   
         }
     }
 }

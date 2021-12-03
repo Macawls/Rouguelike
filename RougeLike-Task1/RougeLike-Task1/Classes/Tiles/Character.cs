@@ -7,6 +7,7 @@ using RougeLike_Task1.Classes.Tiles.Items;
 using RougeLike_Task1.Classes.Tiles;
 
 
+
 namespace RougeLike_Task1
 {
     abstract class Character : Tile
@@ -76,9 +77,15 @@ namespace RougeLike_Task1
         {
             if (item.GetType() == typeof(Gold))
             {
-                purse += item.GoldAmount;
-                item.PickedUp = false;
+                Random rnd = new Random();
+                purse +=  rnd.Next(1, item.MaxGoldAmount + 1);
+                item.PickedUp = true;
             }
+        }
+
+        public void PickUp(Weapon item)
+        {
+
         }
 
         // attacks a target and decreases its health by attack character's damage
@@ -172,6 +179,7 @@ namespace RougeLike_Task1
 
         public void Move(MovementEnum move)
         {
+            
             switch (move)
             {
                 case MovementEnum.IDLE:

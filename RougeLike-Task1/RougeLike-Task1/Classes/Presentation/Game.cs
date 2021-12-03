@@ -38,7 +38,7 @@ namespace RougeLike_Task1
         {
             InitializeComponent();
             musicPlayer.URL = "battle.wav"; //https://opengameart.org/content/the-battle-of-darkness-soundtrack
-            musicPlayer.settings.volume = 50; 
+            musicPlayer.settings.volume = 0; 
         }
 
         private void Game_Load(object sender, EventArgs e)
@@ -48,12 +48,15 @@ namespace RougeLike_Task1
 
             //display stats and map
             DrawMap();
+            
             //hides enemy window selection
             enemyDropdown.Hide();
             itemDropdown.Hide();
+            
             //player hasn't selected anything on start yet
             enemyDropdown.Enabled = false;
             itemDropdown.Enabled = false;
+            
             //enables controls
             this.KeyPreview = true;
             musicPlayer.settings.setMode("Loop", true);
@@ -63,6 +66,7 @@ namespace RougeLike_Task1
         private void DrawMap()
         {
             map.Text = game.ToString();
+
             playerStats.Text = game.Map.Hero.ToString();
             
             //parsing enemy array into combo boxes
@@ -71,47 +75,57 @@ namespace RougeLike_Task1
 
         }
 
-
-
-
         private void Game_KeyPress(object sender, KeyPressEventArgs e)
         {
             char controls = e.KeyChar;
 
-            // wasd movement, case insensitive
+            // wasd movement, controls are case insensitive
             switch (controls)
             {
                     //up
                 case 'w':
                 case 'W':
+                    
+
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.UP));
                     game.Map.MoveEnemies();
+
                     break;
                 
                     //left
                 case 'a':
                 case 'A':
+
+ 
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.LEFT));
                     game.Map.MoveEnemies();
+
                     break;
 
                     //right
                 case 'd':
                 case 'D':
+                    
+       
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.RIGHT));
                     game.Map.MoveEnemies();
+
                     break;
 
                     //down
                 case 's':
                 case 'S':
+
+     
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.DOWN));
                     game.Map.MoveEnemies();
+
                     break;
                 
                     // Enemy Dropdown Menu
                 case 'j':
                 case 'J':
+                    
                     if (!enemyDropdown.Visible)
                     {
                         this.KeyPreview = false;
@@ -144,6 +158,7 @@ namespace RougeLike_Task1
                                 enemySelected.Text = "none";
                             }
 
+                            
                             game.Map.UpdateMap();
 
                         }
@@ -151,8 +166,12 @@ namespace RougeLike_Task1
                         else
                         {
                             msg.Text = "Unsuccessful attack...\nmaybe try moving closer?\nor choosing an enemy? \nlol";
+                            
                         }
                     }
+                    
+                    DrawMap();
+                    
                     break;
 
                 //Pickup
@@ -286,7 +305,7 @@ namespace RougeLike_Task1
 
         private void moveControls_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void attackControls_Click(object sender, EventArgs e)

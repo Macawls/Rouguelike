@@ -24,6 +24,7 @@ namespace RougeLike_Task1
             GOLD,
             WEAPON,
             EMPTY,
+            LEADER,
         }
 
         //Constructor

@@ -123,13 +123,20 @@ or enemies
 
 You cannot pick up GOLD($) diagonally
 
-The range of the HERO(H) is 1
+The attack range of the HERO(H) is 1
 i.e up, down, left, right
 
-The range of the MAGE(M) is 1
-however, they can attack diagonally
+The circles around each enemy; GOBLIN(G), 
+LEADER(L), MAGE(M) show their attack ranges. 
 
-The range of the GOBLIN(G) is 1
+If you step in one of their ranges, you will take
+damage based on how much that respective enemy
+deals
+
+GOBLINS move randomly, 
+LEADERS will follow you, MAGES are stationary. 
+
+
 
 
 </value>

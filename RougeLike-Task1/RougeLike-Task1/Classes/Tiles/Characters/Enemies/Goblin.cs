@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RougeLike_Task1.Classes.Tiles;
 
 namespace RougeLike_Task1.Characters
 {
@@ -22,27 +23,43 @@ namespace RougeLike_Task1.Characters
             switch (move)
             {
                 case MovementEnum.UP:
-                    if (VisionArray[0].GetType() == typeof(EmptyTile))
+                    if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Item))
                     {
-                        moveDirection = MovementEnum.UP;
+                        if (VisionArray[0].GetType() != typeof(Hero))
+                        {
+                            moveDirection = MovementEnum.UP;
+                        }
                     }
                     break;
+
                 case MovementEnum.DOWN:
-                    if (VisionArray[1].GetType() == typeof(EmptyTile))
+                    if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Item))
                     {
-                        moveDirection = MovementEnum.DOWN;
+                        if (VisionArray[1].GetType() != typeof(Hero))
+                        {
+                            moveDirection = MovementEnum.DOWN;
+                        }
                     }
                     break;
+
                 case MovementEnum.LEFT:
-                    if (VisionArray[2].GetType() == typeof(EmptyTile))
+                    if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Item))
                     {
-                        moveDirection = MovementEnum.LEFT;
+                        if (VisionArray[2].GetType() != typeof(Hero))
+                        {
+                            moveDirection = MovementEnum.LEFT;
+                        }
+                       
                     }
                     break;
                 case MovementEnum.RIGHT:
-                    if (VisionArray[3].GetType() == typeof(EmptyTile))
+                    if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Item))
                     {
-                        moveDirection = MovementEnum.RIGHT;
+                        if (VisionArray[3].GetType() != typeof(Hero))
+                        {
+                            moveDirection = MovementEnum.RIGHT;
+                        }
+                        
                     }
                     break;
             }

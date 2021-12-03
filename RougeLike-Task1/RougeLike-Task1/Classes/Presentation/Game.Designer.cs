@@ -55,7 +55,6 @@ namespace RougeLike_Task1
             this.bugLabel = new System.Windows.Forms.Label();
             this.tutorial = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.MapBox.SuspendLayout();
             this.PlayerBox.SuspendLayout();
@@ -240,7 +239,7 @@ namespace RougeLike_Task1
             this.Box.Controls.Add(this.MapBox);
             this.Box.Location = new System.Drawing.Point(12, 95);
             this.Box.Name = "Box";
-            this.Box.Size = new System.Drawing.Size(1308, 515);
+            this.Box.Size = new System.Drawing.Size(1308, 541);
             this.Box.TabIndex = 9;
             this.Box.TabStop = false;
             // 
@@ -294,7 +293,7 @@ namespace RougeLike_Task1
             // musicCheckBox
             // 
             this.musicCheckBox.AutoSize = true;
-            this.musicCheckBox.Location = new System.Drawing.Point(16, 616);
+            this.musicCheckBox.Location = new System.Drawing.Point(12, 642);
             this.musicCheckBox.Name = "musicCheckBox";
             this.musicCheckBox.Size = new System.Drawing.Size(88, 17);
             this.musicCheckBox.TabIndex = 11;
@@ -306,9 +305,9 @@ namespace RougeLike_Task1
             // 
             this.bugLabel.AutoSize = true;
             this.bugLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bugLabel.Location = new System.Drawing.Point(692, 616);
+            this.bugLabel.Location = new System.Drawing.Point(692, 641);
             this.bugLabel.Name = "bugLabel";
-            this.bugLabel.Size = new System.Drawing.Size(628, 96);
+            this.bugLabel.Size = new System.Drawing.Size(627, 80);
             this.bugLabel.TabIndex = 11;
             this.bugLabel.Text = resources.GetString("bugLabel.Text");
             this.bugLabel.Click += new System.EventHandler(this.bugLabel_Click);
@@ -316,7 +315,7 @@ namespace RougeLike_Task1
             // tutorial
             // 
             this.tutorial.AutoSize = true;
-            this.tutorial.Location = new System.Drawing.Point(110, 616);
+            this.tutorial.Location = new System.Drawing.Point(107, 642);
             this.tutorial.Name = "tutorial";
             this.tutorial.Size = new System.Drawing.Size(89, 17);
             this.tutorial.TabIndex = 12;
@@ -329,22 +328,11 @@ namespace RougeLike_Task1
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::RougeLike_Task1.Properties.Resources.game;
-            this.pictureBox1.Location = new System.Drawing.Point(317, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(324, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(639, 77);
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(489, 616);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 80);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "What currently works:\r\n• Player Movement\r\n• Selecting and enemy to attack\r\n• Sele" +
-    "cting an item to pickup\r\n• Enemy Spawning\r\n";
             // 
             // saveButton
             // 
@@ -362,9 +350,8 @@ namespace RougeLike_Task1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1339, 749);
+            this.ClientSize = new System.Drawing.Size(1339, 775);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.musicCheckBox);
             this.Controls.Add(this.tutorial);
             this.Controls.Add(this.bugLabel);
@@ -423,7 +410,6 @@ namespace RougeLike_Task1
         private System.Windows.Forms.ComboBox itemDropdown;
         private System.Windows.Forms.GroupBox ItemBox;
         private System.Windows.Forms.Label itemSelected;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button saveButton;
     }
 }

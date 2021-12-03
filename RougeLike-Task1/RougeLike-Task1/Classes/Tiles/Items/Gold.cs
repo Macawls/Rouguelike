@@ -13,15 +13,15 @@ namespace RougeLike_Task1.Classes.Tiles.Items
 
         private Random random = new Random();
            
-        public int GoldAmount
+        public int MaxGoldAmount
         {
             get { return goldAmount; }
             set { goldAmount = value; }
         }
 
-        public Gold(int x, int y) : base(x, y, 'O') //added max value for goldAmount
+        public Gold(int x, int y) : base(x, y, 'G') //added max value for goldAmount
         {
-            goldAmount = random.Next(1, 5); //between 1 and 5
+            goldAmount = 5; //max value for gold
         }
 
         public override string ToString()

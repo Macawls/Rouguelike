@@ -54,6 +54,7 @@
       <DependentUpon>Help.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Map.cs" />
+    <Compile Include="Classes\Tiles\Characters\Enemies\Leader.cs" />
     <Compile Include="Classes\Tiles\Characters\Enemies\Mage.cs" />
     <Compile Include="Classes\Tiles\Characters\Enemy.cs" />
     <Compile Include="Classes\Tiles\Characters\Enemies\Goblin.cs" />
@@ -62,6 +63,10 @@
     <Compile Include="Classes\Tiles\EmptyTile.cs" />
     <Compile Include="Classes\Tiles\Item.cs" />
     <Compile Include="Classes\Tiles\Items\Gold.cs" />
+    <Compile Include="Classes\Tiles\Items\Ranged.cs" />
+    <Compile Include="Classes\Tiles\Items\Melee.cs" />
+    <Compile Include="Classes\Tiles\Items\Shop.cs" />
+    <Compile Include="Classes\Tiles\Items\Weapon.cs" />
     <Compile Include="Classes\Tiles\Obstacle.cs" />
     <Compile Include="Classes\Presentation\Game.cs">
       <SubType>Form</SubType>
