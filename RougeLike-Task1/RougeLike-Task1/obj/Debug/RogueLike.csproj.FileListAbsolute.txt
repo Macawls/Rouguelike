@@ -15,3 +15,5 @@ C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\R
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RogueLike.csproj.CoreCompileInputs.cache
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.exe
 C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike-Task1.pdb
+C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike_Task1.Classes.Presentation.DeathScreen.resources
+C:\Users\Josh\Documents\GitHub\Task2\RougeLike-Task1\RougeLike-Task1\obj\Debug\RougeLike_Task1.Classes.Presentation.WinScreen.resources

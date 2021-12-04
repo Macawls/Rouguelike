@@ -13,7 +13,7 @@ using RogueLike.Characters;
 using WMPLib; //windows media player library
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-
+using RougeLike_Task1.Classes.Presentation;
 
 namespace RogueLike
 {
@@ -81,6 +81,30 @@ namespace RogueLike
 
             playerGold = game.Map.Hero.Purse;
 
+            CheckLossCondition();
+            CheckWinCondition();
+        }
+
+        private void CheckLossCondition()
+        {
+            //if (game.Map.Hero.IsDead())
+            //{
+            //    DeathScreen deathScreen = new DeathScreen();
+            //    musicPlayer.controls.stop();
+            //    deathScreen.Show();
+            //    this.Hide();
+            //}
+        }
+
+        private void CheckWinCondition()
+        {
+            //if (game.Map.enemyArray.Length == 0)
+            //{
+            //    WinScreen winScreen = new WinScreen();
+            //    musicPlayer.controls.stop();
+            //    winScreen.Show();
+            //    this.Hide();
+            //}
         }
 
         private void Game_KeyPress(object sender, KeyPressEventArgs e)

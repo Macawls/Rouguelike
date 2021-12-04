@@ -36,7 +36,6 @@ namespace RogueLike.Classes.Tiles.Items
             }
         }
 
-
         public override string ToString()
         {
             return $"{this.WeaponType}";

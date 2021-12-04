@@ -158,6 +158,7 @@ namespace RogueLike.Classes
             this.Controls.Add(this.charHelpBox);
             this.Controls.Add(this.helpBoxMap);
             this.Name = "HelpForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Help";
             this.Load += new System.EventHandler(this.Help_Load);

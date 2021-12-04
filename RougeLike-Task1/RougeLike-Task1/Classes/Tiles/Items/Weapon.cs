@@ -21,23 +21,30 @@ namespace RogueLike.Classes.Tiles.Items
             set { range = value; }
         }
 
-        protected int Damage
+        public int Damage
         {
             get { return damage; }
             set { damage = value; }
         }
 
-        protected int Durability
+        public int Durability
         {
             get { return durability; }
             set { durability = value; }
         }
 
-        protected string WeaponType
+        public string WeaponType
         {
             get { return weaponType; }
             set { weaponType = value; }
         }
+
+        public int Cost
+        {
+            get { return cost; }
+            set { cost = value; }
+        }
+
 
         public Weapon() : base (x: default, y: default, 'W')
         {

@@ -30,7 +30,6 @@ namespace RogueLike.Classes.Tiles.Items
                     damage = 3;
                     cost = 3;
                     weaponType = "Dagger";
-                    
                     break;
 
                 case Types.LONGSWORD:
@@ -39,7 +38,6 @@ namespace RogueLike.Classes.Tiles.Items
                     damage = 4;
                     cost = 5;
                     weaponType = "Longsword";
-                    
                     break;
 
             }

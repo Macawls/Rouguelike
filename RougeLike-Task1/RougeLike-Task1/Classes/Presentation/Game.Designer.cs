@@ -296,6 +296,7 @@ namespace RogueLike
             // musicCheckBox
             // 
             this.musicCheckBox.AutoSize = true;
+            this.musicCheckBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.musicCheckBox.Location = new System.Drawing.Point(12, 658);
             this.musicCheckBox.Name = "musicCheckBox";
             this.musicCheckBox.Size = new System.Drawing.Size(88, 17);
@@ -318,6 +319,7 @@ namespace RogueLike
             // tutorial
             // 
             this.tutorial.AutoSize = true;
+            this.tutorial.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tutorial.Location = new System.Drawing.Point(106, 658);
             this.tutorial.Name = "tutorial";
             this.tutorial.Size = new System.Drawing.Size(89, 17);

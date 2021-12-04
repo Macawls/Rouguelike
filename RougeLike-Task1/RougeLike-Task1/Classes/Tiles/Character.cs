@@ -85,7 +85,10 @@ namespace RogueLike
 
         public void PickUp(Weapon item)
         {
-
+            if (item.GetType() == typeof(Weapon))
+            {
+                item.PickedUp = true;
+            }
         }
 
         // attacks a target and decreases its health by attack character's damage
