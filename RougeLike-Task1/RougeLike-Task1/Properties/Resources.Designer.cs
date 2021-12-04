@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RougeLike_Task1.Properties {
+namespace RogueLike.Properties {
     using System;
     
     

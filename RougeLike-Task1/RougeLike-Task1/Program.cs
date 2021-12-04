@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RougeLike_Task1
+namespace RogueLike
 {
     static class Program
     {

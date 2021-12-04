@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMPLib;
 
-namespace RougeLike_Task1.Classes
+namespace RogueLike.Classes
 {
     public partial class HelpForm : Form
     {

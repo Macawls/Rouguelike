@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RougeLike_Task1.Classes.Tiles;
+using RogueLike.Classes.Tiles;
+using RogueLike.Classes.Tiles.Items;
 
-
-namespace RougeLike_Task1.Characters
+namespace RogueLike.Characters
 {
     class Hero : Character
     {
@@ -23,25 +23,25 @@ namespace RougeLike_Task1.Characters
             switch (move)
             {
                 case MovementEnum.UP:
-                    if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Item))
+                    if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Gold))
                     {
                         moveDirection = MovementEnum.UP;
                     }
                     break;
                 case MovementEnum.DOWN:
-                    if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Item))
+                    if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Gold))
                     {
                         moveDirection = MovementEnum.DOWN;
                     }
                     break;
                 case MovementEnum.LEFT:
-                    if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Item))
+                    if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Gold))
                     {
                         moveDirection = MovementEnum.LEFT;
                     }
                     break;
                 case MovementEnum.RIGHT:
-                    if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Item))
+                    if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Gold))
                     {
                         moveDirection = MovementEnum.RIGHT;
                     }

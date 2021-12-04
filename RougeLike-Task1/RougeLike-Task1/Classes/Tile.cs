@@ -1,11 +1,11 @@
-﻿using RougeLike_Task1.Classes.Tiles.Items;
+﻿using RogueLike.Classes.Tiles.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RougeLike_Task1
+namespace RogueLike
 {
     
     // Base Class

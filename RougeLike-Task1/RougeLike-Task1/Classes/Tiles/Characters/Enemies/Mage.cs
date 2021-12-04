@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RougeLike_Task1.Characters
+namespace RogueLike.Characters
 {
     class Mage : Enemy
     {

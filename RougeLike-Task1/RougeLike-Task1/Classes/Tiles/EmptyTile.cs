@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RougeLike_Task1
+namespace RogueLike
 {
     // denote an empty tile
     class EmptyTile : Tile

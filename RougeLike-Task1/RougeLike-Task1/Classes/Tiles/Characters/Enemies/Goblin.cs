@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RougeLike_Task1.Classes.Tiles;
+using RogueLike.Classes.Tiles;
 
-namespace RougeLike_Task1.Characters
+namespace RogueLike.Characters
 {
     class Goblin : Enemy
     {

@@ -1,12 +1,12 @@
-﻿using RougeLike_Task1.Classes.Tiles;
+﻿using RogueLike.Classes.Tiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RougeLike_Task1.Classes.Tiles.Items;
+using RogueLike.Classes.Tiles.Items;
 
-namespace RougeLike_Task1.Classes
+namespace RogueLike.Classes
 {
     class Map
     {
@@ -77,41 +77,42 @@ namespace RougeLike_Task1.Classes
             
             // Hero
             Hero = (Characters.Hero)Create(Tile.TileType.HERO);
-            gameMap[Hero.X, Hero.Y] = Hero;
+            PlaceInMap(Hero);
 
-            // Enemies (randomizes in create function), only one leader
+            // Enemies (randomizes in create function)
             for (int i = 0; i < enemyArray.Length; i++)
             {
                 enemyArray[i] = (Characters.Enemy)Create(Tile.TileType.ENEMY);
-                gameMap[enemyArray[i].X, enemyArray[i].Y] = enemyArray[i];
+                PlaceInMap(enemyArray[i]);
             }
 
             // Creating Leader
+            
+            //replace random enemy with leader
             leader = (Characters.Leader)Create(Tile.TileType.LEADER);
             int leaderIndex = rnd.Next(0, enemyArray.Length); 
-            enemyArray[leaderIndex] = leader; //replace random enemy with leader
-
-            gameMap[leader.X, leader.Y] = leader;
+            enemyArray[leaderIndex] = leader;
             
             //set target of leader
             leader.Target = Hero;
-
-
+            
+            PlaceInMap(leader);
+            
             // Items
             for (int i = 0; i < maxGoldDrops; i++) // maxGoldDrops = itemArray.Length
             {
                 itemArray[i] = (Tiles.Item)Create(Tile.TileType.GOLD);
-                gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
-            }
-
-            for (int i = 0; i < itemArray.Length; i++)
-            {
                 itemArray[i].PickedUp = false;
+                PlaceInMap(itemArray[i]);
             }
-
 
             // updating vision
             UpdateVision();  
+        }
+
+        public void PlaceInMap(Tile tile)
+        {
+            gameMap[tile.X, tile.Y] = tile;
         }
 
         public void MoveEnemies()
@@ -121,45 +122,55 @@ namespace RougeLike_Task1.Classes
 
             for (int i = 0; i < enemyArray.Length; i++)
             {
-                if (enemyArray[i].GetType() != typeof(Characters.Leader))
+                if (enemyArray[i].GetType() != typeof(Characters.Leader)) //move non leader enemies
                 {
                     directionIndicator = num.Next(0, 5); // 0 is idle, 1 is Up, 2 is Down, 3 is Left, 4 is Right
                     enemyArray[i].Move(enemyArray[i].ReturnMove((Character.MovementEnum)directionIndicator)); //casting
-                }
-
-                leader.Move(leader.ReturnMove(default));
- 
-                UpdateVision();
+                } 
             }
 
 
+
+            if (!leader.IsDead()) //isn't dead
+            {
+                leader.Move(leader.ReturnMove(default));
+            }
+
+            //UpdateVision();
         }
 
         public void UpdateMap()
         {
             FillMap();
             
-            gameMap[Hero.X, Hero.Y] = Hero;
-            gameMap[leader.X, leader.Y] = leader;
-
-            
+            PlaceInMap(Hero);
+            PlaceInMap(leader);
 
             //checks if enemies are dead
             for (int i = 0; i < enemyArray.Length; i++) 
             {
+                int count = i;
+                
                 if (enemyArray[i].IsDead())
                 {
                     //makes new array WITHOUT dead enemies
                     enemyArray = enemyArray.Where((source, index) => index != i).ToArray();
-                    // https://stackoverflow.com/questions/457453/remove-element-of-a-regular-array/25794168
-                    // accessed 08 November 2021
                 }
             }
+            
+            // for some reason all enemies dissapear except the leader even though 
+            // if its dead it doesn't exist in the enemy array
+            // this is a workaround
+            if (leader.IsDead())
+            {
+                gameMap[leader.X, leader.Y] = new EmptyTile(leader.X, leader.Y, '.');
+            }
+
  
             //fills array with enemies
             for (int i = 0; i < enemyArray.Length; i++)
             {
-                gameMap[enemyArray[i].X, enemyArray[i].Y] = enemyArray[i];
+                PlaceInMap(enemyArray[i]);
             }
 
             // fills item array with gold
@@ -168,15 +179,9 @@ namespace RougeLike_Task1.Classes
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
             }
 
-            // checks if gold is picked up
-            for (int i = 0; i < itemArray.Length; i++)
-            {
-                if (GetItemAtPosition(itemArray[i].X, itemArray[i].Y) == null) // remove item in array if its picked up
-                {
-                    itemArray = itemArray.Where((source, index) => index != i).ToArray();
-                }
-            }
-
+            PickupItemAtPosition(Hero);
+            PlaceInMap(Hero);
+            
             // enemies will attack hero and pickup items
             foreach (var enemy in enemyArray)
             {
@@ -185,17 +190,10 @@ namespace RougeLike_Task1.Classes
                     enemy.Attack(Hero);
                 }
 
-                if (GetItemAtPosition(enemy.X, enemy.Y) != null)
-                {
-                    enemy.PickUp((Gold)gameMap[enemy.X, enemy.Y]);
-                }
+                PickupItemAtPosition(enemy);
             }
 
-            // Hero Pickup item
-            if (GetItemAtPosition(hero.X, hero.Y) != null)
-            {
-                hero.PickUp((Gold)gameMap[hero.X, hero.Y]);
-            }
+
 
             UpdateVision();
 
@@ -203,7 +201,7 @@ namespace RougeLike_Task1.Classes
 
         public void FillMap()
         {
-            // entire 2d map is filled with empty tiles first
+            // entire map is filled with empty tiles first
             for (int i = 0; i < gameMap.GetLength(0); i++)
             {
                 for (int j = 0; j < gameMap.GetLength(1); j++)
@@ -229,24 +227,20 @@ namespace RougeLike_Task1.Classes
             }
         }
 
-        public Item GetItemAtPosition(int x, int y) 
+        public void PickupItemAtPosition(Character character) 
         {
-            Item returnedItem;
-            
             for (int i = 0; i < itemArray.Length; i++)
             {
-                if (itemArray[i].X == x && itemArray[i].Y == y)
+                if (itemArray[i].X == character.X && itemArray[i].Y == character.Y)
                 {
-                    returnedItem = (Item)itemArray[i];
-                    itemArray[i] = null;
-
-                    itemArray = itemArray.Where(z => z != null).ToArray();
-                    return returnedItem;
+                    character.PickUp((Gold)itemArray[i]);
                 }
+
+                if (itemArray[i].PickedUp)
+                {
+                    itemArray = itemArray.Where((source, index) => index != i).ToArray();
+                } 
             }
-
-            return null;
-
         }
 
         public Tile Create(Tile.TileType charType)

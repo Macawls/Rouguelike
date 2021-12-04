@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RougeLike_Task1.Classes.Tiles.Items;
-using RougeLike_Task1.Classes.Tiles;
+using RogueLike.Classes.Tiles.Items;
+using RogueLike.Classes.Tiles;
 
 
 
-namespace RougeLike_Task1
+namespace RogueLike
 {
     abstract class Character : Tile
     {
@@ -18,13 +18,15 @@ namespace RougeLike_Task1
         protected int damage;
         protected int purse = 0;
 
+        public event EventHandler PurseChanged;
+
         //Public Accessors
         public int Purse
         {
             get { return purse; }
             set { purse = value; }
         }
- 
+
         public int HP
         {
             get { return hp; }
@@ -115,7 +117,7 @@ namespace RougeLike_Task1
         {
             bool canAttack;
             // barehand range
-            if (DistanceTo(target) == 1)
+            if (DistanceTo(target) == 1 || DistanceTo(target) == 0)
             {
                 canAttack = true;
             }

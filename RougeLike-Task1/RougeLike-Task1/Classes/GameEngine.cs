@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RougeLike_Task1;
-using RougeLike_Task1.Characters;
+using RogueLike;
+using RogueLike.Characters;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace RougeLike_Task1.Classes
+namespace RogueLike.Classes
 {
     class DataSerializer
     {
@@ -82,16 +82,6 @@ namespace RougeLike_Task1.Classes
             string stringMap = string.Empty;
             char[,] charMap = new char[map.Width, map.Height];
 
-
-            //foreach (var enemy in map.enemyArray)
-            //{
-            //    charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y] = range;
-            //    charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y] = range;
-            //    charMap[enemy.VisionArray[2].X, enemy.VisionArray[2].Y] = range;
-            //    charMap[enemy.VisionArray[3].X, enemy.VisionArray[3].Y] = range;
-
-            //}
-
             for (int i = 0; i < map.Width; i++)
             {
                 for (int j = 0; j < map.Height; j++)
@@ -101,15 +91,17 @@ namespace RougeLike_Task1.Classes
                         charMap[i, j] = emptyTile;
                     }
 
-                    // show enemy range 
+                    // show enemy ranges 
                     foreach (var enemy in map.enemyArray)
                     {
+                        // normal range
                         //{ 0 = north, 1 = south, 2 = west, 3 = east }
                         charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y] = range;
                         charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y] = range;
                         charMap[enemy.VisionArray[2].X, enemy.VisionArray[2].Y] = range;
                         charMap[enemy.VisionArray[3].X, enemy.VisionArray[3].Y] = range;
 
+                        // mage range
                         if (enemy.GetType() == typeof(Mage))
                         {
                             charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y + 1] = range; // top right
@@ -129,6 +121,11 @@ namespace RougeLike_Task1.Classes
                         charMap[i, j] = heroTile;
                     }
 
+                    if (map.TileMap[i, j].GetType() == typeof(Leader))
+                    {
+                        charMap[i, j] = leaderTile;
+                    }
+
                     if (map.TileMap[i, j].GetType() == typeof(Goblin))
                     {
                         charMap[i, j] = goblinTile;
@@ -139,16 +136,10 @@ namespace RougeLike_Task1.Classes
                         charMap[i, j] = mageTile;
                     }
 
-                    if (map.TileMap[i, j].GetType() == typeof(Leader))
-                    {
-                        charMap[i, j] = leaderTile;
-                    }
-
                     if (map.TileMap[i, j].GetType() == typeof(Tiles.Items.Gold))
                     {
                         charMap[i, j] = goldTile;
                     }
-
 
                     stringMap += charMap[i, j];
                 }

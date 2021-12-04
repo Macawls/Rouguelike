@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RougeLike_Task1.Classes.Tiles.Items
+namespace RogueLike.Classes.Tiles.Items
 {
     abstract class Weapon : Item
     {

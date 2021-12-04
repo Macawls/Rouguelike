@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RougeLike_Task1.Classes;
-using RougeLike_Task1.Classes.Tiles.Items;
-using RougeLike_Task1.Characters;
+using RogueLike.Classes;
+using RogueLike.Classes.Tiles.Items;
+using RogueLike.Characters;
 using WMPLib; //windows media player library
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 
-namespace RougeLike_Task1
+namespace RogueLike
 {
 
     public partial class Game : Form 
@@ -30,6 +30,7 @@ namespace RougeLike_Task1
         // bool for tracking if an enemy has been killed
         public bool killedEnemy;
         
+        public int playerGold;
         public int playerScore;
 
         string path = "game.save";
@@ -37,8 +38,8 @@ namespace RougeLike_Task1
         public Game()
         {
             InitializeComponent();
-            musicPlayer.URL = "battle.wav"; //https://opengameart.org/content/the-battle-of-darkness-soundtrack
-            musicPlayer.settings.volume = 0; 
+            musicPlayer.URL = "dungeon.wav"; //https://opengameart.org/content/dungeon-04
+            musicPlayer.settings.volume = 40;
         }
 
         private void Game_Load(object sender, EventArgs e)
@@ -61,6 +62,11 @@ namespace RougeLike_Task1
             this.KeyPreview = true;
             musicPlayer.settings.setMode("Loop", true);
             musicPlayer.controls.play();
+
+            ItemMsg.Visible = false;
+            AttackMsg.Text = "";
+            //AttackMsg.Visible = false;
+            
         }
 
         private void DrawMap()
@@ -72,6 +78,8 @@ namespace RougeLike_Task1
             //parsing enemy array into combo boxes
             enemyDropdown.DataSource = game.Map.enemyArray;
             itemDropdown.DataSource = game.Map.itemArray;
+
+            playerGold = game.Map.Hero.Purse;
 
         }
 
@@ -86,7 +94,6 @@ namespace RougeLike_Task1
                 case 'w':
                 case 'W':
                     
-
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.UP));
                     game.Map.MoveEnemies();
 
@@ -96,30 +103,27 @@ namespace RougeLike_Task1
                 case 'a':
                 case 'A':
 
- 
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.LEFT));
                     game.Map.MoveEnemies();
-
+                    
                     break;
 
                     //right
                 case 'd':
                 case 'D':
                     
-       
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.RIGHT));
                     game.Map.MoveEnemies();
-
+                    
                     break;
 
                     //down
                 case 's':
                 case 'S':
 
-     
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.DOWN));
                     game.Map.MoveEnemies();
-
+                    
                     break;
                 
                     // Enemy Dropdown Menu
@@ -139,35 +143,71 @@ namespace RougeLike_Task1
                     //Attacking
                 case 'F':
                 case 'f':
-                    if (game.Map.enemyArray[enemyDropdown.SelectedIndex] == null) // if the selection is null, do nothing
+                    if (game.Map.enemyArray.Length == 0) // if there are no enemies, break
                     {
                         break;
                     }
                     else
                     {
-                        if (game.Map.Hero.CheckRange(game.Map.enemyArray[enemyDropdown.SelectedIndex]))
+                        for (int i = 0; i < game.Map.enemyArray.Length; i++)
                         {
-                            game.Map.Hero.Attack(game.Map.enemyArray[enemyDropdown.SelectedIndex]);
-                            msg.Text = $"Successful attack! {game.Map.enemyArray[enemyDropdown.SelectedIndex].GetType().Name} took {game.Map.Hero.Damage} damage!";
-                            msg.Text += $"\n{game.Map.enemyArray[enemyDropdown.SelectedIndex].GetType().Name} is now on {game.Map.enemyArray[enemyDropdown.SelectedIndex].HP}!";
-
-                            if (game.Map.enemyArray[enemyDropdown.SelectedIndex].HP <= 0) //if selected enemy in the enemy array is dead
+                            // attack first attackable enemy in enemy array
+                            if (game.Map.Hero.CheckRange(game.Map.enemyArray[i]))
                             {
-                                msg.Text = "You killed an enemy!";
-                                enemyDropdown.SelectedItem = null;
-                                enemySelected.Text = "none";
+                                game.Map.Hero.Attack(game.Map.enemyArray[i]);
+                                
+                                AttackMsg.Visible = true;
+                                AttackMsg.Text = $"Successful attack! {game.Map.enemyArray[i].GetType().Name} took {game.Map.Hero.Damage} damage!";
+                                AttackMsg.Text += $"\n{game.Map.enemyArray[i].GetType().Name} is now on {game.Map.enemyArray[i].HP}!";
+
+                                if (game.Map.enemyArray[i].IsDead())
+                                {
+                                    AttackMsg.Text = "You killed an enemy!";
+                                    effectsPlayer.URL = "win.wav"; //https://opengameart.org/content/win-sound-effect
+                                    effectsPlayer.settings.volume = 40;
+                                    effectsPlayer.controls.play();
+                                    playerScore++;
+                                }
+                                
+                                break;  //stops at the first attackable enemy
                             }
 
-                            
-                            game.Map.UpdateMap();
-
+                            else
+                            {
+                                AttackMsg.Text = "Unsuccessful attack...\nmaybe try moving closer?\nlol";
+                            }
                         }
 
-                        else
-                        {
-                            msg.Text = "Unsuccessful attack...\nmaybe try moving closer?\nor choosing an enemy? \nlol";
+                        // This does work, but picking enemies from a menu just doesn't feel good at all
+                        // instead players can view enemies and their stats
+
+                        // Manually Indicating
+                        
+                        //if (game.Map.Hero.CheckRange(game.Map.enemyArray[enemyDropdown.SelectedIndex]))
+                        //{
+                        //    game.Map.Hero.Attack(game.Map.enemyArray[enemyDropdown.SelectedIndex]);
                             
-                        }
+                        //    AttackMsg.Visible = true;
+                        //    AttackMsg.Text = $"Successful attack! {game.Map.enemyArray[enemyDropdown.SelectedIndex].GetType().Name} took {game.Map.Hero.Damage} damage!";
+                        //    AttackMsg.Text += $"\n{game.Map.enemyArray[enemyDropdown.SelectedIndex].GetType().Name} is now on {game.Map.enemyArray[enemyDropdown.SelectedIndex].HP}!";
+
+                        //    if (game.Map.enemyArray[enemyDropdown.SelectedIndex].HP <= 0) //if selected enemy in the enemy array is dead
+                        //    {
+                        //        AttackMsg.Text = "You killed an enemy!";
+                        //        enemyDropdown.SelectedItem = null;
+                        //        enemySelected.Text = "none";
+                        //    }
+
+                            
+                        //    game.Map.UpdateMap();
+
+                        //}
+
+                        //else
+                        //{
+                        //    AttackMsg.Text = "Unsuccessful attack...\nmaybe try moving closer?\nor choosing an enemy? \nlol";
+                            
+                        //}
                     }
                     
                     DrawMap();
@@ -198,7 +238,7 @@ namespace RougeLike_Task1
                             effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
                             effectsPlayer.controls.play();
 
-                            msg.Text = $"Alright! you picked up {secAmount - firstAmount} gold!";
+                            ItemMsg.Text = $"Alright! you picked up {secAmount - firstAmount} gold!";
 
 
                             if (game.Map.itemArray[itemDropdown.SelectedIndex].PickedUp == true)
@@ -210,7 +250,7 @@ namespace RougeLike_Task1
 
                         else
                         {
-                            msg.Text = $"Try moving closer or selecting \nthe item you wish to pick up";
+                            ItemMsg.Text = $"Try moving closer or selecting \nthe item you wish to pick up";
                         }
 
                         game.Map.UpdateMap();
@@ -233,12 +273,37 @@ namespace RougeLike_Task1
             }
 
             game.Map.UpdateMap();
+            //HideText();
+            CheckGoldDiff();
+            
             DrawMap();
+        }
+
+        private void CheckGoldDiff()
+        {
+            int newAmount = game.Map.Hero.Purse;
+            int diff = newAmount - playerGold;
+
+            if (diff != 0)
+            {
+                ItemMsg.Visible = true;
+                ItemMsg.Text = $"Alright! you picked up {diff} gold!";
+            }
+        }
+
+        private void msg_TextChanged(object sender, EventArgs e)
+        {
+            effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
+            effectsPlayer.controls.play();
         }
 
         private void enemyDropdown_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            enemySelected.Text = enemyDropdown.SelectedItem.ToString();
+            if (enemySelected.Text != null)
+            {
+                enemySelected.Text = enemyDropdown.SelectedItem.ToString();
+            }
+
             // focuses the form
             this.Focus();
             // makes sure the keys work again
@@ -314,6 +379,11 @@ namespace RougeLike_Task1
         }
 
         private void bugLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gameTimer(object sender, EventArgs e)
         {
 
         }

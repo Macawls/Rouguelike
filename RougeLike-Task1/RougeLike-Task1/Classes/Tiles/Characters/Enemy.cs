@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RougeLike_Task1.Characters
+namespace RogueLike.Characters
 {
     abstract class Enemy : Character
     {
@@ -14,7 +14,7 @@ namespace RougeLike_Task1.Characters
         // Constructor 
         public Enemy(int x, int y, char symbol, int damage, int maxHP) : base(x, y, symbol, damage, maxHP)
         {
-
+           
         }
 
         public override string ToString()

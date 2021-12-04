@@ -1,5 +1,5 @@
 ﻿
-namespace RougeLike_Task1.Classes
+namespace RogueLike.Classes
 {
     partial class HelpForm
     {

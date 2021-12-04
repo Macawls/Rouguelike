@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RougeLike_Task1
+namespace RogueLike
 {
     // border map with obstacle tiles that no character can move past
     class Obstacle : Tile

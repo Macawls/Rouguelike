@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace RougeLike_Task1
+namespace RogueLike
 {
     partial class Game
     {
@@ -45,7 +45,7 @@ namespace RougeLike_Task1
             this.attackControlsBox = new System.Windows.Forms.GroupBox();
             this.attackControls = new System.Windows.Forms.Label();
             this.attackStateBox = new System.Windows.Forms.GroupBox();
-            this.msg = new System.Windows.Forms.Label();
+            this.ItemMsg = new System.Windows.Forms.Label();
             this.Box = new System.Windows.Forms.GroupBox();
             this.ItemBox = new System.Windows.Forms.GroupBox();
             this.itemSelected = new System.Windows.Forms.Label();
@@ -56,6 +56,7 @@ namespace RougeLike_Task1
             this.tutorial = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.saveButton = new System.Windows.Forms.Button();
+            this.AttackMsg = new System.Windows.Forms.Label();
             this.MapBox.SuspendLayout();
             this.PlayerBox.SuspendLayout();
             this.movementControlsBox.SuspendLayout();
@@ -147,7 +148,7 @@ namespace RougeLike_Task1
             this.enemyDropdown.Location = new System.Drawing.Point(6, 19);
             this.enemyDropdown.MaxDropDownItems = 20;
             this.enemyDropdown.Name = "enemyDropdown";
-            this.enemyDropdown.Size = new System.Drawing.Size(121, 21);
+            this.enemyDropdown.Size = new System.Drawing.Size(186, 21);
             this.enemyDropdown.TabIndex = 4;
             this.enemyDropdown.TabStop = false;
             this.enemyDropdown.SelectionChangeCommitted += new System.EventHandler(this.enemyDropdown_SelectionChangeCommitted);
@@ -158,7 +159,7 @@ namespace RougeLike_Task1
             this.enemyListBox.Controls.Add(this.enemyDropdown);
             this.enemyListBox.Location = new System.Drawing.Point(6, 317);
             this.enemyListBox.Name = "enemyListBox";
-            this.enemyListBox.Size = new System.Drawing.Size(133, 59);
+            this.enemyListBox.Size = new System.Drawing.Size(198, 59);
             this.enemyListBox.TabIndex = 5;
             this.enemyListBox.TabStop = false;
             this.enemyListBox.Text = "List of Enemies";
@@ -208,23 +209,25 @@ namespace RougeLike_Task1
             // 
             // attackStateBox
             // 
-            this.attackStateBox.Controls.Add(this.msg);
+            this.attackStateBox.Controls.Add(this.AttackMsg);
+            this.attackStateBox.Controls.Add(this.ItemMsg);
             this.attackStateBox.Location = new System.Drawing.Point(6, 382);
             this.attackStateBox.Name = "attackStateBox";
-            this.attackStateBox.Size = new System.Drawing.Size(436, 124);
+            this.attackStateBox.Size = new System.Drawing.Size(460, 159);
             this.attackStateBox.TabIndex = 8;
             this.attackStateBox.TabStop = false;
             this.attackStateBox.Text = "MessageBox";
             // 
-            // msg
+            // ItemMsg
             // 
-            this.msg.AutoSize = true;
-            this.msg.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
-            this.msg.Location = new System.Drawing.Point(7, 20);
-            this.msg.Name = "msg";
-            this.msg.Size = new System.Drawing.Size(406, 88);
-            this.msg.TabIndex = 0;
-            this.msg.Text = "Attack an enemy or pickup something!\r\n\r\nRemember to select something\r\nfirst!";
+            this.ItemMsg.AutoSize = true;
+            this.ItemMsg.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
+            this.ItemMsg.Location = new System.Drawing.Point(6, 34);
+            this.ItemMsg.Name = "ItemMsg";
+            this.ItemMsg.Size = new System.Drawing.Size(54, 22);
+            this.ItemMsg.TabIndex = 0;
+            this.ItemMsg.Text = "gold\r\n";
+            this.ItemMsg.TextChanged += new System.EventHandler(this.msg_TextChanged);
             // 
             // Box
             // 
@@ -239,7 +242,7 @@ namespace RougeLike_Task1
             this.Box.Controls.Add(this.MapBox);
             this.Box.Location = new System.Drawing.Point(12, 95);
             this.Box.Name = "Box";
-            this.Box.Size = new System.Drawing.Size(1308, 541);
+            this.Box.Size = new System.Drawing.Size(1308, 557);
             this.Box.TabIndex = 9;
             this.Box.TabStop = false;
             // 
@@ -268,9 +271,9 @@ namespace RougeLike_Task1
             // 
             this.itemListBox.AutoSize = true;
             this.itemListBox.Controls.Add(this.itemDropdown);
-            this.itemListBox.Location = new System.Drawing.Point(6, 252);
+            this.itemListBox.Location = new System.Drawing.Point(6, 260);
             this.itemListBox.Name = "itemListBox";
-            this.itemListBox.Size = new System.Drawing.Size(133, 59);
+            this.itemListBox.Size = new System.Drawing.Size(198, 59);
             this.itemListBox.TabIndex = 6;
             this.itemListBox.TabStop = false;
             this.itemListBox.Text = "List of Items";
@@ -285,7 +288,7 @@ namespace RougeLike_Task1
             this.itemDropdown.Location = new System.Drawing.Point(6, 19);
             this.itemDropdown.MaxDropDownItems = 20;
             this.itemDropdown.Name = "itemDropdown";
-            this.itemDropdown.Size = new System.Drawing.Size(121, 21);
+            this.itemDropdown.Size = new System.Drawing.Size(186, 21);
             this.itemDropdown.TabIndex = 4;
             this.itemDropdown.TabStop = false;
             this.itemDropdown.SelectionChangeCommitted += new System.EventHandler(this.itemDropdown_SelectionChangeCommitted);
@@ -293,7 +296,7 @@ namespace RougeLike_Task1
             // musicCheckBox
             // 
             this.musicCheckBox.AutoSize = true;
-            this.musicCheckBox.Location = new System.Drawing.Point(12, 642);
+            this.musicCheckBox.Location = new System.Drawing.Point(12, 658);
             this.musicCheckBox.Name = "musicCheckBox";
             this.musicCheckBox.Size = new System.Drawing.Size(88, 17);
             this.musicCheckBox.TabIndex = 11;
@@ -305,7 +308,7 @@ namespace RougeLike_Task1
             // 
             this.bugLabel.AutoSize = true;
             this.bugLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bugLabel.Location = new System.Drawing.Point(692, 641);
+            this.bugLabel.Location = new System.Drawing.Point(693, 657);
             this.bugLabel.Name = "bugLabel";
             this.bugLabel.Size = new System.Drawing.Size(627, 80);
             this.bugLabel.TabIndex = 11;
@@ -315,7 +318,7 @@ namespace RougeLike_Task1
             // tutorial
             // 
             this.tutorial.AutoSize = true;
-            this.tutorial.Location = new System.Drawing.Point(107, 642);
+            this.tutorial.Location = new System.Drawing.Point(106, 658);
             this.tutorial.Name = "tutorial";
             this.tutorial.Size = new System.Drawing.Size(89, 17);
             this.tutorial.TabIndex = 12;
@@ -327,17 +330,16 @@ namespace RougeLike_Task1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::RougeLike_Task1.Properties.Resources.game;
             this.pictureBox1.Location = new System.Drawing.Point(324, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(639, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(666, 77);
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
-            this.saveButton.Location = new System.Drawing.Point(16, 681);
+            this.saveButton.Location = new System.Drawing.Point(12, 693);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(135, 56);
             this.saveButton.TabIndex = 14;
@@ -345,12 +347,22 @@ namespace RougeLike_Task1
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // AttackMsg
+            // 
+            this.AttackMsg.AutoSize = true;
+            this.AttackMsg.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
+            this.AttackMsg.Location = new System.Drawing.Point(6, 86);
+            this.AttackMsg.Name = "AttackMsg";
+            this.AttackMsg.Size = new System.Drawing.Size(76, 22);
+            this.AttackMsg.TabIndex = 1;
+            this.AttackMsg.Text = "attack";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1339, 775);
+            this.ClientSize = new System.Drawing.Size(1366, 804);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.musicCheckBox);
             this.Controls.Add(this.tutorial);
@@ -400,7 +412,7 @@ namespace RougeLike_Task1
         private System.Windows.Forms.GroupBox attackControlsBox;
         private System.Windows.Forms.Label attackControls;
         private System.Windows.Forms.GroupBox attackStateBox;
-        private System.Windows.Forms.Label msg;
+        private System.Windows.Forms.Label ItemMsg;
         private System.Windows.Forms.GroupBox Box;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox musicCheckBox;
@@ -411,5 +423,6 @@ namespace RougeLike_Task1
         private System.Windows.Forms.GroupBox ItemBox;
         private System.Windows.Forms.Label itemSelected;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Label AttackMsg;
     }
 }
