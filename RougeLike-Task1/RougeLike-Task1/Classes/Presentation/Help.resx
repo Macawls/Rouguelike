@@ -120,21 +120,27 @@
   <data name="label1.Text" xml:space="preserve">
     <value>You cannot move over OBSTACLES(X)
 or enemies
-
-You cannot pick up GOLD($) diagonally
-
+_____________________________________________________
+Step on GOLD($) to pick it up
+_____________________________________________________
 The attack range of the HERO(H) is 1
-i.e up, down, left, right
-
+i.e up, down, left, right unless
+a weapon is equipped
+_____________________________________________________
 The circles around each enemy; GOBLIN(G), 
 LEADER(L), MAGE(M) show their attack ranges. 
-
+_____________________________________________________
 If you step in one of their ranges, you will take
 damage based on how much that respective enemy
 deals
-
-GOBLINS move randomly, 
-LEADERS will follow you, MAGES are stationary. 
+_____________________________________________________
+Open the menu to see how much damage they
+will deal
+_____________________________________________________
+• GOBLINS move randomly, 
+• LEADERS will follow you, MAGES are stationary.
+• MAGES will friendly fire other enemies
+_____________________________________________________
 
 
 

@@ -90,8 +90,7 @@ namespace RogueLike.Characters
                     else if (xDist == 1 || xDist == -1)
                     {
                         moveDirection = MovementEnum.IDLE;
-                        goto case 0;
-                        
+                        goto case 0;      
                     }
 
                     else if (xDist == 0)

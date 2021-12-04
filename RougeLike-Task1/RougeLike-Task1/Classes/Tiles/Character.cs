@@ -18,8 +18,6 @@ namespace RogueLike
         protected int damage;
         protected int purse = 0;
 
-        public event EventHandler PurseChanged;
-
         //Public Accessors
         public int Purse
         {

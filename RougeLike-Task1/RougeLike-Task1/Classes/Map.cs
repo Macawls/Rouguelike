@@ -129,14 +129,11 @@ namespace RogueLike.Classes
                 } 
             }
 
-
-
             if (!leader.IsDead()) //isn't dead
             {
                 leader.Move(leader.ReturnMove(default));
             }
 
-            //UpdateVision();
         }
 
         public void UpdateMap()
@@ -153,7 +150,7 @@ namespace RogueLike.Classes
                 
                 if (enemyArray[i].IsDead())
                 {
-                    //makes new array WITHOUT dead enemies
+                    //makes new array without dead enemies
                     enemyArray = enemyArray.Where((source, index) => index != i).ToArray();
                 }
             }
@@ -166,7 +163,6 @@ namespace RogueLike.Classes
                 gameMap[leader.X, leader.Y] = new EmptyTile(leader.X, leader.Y, '.');
             }
 
- 
             //fills array with enemies
             for (int i = 0; i < enemyArray.Length; i++)
             {
@@ -193,7 +189,20 @@ namespace RogueLike.Classes
                 PickupItemAtPosition(enemy);
             }
 
-
+            // mages friendly fire as well as attacking the hero
+            foreach (var enemy in enemyArray)
+            {
+                if (enemy.GetType() == typeof(Characters.Mage))
+                {
+                    for (int i = 0; i < enemyArray.Length; i++)
+                    {
+                        if (enemy.CheckRange(enemyArray[i]))
+                        {
+                            enemy.Attack(enemyArray[i]);
+                        }
+                    }
+                }
+            }
 
             UpdateVision();
 
