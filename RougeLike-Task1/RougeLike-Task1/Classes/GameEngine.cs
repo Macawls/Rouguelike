@@ -116,6 +116,11 @@ namespace RogueLike.Classes
                         charMap[i, j] = obstTile;
                     }
 
+                    if (map.TileMap[i, j].GetType() == typeof(Tiles.Items.Gold))
+                    {
+                        charMap[i, j] = goldTile;
+                    }
+
                     if (map.TileMap[i, j].GetType() == typeof(Hero))
                     {
                         charMap[i, j] = heroTile;
@@ -136,10 +141,7 @@ namespace RogueLike.Classes
                         charMap[i, j] = mageTile;
                     }
 
-                    if (map.TileMap[i, j].GetType() == typeof(Tiles.Items.Gold))
-                    {
-                        charMap[i, j] = goldTile;
-                    }
+
 
                     stringMap += charMap[i, j];
                 }

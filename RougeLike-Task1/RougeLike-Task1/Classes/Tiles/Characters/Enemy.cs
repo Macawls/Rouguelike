@@ -11,6 +11,7 @@ namespace RogueLike.Characters
         // random object 
         protected Random rnd = new Random();
 
+
         // Constructor 
         public Enemy(int x, int y, char symbol, int damage, int maxHP) : base(x, y, symbol, damage, maxHP)
         {
@@ -19,8 +20,32 @@ namespace RogueLike.Characters
 
         public override string ToString()
         {
-            // EnemyClassName at [X, Y] (Amount DMG)
-            return $"{this.GetType().Name} at [{this.x}, {this.y}]\nDamage: {this.damage}";
+            string equipState;
+            bool isEquipped;
+            
+            if (this.weapon == null)
+            {
+                equipState = "Barehanded:";
+                isEquipped = false;
+            }
+
+            else
+            {
+                equipState = "Equipped:";
+                isEquipped = true;
+            }
+            
+            if (isEquipped)
+            {
+                // Equipped: Leader (20/20HP) at [6, 1] with Longsword
+                return $"{equipState} {this.GetType().Name}\n at [{this.x}, {this.y}] with {this.weapon.ToString()}\n({this.weapon.Durability * this.weapon.Damage})";
+            }
+
+            else
+            {
+                // Barehanded: Mage (5/5HP) at [6, 6] (5 DMG)
+                return $"{equipState} {this.GetType().Name}\n at [{this.x}, {this.y}] ({this.damage} DMG)";
+            }
         }
     }
 

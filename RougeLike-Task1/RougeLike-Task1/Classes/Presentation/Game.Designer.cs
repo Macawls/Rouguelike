@@ -45,6 +45,7 @@ namespace RogueLike
             this.attackControlsBox = new System.Windows.Forms.GroupBox();
             this.attackControls = new System.Windows.Forms.Label();
             this.attackStateBox = new System.Windows.Forms.GroupBox();
+            this.AttackMsg = new System.Windows.Forms.Label();
             this.ItemMsg = new System.Windows.Forms.Label();
             this.Box = new System.Windows.Forms.GroupBox();
             this.ItemBox = new System.Windows.Forms.GroupBox();
@@ -56,7 +57,10 @@ namespace RogueLike
             this.tutorial = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.saveButton = new System.Windows.Forms.Button();
-            this.AttackMsg = new System.Windows.Forms.Label();
+            this.ShopBox = new System.Windows.Forms.GroupBox();
+            this.itemOneButton = new System.Windows.Forms.Button();
+            this.itemTwoButton = new System.Windows.Forms.Button();
+            this.itemThreeButton = new System.Windows.Forms.Button();
             this.MapBox.SuspendLayout();
             this.PlayerBox.SuspendLayout();
             this.movementControlsBox.SuspendLayout();
@@ -68,6 +72,7 @@ namespace RogueLike
             this.ItemBox.SuspendLayout();
             this.itemListBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.ShopBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // map
@@ -119,7 +124,7 @@ namespace RogueLike
             // movementControlsBox
             // 
             this.movementControlsBox.Controls.Add(this.moveControls);
-            this.movementControlsBox.Location = new System.Drawing.Point(958, 19);
+            this.movementControlsBox.Location = new System.Drawing.Point(906, 19);
             this.movementControlsBox.Name = "movementControlsBox";
             this.movementControlsBox.Size = new System.Drawing.Size(243, 186);
             this.movementControlsBox.TabIndex = 3;
@@ -132,10 +137,9 @@ namespace RogueLike
             this.moveControls.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
             this.moveControls.Location = new System.Drawing.Point(10, 20);
             this.moveControls.Name = "moveControls";
-            this.moveControls.Size = new System.Drawing.Size(197, 154);
+            this.moveControls.Size = new System.Drawing.Size(153, 154);
             this.moveControls.TabIndex = 0;
-            this.moveControls.Text = "Item selection: I\r\nPickup:         P\r\n\r\nUp:     W\r\nDown:   S\r\nLeft:   A\r\nRight:  " +
-    "D";
+            this.moveControls.Text = "Item list:  I\r\nPickup:     P\r\n\r\nUp:     W\r\nDown:   S\r\nLeft:   A\r\nRight:  D";
             this.moveControls.Click += new System.EventHandler(this.moveControls_Click);
             // 
             // enemyDropdown
@@ -148,7 +152,7 @@ namespace RogueLike
             this.enemyDropdown.Location = new System.Drawing.Point(6, 19);
             this.enemyDropdown.MaxDropDownItems = 20;
             this.enemyDropdown.Name = "enemyDropdown";
-            this.enemyDropdown.Size = new System.Drawing.Size(186, 21);
+            this.enemyDropdown.Size = new System.Drawing.Size(227, 21);
             this.enemyDropdown.TabIndex = 4;
             this.enemyDropdown.TabStop = false;
             this.enemyDropdown.SelectionChangeCommitted += new System.EventHandler(this.enemyDropdown_SelectionChangeCommitted);
@@ -159,7 +163,7 @@ namespace RogueLike
             this.enemyListBox.Controls.Add(this.enemyDropdown);
             this.enemyListBox.Location = new System.Drawing.Point(6, 317);
             this.enemyListBox.Name = "enemyListBox";
-            this.enemyListBox.Size = new System.Drawing.Size(198, 59);
+            this.enemyListBox.Size = new System.Drawing.Size(242, 59);
             this.enemyListBox.TabIndex = 5;
             this.enemyListBox.TabStop = false;
             this.enemyListBox.Text = "List of Enemies";
@@ -178,17 +182,17 @@ namespace RogueLike
             // 
             this.enemySelectedBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.enemySelectedBox.Controls.Add(this.enemySelected);
-            this.enemySelectedBox.Location = new System.Drawing.Point(958, 416);
+            this.enemySelectedBox.Location = new System.Drawing.Point(906, 440);
             this.enemySelectedBox.Name = "enemySelectedBox";
-            this.enemySelectedBox.Size = new System.Drawing.Size(340, 74);
+            this.enemySelectedBox.Size = new System.Drawing.Size(340, 101);
             this.enemySelectedBox.TabIndex = 7;
             this.enemySelectedBox.TabStop = false;
-            this.enemySelectedBox.Text = "Enemy Selected:";
+            this.enemySelectedBox.Text = "Enemy Inspected:";
             // 
             // attackControlsBox
             // 
             this.attackControlsBox.Controls.Add(this.attackControls);
-            this.attackControlsBox.Location = new System.Drawing.Point(958, 211);
+            this.attackControlsBox.Location = new System.Drawing.Point(906, 211);
             this.attackControlsBox.Name = "attackControlsBox";
             this.attackControlsBox.Size = new System.Drawing.Size(340, 117);
             this.attackControlsBox.TabIndex = 4;
@@ -203,7 +207,7 @@ namespace RogueLike
             this.attackControls.Name = "attackControls";
             this.attackControls.Size = new System.Drawing.Size(307, 88);
             this.attackControls.TabIndex = 0;
-            this.attackControls.Text = "Enemy selection: J\r\nNavigate:        Arrow Keys\r\nSelect enemy:    Enter\r\nAttack: " +
+            this.attackControls.Text = "Enemy list:      J\r\nNavigate:        Arrow Keys\r\nInspect enemy:   Enter\r\nAttack: " +
     "         F\r\n";
             this.attackControls.Click += new System.EventHandler(this.attackControls_Click);
             // 
@@ -217,6 +221,16 @@ namespace RogueLike
             this.attackStateBox.TabIndex = 8;
             this.attackStateBox.TabStop = false;
             this.attackStateBox.Text = "MessageBox";
+            // 
+            // AttackMsg
+            // 
+            this.AttackMsg.AutoSize = true;
+            this.AttackMsg.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
+            this.AttackMsg.Location = new System.Drawing.Point(6, 86);
+            this.AttackMsg.Name = "AttackMsg";
+            this.AttackMsg.Size = new System.Drawing.Size(76, 22);
+            this.AttackMsg.TabIndex = 1;
+            this.AttackMsg.Text = "attack";
             // 
             // ItemMsg
             // 
@@ -250,12 +264,12 @@ namespace RogueLike
             // 
             this.ItemBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ItemBox.Controls.Add(this.itemSelected);
-            this.ItemBox.Location = new System.Drawing.Point(958, 336);
+            this.ItemBox.Location = new System.Drawing.Point(906, 346);
             this.ItemBox.Name = "ItemBox";
             this.ItemBox.Size = new System.Drawing.Size(340, 74);
             this.ItemBox.TabIndex = 8;
             this.ItemBox.TabStop = false;
-            this.ItemBox.Text = "Item Selected:";
+            this.ItemBox.Text = "Item Inspected:";
             // 
             // itemSelected
             // 
@@ -273,7 +287,7 @@ namespace RogueLike
             this.itemListBox.Controls.Add(this.itemDropdown);
             this.itemListBox.Location = new System.Drawing.Point(6, 260);
             this.itemListBox.Name = "itemListBox";
-            this.itemListBox.Size = new System.Drawing.Size(198, 59);
+            this.itemListBox.Size = new System.Drawing.Size(242, 59);
             this.itemListBox.TabIndex = 6;
             this.itemListBox.TabStop = false;
             this.itemListBox.Text = "List of Items";
@@ -288,7 +302,7 @@ namespace RogueLike
             this.itemDropdown.Location = new System.Drawing.Point(6, 19);
             this.itemDropdown.MaxDropDownItems = 20;
             this.itemDropdown.Name = "itemDropdown";
-            this.itemDropdown.Size = new System.Drawing.Size(186, 21);
+            this.itemDropdown.Size = new System.Drawing.Size(227, 21);
             this.itemDropdown.TabIndex = 4;
             this.itemDropdown.TabStop = false;
             this.itemDropdown.SelectionChangeCommitted += new System.EventHandler(this.itemDropdown_SelectionChangeCommitted);
@@ -309,9 +323,9 @@ namespace RogueLike
             // 
             this.bugLabel.AutoSize = true;
             this.bugLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bugLabel.Location = new System.Drawing.Point(693, 657);
+            this.bugLabel.Location = new System.Drawing.Point(696, 670);
             this.bugLabel.Name = "bugLabel";
-            this.bugLabel.Size = new System.Drawing.Size(627, 80);
+            this.bugLabel.Size = new System.Drawing.Size(624, 96);
             this.bugLabel.TabIndex = 11;
             this.bugLabel.Text = resources.GetString("bugLabel.Text");
             this.bugLabel.Click += new System.EventHandler(this.bugLabel_Click);
@@ -332,7 +346,9 @@ namespace RogueLike
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(324, 12);
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(18, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(666, 77);
             this.pictureBox1.TabIndex = 10;
@@ -349,15 +365,45 @@ namespace RogueLike
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // AttackMsg
+            // ShopBox
             // 
-            this.AttackMsg.AutoSize = true;
-            this.AttackMsg.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
-            this.AttackMsg.Location = new System.Drawing.Point(6, 86);
-            this.AttackMsg.Name = "AttackMsg";
-            this.AttackMsg.Size = new System.Drawing.Size(76, 22);
-            this.AttackMsg.TabIndex = 1;
-            this.AttackMsg.Text = "attack";
+            this.ShopBox.Controls.Add(this.itemThreeButton);
+            this.ShopBox.Controls.Add(this.itemTwoButton);
+            this.ShopBox.Controls.Add(this.itemOneButton);
+            this.ShopBox.Location = new System.Drawing.Point(726, 12);
+            this.ShopBox.Name = "ShopBox";
+            this.ShopBox.Size = new System.Drawing.Size(594, 77);
+            this.ShopBox.TabIndex = 15;
+            this.ShopBox.TabStop = false;
+            this.ShopBox.Text = "Shop";
+            this.ShopBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // itemOneButton
+            // 
+            this.itemOneButton.Location = new System.Drawing.Point(6, 20);
+            this.itemOneButton.Name = "itemOneButton";
+            this.itemOneButton.Size = new System.Drawing.Size(177, 51);
+            this.itemOneButton.TabIndex = 0;
+            this.itemOneButton.Text = "button1";
+            this.itemOneButton.UseVisualStyleBackColor = true;
+            // 
+            // itemTwoButton
+            // 
+            this.itemTwoButton.Location = new System.Drawing.Point(212, 19);
+            this.itemTwoButton.Name = "itemTwoButton";
+            this.itemTwoButton.Size = new System.Drawing.Size(177, 51);
+            this.itemTwoButton.TabIndex = 1;
+            this.itemTwoButton.Text = "button1";
+            this.itemTwoButton.UseVisualStyleBackColor = true;
+            // 
+            // itemThreeButton
+            // 
+            this.itemThreeButton.Location = new System.Drawing.Point(411, 19);
+            this.itemThreeButton.Name = "itemThreeButton";
+            this.itemThreeButton.Size = new System.Drawing.Size(177, 51);
+            this.itemThreeButton.TabIndex = 2;
+            this.itemThreeButton.Text = "button1";
+            this.itemThreeButton.UseVisualStyleBackColor = true;
             // 
             // Game
             // 
@@ -365,6 +411,7 @@ namespace RogueLike
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(1366, 804);
+            this.Controls.Add(this.ShopBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.musicCheckBox);
             this.Controls.Add(this.tutorial);
@@ -394,6 +441,7 @@ namespace RogueLike
             this.ItemBox.PerformLayout();
             this.itemListBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ShopBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,5 +474,9 @@ namespace RogueLike
         private System.Windows.Forms.Label itemSelected;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label AttackMsg;
+        private System.Windows.Forms.GroupBox ShopBox;
+        private System.Windows.Forms.Button itemThreeButton;
+        private System.Windows.Forms.Button itemTwoButton;
+        private System.Windows.Forms.Button itemOneButton;
     }
 }

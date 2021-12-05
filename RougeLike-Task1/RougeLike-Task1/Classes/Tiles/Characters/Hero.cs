@@ -59,11 +59,27 @@ namespace RogueLike.Characters
         public override string ToString()
         {
             // Player Stats:
-            // HP: HP/Max HP
-            // Damage: 2
-            // Gold:
+            // HP: 75/100
+            // Current Weapon: Bare Hands 
+            // Weapon Range: 1
+            // Weapon Damage: 2
+            // Gold: 
             // [X, Y]
-            return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nDamage: {this.damage} \nGold: {this.purse}\n[{this.x}, {this.y}]";
+
+            if (this.weapon == null)
+            {
+                return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nCurrent Weapon: Bare Hands \nDamage: {this.damage} \nWeapon Range: 1 \nWeapon Damage: 2 \nGold: {this.purse}\n[{this.x}, {this.y}]";
+            }
+
+            else
+            {
+                return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nCurrent Weapon: {this.weapon.ToString()} \nDamage: {this.damage} \nWeapon Range: {this.weapon.Range} \nWeapon Damage: {this.weapon.Damage} \nGold: {this.purse}\n[{this.x}, {this.y}]";
+            }
+
+
+
+
+            
         }
     }
 }

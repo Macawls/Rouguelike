@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RogueLike.Classes.Tiles.Items;
 using RogueLike.Classes.Tiles;
-
-
+using RogueLike.Characters;
 
 namespace RogueLike
 {
@@ -17,6 +16,13 @@ namespace RogueLike
         protected int maxHP;
         protected int damage;
         protected int purse = 0;
+
+        protected Weapon weapon;
+
+        public Weapon Weapon
+        {
+            get { return weapon; }
+        }
 
         //Public Accessors
         public int Purse
@@ -83,6 +89,7 @@ namespace RogueLike
             }
         }
 
+        // overload for weapon
         public void PickUp(Weapon item)
         {
             if (item.GetType() == typeof(Weapon))
@@ -91,10 +98,36 @@ namespace RogueLike
             }
         }
 
+        public void Equip(Weapon weapon)
+        {
+            this.weapon = weapon;
+        }
+
         // attacks a target and decreases its health by attack character's damage
         public virtual void Attack(Character target)
         {
             target.HP -= this.damage;
+
+            // Looting
+            // Mages only pick up gold
+            // rest of them dont
+            bool isMage = false;
+
+            if (this.GetType() == typeof(Mage) && target.IsDead())
+            {
+                isMage = true;
+                this.purse += target.purse; //gold
+            }
+
+            else if (target.IsDead())
+            {
+                if (target.weapon != null) // if weapon exists, take it
+                {
+                    this.weapon = target.weapon;
+                }
+
+                this.purse += target.purse;
+            }
         }
 
         // check if a character is dead

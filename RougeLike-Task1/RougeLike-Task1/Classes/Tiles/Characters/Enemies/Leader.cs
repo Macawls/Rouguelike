@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RogueLike.Classes.Tiles;
+using RogueLike.Classes.Tiles.Items;
+
 
 namespace RogueLike.Characters
 {
@@ -20,7 +22,8 @@ namespace RogueLike.Characters
 
         public Leader(int x, int y) : base(x, y, 'L', 2, 20)
         {
-
+            this.weapon = new Melee(Melee.WeaponTypes.LONGSWORD);
+            this.purse = 2;
         }
 
         public override MovementEnum ReturnMove(MovementEnum move = MovementEnum.IDLE)
@@ -44,14 +47,14 @@ namespace RogueLike.Characters
 
                     if (yDist < -1) // neg
                     {
-                        if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Item))
+                        if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Gold))
                         {
                             moveDirection = MovementEnum.RIGHT;
                         }
                     }
                     else if (yDist > 1) //pos
                     {
-                        if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Item))
+                        if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Gold))
                         {
                             moveDirection = MovementEnum.LEFT;
                         }
@@ -74,7 +77,7 @@ namespace RogueLike.Characters
 
                     if (xDist > -1)
                     {
-                        if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Item))
+                        if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Gold))
                         {
                             moveDirection = MovementEnum.UP;
                         }

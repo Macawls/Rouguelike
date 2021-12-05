@@ -35,9 +35,9 @@ namespace RogueLike.Classes.Tiles.Items
             switch (type)
             {
                 case 0:
-                    return new Melee(Melee.Types.DAGGER);
+                    return new Melee(Melee.WeaponTypes.DAGGER);
                 case 1:
-                    return new Melee(Melee.Types.LONGSWORD);
+                    return new Melee(Melee.WeaponTypes.LONGSWORD);
                 case 2:
                     return new Ranged(Ranged.Types.RIFLE);
                 case 3:

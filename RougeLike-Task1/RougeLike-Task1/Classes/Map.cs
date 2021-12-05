@@ -163,16 +163,16 @@ namespace RogueLike.Classes
                 gameMap[leader.X, leader.Y] = new EmptyTile(leader.X, leader.Y, '.');
             }
 
-            //fills array with enemies
-            for (int i = 0; i < enemyArray.Length; i++)
-            {
-                PlaceInMap(enemyArray[i]);
-            }
-
             // fills item array with gold
             for (int i = 0; i < itemArray.Length; i++)
             {
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
+            }
+
+            //fills array with enemies
+            for (int i = 0; i < enemyArray.Length; i++)
+            {
+                PlaceInMap(enemyArray[i]);
             }
 
             PickupItemAtPosition(Hero);

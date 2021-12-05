@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RogueLike.Classes.Tiles;
+using RogueLike.Classes.Tiles.Items;
 
 namespace RogueLike.Characters
 {
@@ -12,7 +13,8 @@ namespace RogueLike.Characters
         // Constructor
         public Goblin(int x, int y) : base(x, y, 'G', 1, 10)
         {
-
+            this.weapon = new Melee(Melee.WeaponTypes.DAGGER);
+            this.purse = 1;
         }
 
         public override MovementEnum ReturnMove(MovementEnum move)
@@ -23,7 +25,7 @@ namespace RogueLike.Characters
             switch (move)
             {
                 case MovementEnum.UP:
-                    if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Item))
+                    if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Gold))
                     {
                         if (VisionArray[0].GetType() != typeof(Hero))
                         {
@@ -33,7 +35,7 @@ namespace RogueLike.Characters
                     break;
 
                 case MovementEnum.DOWN:
-                    if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Item))
+                    if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Gold))
                     {
                         if (VisionArray[1].GetType() != typeof(Hero))
                         {
@@ -43,7 +45,7 @@ namespace RogueLike.Characters
                     break;
 
                 case MovementEnum.LEFT:
-                    if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Item))
+                    if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Gold))
                     {
                         if (VisionArray[2].GetType() != typeof(Hero))
                         {
@@ -53,7 +55,7 @@ namespace RogueLike.Characters
                     }
                     break;
                 case MovementEnum.RIGHT:
-                    if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Item))
+                    if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Gold))
                     {
                         if (VisionArray[3].GetType() != typeof(Hero))
                         {

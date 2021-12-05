@@ -10,7 +10,7 @@ namespace RogueLike.Characters
     {
         public Mage(int x, int y) : base(x, y, 'M', 5, 5)
         {
-
+            this.purse = 3;
         }
 
         public override MovementEnum ReturnMove(MovementEnum move) //idle because mages don't move

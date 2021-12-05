@@ -318,6 +318,7 @@ namespace RogueLike
         private void msg_TextChanged(object sender, EventArgs e)
         {
             effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
+            effectsPlayer.settings.volume = 40;
             effectsPlayer.controls.play();
         }
 
@@ -338,7 +339,10 @@ namespace RogueLike
 
         private void itemDropdown_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            itemSelected.Text = itemDropdown.SelectedItem.ToString();
+            if (itemSelected.Text != null)
+            {
+                itemSelected.Text = itemDropdown.SelectedItem.ToString();
+            }
             
             this.Focus();
             this.KeyPreview = true;
@@ -412,6 +416,9 @@ namespace RogueLike
 
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 }
