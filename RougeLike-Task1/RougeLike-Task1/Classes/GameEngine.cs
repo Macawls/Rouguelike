@@ -8,6 +8,7 @@ using RogueLike;
 using RogueLike.Characters;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using RogueLike.Classes.Tiles.Items;
 
 namespace RogueLike.Classes
 {
@@ -28,8 +29,9 @@ namespace RogueLike.Classes
         private static readonly char obstTile = 'X';
         private static readonly char goblinTile = 'G';
         private static readonly char mageTile = 'M';
-        private static readonly char goldTile = '$';
         private static readonly char leaderTile = 'L';
+        private static readonly char goldTile = '$';
+        private static readonly char weaponTile = 'W';
         private static readonly char range = '•';
 
         private Map map;
@@ -48,6 +50,8 @@ namespace RogueLike.Classes
             bf.Serialize(fileStream, data);
             fileStream.Close();
         }
+
+        
 
         public object Load(string filePath) // deserialize
         {
@@ -71,10 +75,10 @@ namespace RogueLike.Classes
         { 
             get { return map; }
         }
-        
+
         public GameEngine()
         {
-            map = new Map(12, 15, 12, 15, 4, 7);
+            map = new Map(13, 15, 13, 15, 4, 7);
         }
 
         public override string ToString()
@@ -116,9 +120,14 @@ namespace RogueLike.Classes
                         charMap[i, j] = obstTile;
                     }
 
-                    if (map.TileMap[i, j].GetType() == typeof(Tiles.Items.Gold))
+                    if (map.TileMap[i, j].GetType() == typeof(Gold))
                     {
                         charMap[i, j] = goldTile;
+                    }
+
+                    if (map.TileMap[i, j].GetType() == typeof(Weapon))
+                    {
+                        charMap[i, j] = weaponTile;
                     }
 
                     if (map.TileMap[i, j].GetType() == typeof(Hero))

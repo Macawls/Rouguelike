@@ -22,7 +22,7 @@ namespace RogueLike
     {
         // game engine class
         GameEngine game = new GameEngine();
-        GameEngine newGame = new GameEngine();
+        //GameEngine newGame = new GameEngine();
         
         WindowsMediaPlayer musicPlayer = new WindowsMediaPlayer(); //background music
         WindowsMediaPlayer effectsPlayer = new WindowsMediaPlayer(); //sound effects
@@ -66,21 +66,32 @@ namespace RogueLike
             ItemMsg.Visible = false;
             AttackMsg.Text = "";
             //AttackMsg.Visible = false;
-            
+
         }
 
         private void DrawMap()
         {
+            // map
             map.Text = game.ToString();
 
+            // player
             playerStats.Text = game.Map.Hero.ToString();
-            
-            //parsing enemy array into combo boxes
+
+            //parsing enemy and item arrays into combo boxes
             enemyDropdown.DataSource = game.Map.enemyArray;
             itemDropdown.DataSource = game.Map.itemArray;
 
             playerGold = game.Map.Hero.Purse;
 
+            // Shop
+            // Tried having a List of Buttons instead to prevent hardcoding.
+            // Not exactly sure how to implement it with forms
+            
+            itemOneButton.Text = game.Map.shop.DisplayWeapon(game.Map.shop.WeaponsArray[0].Cost);
+            itemTwoButton.Text = game.Map.shop.DisplayWeapon(game.Map.shop.WeaponsArray[1].Cost);
+            itemThreeButton.Text = game.Map.shop.DisplayWeapon(game.Map.shop.WeaponsArray[2].Cost);
+
+            CheckGoldDiff();
             CheckLossCondition();
             CheckWinCondition();
         }
@@ -308,18 +319,30 @@ namespace RogueLike
             int newAmount = game.Map.Hero.Purse;
             int diff = newAmount - playerGold;
 
-            if (diff != 0)
+            if (diff < 0)
+            {
+                ItemMsg.Visible = true;
+                ItemMsg.Text = $"You bought a {game.Map.Hero.Weapon}!";
+            }
+
+            else if (diff != 0)
             {
                 ItemMsg.Visible = true;
                 ItemMsg.Text = $"Alright! you picked up {diff} gold!";
             }
+
+
         }
 
         private void msg_TextChanged(object sender, EventArgs e)
         {
-            effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
-            effectsPlayer.settings.volume = 40;
-            effectsPlayer.controls.play();
+            if (game.Map.Hero.Purse != 0)
+            {
+                effectsPlayer.URL = "pickup.wav"; //https://opengameart.org/content/coin-sounds-0
+                effectsPlayer.settings.volume = 50;
+                effectsPlayer.controls.play();
+            }
+            
         }
 
         private void enemyDropdown_SelectionChangeCommitted(object sender, EventArgs e)
@@ -419,6 +442,110 @@ namespace RogueLike
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void itemOneButton_Click(object sender, EventArgs e)
+        {
+            // can buy
+            if (game.Map.shop.CanBuy(game.Map.shop.WeaponsArray[0].Cost))
+            {
+                game.Map.shop.Buy(game.Map.shop.WeaponsArray[0].Cost);
+
+                effectsPlayer.settings.volume = 80;
+                
+                // I combined these 
+                //      https://opengameart.org/content/coin-drop
+                //      https://opengameart.org/content/cloth-swing-sounds
+
+                effectsPlayer.URL = "buyandequip.wav";
+                effectsPlayer.controls.play();
+
+                DrawMap();
+            }
+
+            // cant buy
+            else
+            {
+                
+                effectsPlayer.URL = "negative.wav"; //https://opengameart.org/content/gui-sound-effects
+                effectsPlayer.controls.play();
+
+                ItemMsg.Visible = true;
+                ItemMsg.Text = $"You cant afford a {game.Map.shop.weaponsArray[0]}!";
+
+                DrawMap();
+
+            }
+            
+        }
+
+
+        private void itemTwoButton_Click(object sender, EventArgs e)
+        {
+            // can buy
+            if (game.Map.shop.CanBuy(game.Map.shop.WeaponsArray[1].Cost))
+            {
+                game.Map.shop.Buy(game.Map.shop.WeaponsArray[1].Cost);
+
+                effectsPlayer.settings.volume = 80;
+
+                // I combined these 
+                //      https://opengameart.org/content/coin-drop
+                //      https://opengameart.org/content/cloth-swing-sounds
+
+                effectsPlayer.URL = "buyandequip.wav";
+                effectsPlayer.controls.play();
+
+                DrawMap();
+            }
+
+            // cant buy
+            else
+            {
+
+                effectsPlayer.URL = "negative.wav"; //https://opengameart.org/content/gui-sound-effects
+                effectsPlayer.controls.play();
+
+                ItemMsg.Visible = true;
+                ItemMsg.Text = $"You cant afford a {game.Map.shop.weaponsArray[1]}!";
+
+                DrawMap();
+
+            }
+        }
+
+        private void itemThreeButton_Click(object sender, EventArgs e)
+        {
+            // can buy
+            if (game.Map.shop.CanBuy(game.Map.shop.WeaponsArray[2].Cost))
+            {
+                game.Map.shop.Buy(game.Map.shop.WeaponsArray[2].Cost);
+
+                effectsPlayer.settings.volume = 80;
+
+                // I combined these 
+                //      https://opengameart.org/content/coin-drop
+                //      https://opengameart.org/content/cloth-swing-sounds
+
+                effectsPlayer.URL = "buyandequip.wav";
+                effectsPlayer.controls.play();
+
+                DrawMap();
+            }
+
+            // cant buy
+            else
+            {
+
+                effectsPlayer.URL = "negative.wav"; //https://opengameart.org/content/gui-sound-effects
+                effectsPlayer.controls.play();
+
+                ItemMsg.Visible = true;
+                ItemMsg.Text = $"You cant afford a {game.Map.shop.weaponsArray[2]}!";
+
+                DrawMap();
+
+            }
         }
     }
 }

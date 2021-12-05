@@ -23,25 +23,25 @@ namespace RogueLike.Characters
             switch (move)
             {
                 case MovementEnum.UP:
-                    if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Gold))
+                    if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Gold) || VisionArray[0].GetType() == typeof(Weapon))
                     {
                         moveDirection = MovementEnum.UP;
                     }
                     break;
                 case MovementEnum.DOWN:
-                    if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Gold))
+                    if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Gold) || VisionArray[1].GetType() == typeof(Weapon))
                     {
                         moveDirection = MovementEnum.DOWN;
                     }
                     break;
                 case MovementEnum.LEFT:
-                    if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Gold))
+                    if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Gold) || VisionArray[2].GetType() == typeof(Weapon))
                     {
                         moveDirection = MovementEnum.LEFT;
                     }
                     break;
                 case MovementEnum.RIGHT:
-                    if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Gold))
+                    if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Gold) || VisionArray[3].GetType() == typeof(Weapon))
                     {
                         moveDirection = MovementEnum.RIGHT;
                     }
@@ -71,9 +71,14 @@ namespace RogueLike.Characters
                 return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nCurrent Weapon: Bare Hands \nDamage: {this.damage} \nWeapon Range: 1 \nWeapon Damage: 2 \nGold: {this.purse}\n[{this.x}, {this.y}]";
             }
 
-            else
+            else if (this.weapon != null)
             {
                 return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nCurrent Weapon: {this.weapon.ToString()} \nDamage: {this.damage} \nWeapon Range: {this.weapon.Range} \nWeapon Damage: {this.weapon.Damage} \nGold: {this.purse}\n[{this.x}, {this.y}]";
+            }
+
+            else
+            {
+                return $"error";
             }
 
 

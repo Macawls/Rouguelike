@@ -14,17 +14,17 @@ namespace RogueLike.Classes.Tiles.Items
             set { this.range = 1; }     // range of melee is 1
         }
 
-        public enum WeaponTypes
+        public enum MeleeTypes
         {
             DAGGER,
             LONGSWORD,
         }
-
-        public Melee(WeaponTypes types) :base()
+        // public Ranged(RangedTypes types, int x = 0, int y = 0) :base(x, y)
+        public Melee(MeleeTypes types, int x = 0, int y = 0) :base(x, y)
         {
             switch (types)
             {
-                case WeaponTypes.DAGGER:
+                case MeleeTypes.DAGGER:
                     
                     durability = 10;
                     damage = 3;
@@ -32,7 +32,7 @@ namespace RogueLike.Classes.Tiles.Items
                     weaponType = "Dagger";
                     break;
 
-                case WeaponTypes.LONGSWORD:
+                case MeleeTypes.LONGSWORD:
                     
                     durability = 6;
                     damage = 4;
@@ -46,7 +46,7 @@ namespace RogueLike.Classes.Tiles.Items
 
         public override string ToString()
         {
-            return $"{this.WeaponType}";
+            return $"{this.WeaponType} at [{this.X}, {this.Y}]";
         }
 
 

@@ -46,10 +46,15 @@ namespace RogueLike.Classes.Tiles.Items
         }
 
 
-        public Weapon() : base (x: default, y: default, 'W')
+        public Weapon(int x = 0, int y = 0) : base (x, y , 'W')
         {
 
         }
+
+        //public Weapon() : base(x: default, y: default, 'W')
+        //{
+
+        //}
 
 
 

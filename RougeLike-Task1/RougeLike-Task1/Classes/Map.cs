@@ -27,6 +27,8 @@ namespace RogueLike.Classes
         private Characters.Hero hero;
         private Characters.Leader leader;
 
+        public Shop shop;
+
         public Characters.Hero Hero
         {
             get { return hero; }
@@ -79,6 +81,10 @@ namespace RogueLike.Classes
             Hero = (Characters.Hero)Create(Tile.TileType.HERO);
             PlaceInMap(Hero);
 
+            // Shop
+            shop = new Shop(Hero);
+
+
             // Enemies (randomizes in create function)
             for (int i = 0; i < enemyArray.Length; i++)
             {
@@ -97,14 +103,61 @@ namespace RogueLike.Classes
             leader.Target = Hero;
             
             PlaceInMap(leader);
-            
-            // Items
+
+            //Gold
             for (int i = 0; i < maxGoldDrops; i++) // maxGoldDrops = itemArray.Length
             {
                 itemArray[i] = (Tiles.Item)Create(Tile.TileType.GOLD);
                 itemArray[i].PickedUp = false;
                 PlaceInMap(itemArray[i]);
             }
+
+            // Weapons // replace gold in item array here
+            for (int i = 0; i < itemArray.Length; i++)
+            {
+                bool canReplace;
+
+                // more or less 1/3 chance it gets replaced 
+                switch (rnd.Next(0, 3))
+                {
+                    case 0:
+                        canReplace = true;
+                        break;
+                    case 1:
+                        canReplace = false;
+                        break;
+                    case 2:
+                        canReplace = false;
+                        break;
+                    default:
+                        canReplace = false;
+                        break;
+                }
+
+                if (canReplace)
+                {
+                    switch (rnd.Next(0, 4))
+                    {
+                        case 0:
+                            itemArray[i] = new Melee(Melee.MeleeTypes.DAGGER, itemArray[i].X, itemArray[i].Y);
+                            break;
+                        case 1:
+                            itemArray[i] = new Melee(Melee.MeleeTypes.LONGSWORD, itemArray[i].X, itemArray[i].Y);
+                            break;
+                        case 2:
+                            itemArray[i] = new Ranged(Ranged.RangedTypes.LONGBOW, itemArray[i].X, itemArray[i].Y);
+                            break;
+                        case 3:
+                            itemArray[i] = new Ranged(Ranged.RangedTypes.RIFLE, itemArray[i].X, itemArray[i].Y);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                PlaceInMap(itemArray[i]);
+            }
+
 
             // updating vision
             UpdateVision();  
@@ -163,7 +216,7 @@ namespace RogueLike.Classes
                 gameMap[leader.X, leader.Y] = new EmptyTile(leader.X, leader.Y, '.');
             }
 
-            // fills item array with gold
+            // item array 
             for (int i = 0; i < itemArray.Length; i++)
             {
                 gameMap[itemArray[i].X, itemArray[i].Y] = itemArray[i];
@@ -178,7 +231,7 @@ namespace RogueLike.Classes
             PickupItemAtPosition(Hero);
             PlaceInMap(Hero);
             
-            // enemies will attack hero and pickup items
+            // enemies will attack hero and pickup gold
             foreach (var enemy in enemyArray)
             {
                 if (enemy.CheckRange(Hero))
@@ -242,7 +295,16 @@ namespace RogueLike.Classes
             {
                 if (itemArray[i].X == character.X && itemArray[i].Y == character.Y)
                 {
-                    character.PickUp((Gold)itemArray[i]);
+                    if (itemArray[i].GetType() == typeof(Gold))
+                    {
+                        character.PickUp((Gold)itemArray[i]);
+                    }
+
+                    else if (itemArray[i].GetType() == typeof(Weapon))
+                    {
+                        character.PickUp((Weapon)itemArray[i]);
+                    }
+                      
                 }
 
                 if (itemArray[i].PickedUp)
@@ -323,7 +385,29 @@ namespace RogueLike.Classes
 
                     } while (isOpenTile(randomX, randomY));
 
-                    return new Tiles.Items.Gold(randomX, randomY);
+                    return new Gold(randomX, randomY);
+
+                case Tile.TileType.WEAPON: 
+                    do
+                    {
+                        randomX = rnd.Next(1, gameMap.GetLength(0));
+                        randomY = rnd.Next(1, gameMap.GetLength(1));
+
+                    } while (isOpenTile(randomX, randomY));
+
+                    switch (rnd.Next(0, 4))
+                    {
+                        case 0:
+                            return new Melee(Melee.MeleeTypes.DAGGER, randomX, randomY);
+                        case 1:
+                            return new Melee(Melee.MeleeTypes.LONGSWORD, randomX, randomY);
+                        case 2:
+                            return new Ranged(Ranged.RangedTypes.LONGBOW, randomX, randomY);
+                        case 3:
+                            return new Ranged(Ranged.RangedTypes.RIFLE, randomX, randomY);
+                        default:
+                            return null;
+                    }
 
                 case Tile.TileType.EMPTY:
                     do

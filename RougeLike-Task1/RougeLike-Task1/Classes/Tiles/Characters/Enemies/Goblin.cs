@@ -13,7 +13,7 @@ namespace RogueLike.Characters
         // Constructor
         public Goblin(int x, int y) : base(x, y, 'G', 1, 10)
         {
-            this.weapon = new Melee(Melee.WeaponTypes.DAGGER);
+            this.weapon = new Melee(Melee.MeleeTypes.DAGGER);
             this.purse = 1;
         }
 
@@ -25,7 +25,7 @@ namespace RogueLike.Characters
             switch (move)
             {
                 case MovementEnum.UP:
-                    if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Gold))
+                    if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Gold) || VisionArray[0].GetType() == typeof(Weapon))
                     {
                         if (VisionArray[0].GetType() != typeof(Hero))
                         {
@@ -35,7 +35,7 @@ namespace RogueLike.Characters
                     break;
 
                 case MovementEnum.DOWN:
-                    if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Gold))
+                    if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Gold) || VisionArray[1].GetType() == typeof(Weapon))
                     {
                         if (VisionArray[1].GetType() != typeof(Hero))
                         {
@@ -45,7 +45,7 @@ namespace RogueLike.Characters
                     break;
 
                 case MovementEnum.LEFT:
-                    if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Gold))
+                    if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Gold) || VisionArray[2].GetType() == typeof(Weapon))
                     {
                         if (VisionArray[2].GetType() != typeof(Hero))
                         {
@@ -55,7 +55,7 @@ namespace RogueLike.Characters
                     }
                     break;
                 case MovementEnum.RIGHT:
-                    if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Gold))
+                    if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Gold) || VisionArray[3].GetType() == typeof(Weapon))
                     {
                         if (VisionArray[3].GetType() != typeof(Hero))
                         {

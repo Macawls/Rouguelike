@@ -22,7 +22,7 @@ namespace RogueLike.Characters
 
         public Leader(int x, int y) : base(x, y, 'L', 2, 20)
         {
-            this.weapon = new Melee(Melee.WeaponTypes.LONGSWORD);
+            this.weapon = new Melee(Melee.MeleeTypes.LONGSWORD);
             this.purse = 2;
         }
 
@@ -47,14 +47,14 @@ namespace RogueLike.Characters
 
                     if (yDist < -1) // neg
                     {
-                        if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Gold))
+                        if (VisionArray[3].GetType() == typeof(EmptyTile) || VisionArray[3].GetType() == typeof(Gold) || VisionArray[3].GetType() == typeof(Weapon))
                         {
                             moveDirection = MovementEnum.RIGHT;
                         }
                     }
                     else if (yDist > 1) //pos
                     {
-                        if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Gold))
+                        if (VisionArray[2].GetType() == typeof(EmptyTile) || VisionArray[2].GetType() == typeof(Gold) || VisionArray[2].GetType() == typeof(Weapon))
                         {
                             moveDirection = MovementEnum.LEFT;
                         }
@@ -77,14 +77,14 @@ namespace RogueLike.Characters
 
                     if (xDist > -1)
                     {
-                        if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Gold))
+                        if (VisionArray[0].GetType() == typeof(EmptyTile) || VisionArray[0].GetType() == typeof(Gold) || VisionArray[0].GetType() == typeof(Weapon))
                         {
                             moveDirection = MovementEnum.UP;
                         }
                     }
                     else if (xDist < 1)
                     {
-                        if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Item))
+                        if (VisionArray[1].GetType() == typeof(EmptyTile) || VisionArray[1].GetType() == typeof(Item) || VisionArray[1].GetType() == typeof(Weapon))
                         {
                             moveDirection = MovementEnum.DOWN;
                         }

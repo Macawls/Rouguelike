@@ -58,9 +58,9 @@ namespace RogueLike
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.ShopBox = new System.Windows.Forms.GroupBox();
-            this.itemOneButton = new System.Windows.Forms.Button();
-            this.itemTwoButton = new System.Windows.Forms.Button();
             this.itemThreeButton = new System.Windows.Forms.Button();
+            this.itemTwoButton = new System.Windows.Forms.Button();
+            this.itemOneButton = new System.Windows.Forms.Button();
             this.MapBox.SuspendLayout();
             this.PlayerBox.SuspendLayout();
             this.movementControlsBox.SuspendLayout();
@@ -256,7 +256,7 @@ namespace RogueLike
             this.Box.Controls.Add(this.MapBox);
             this.Box.Location = new System.Drawing.Point(12, 95);
             this.Box.Name = "Box";
-            this.Box.Size = new System.Drawing.Size(1308, 557);
+            this.Box.Size = new System.Drawing.Size(1357, 557);
             this.Box.TabIndex = 9;
             this.Box.TabStop = false;
             // 
@@ -348,9 +348,9 @@ namespace RogueLike
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(18, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(666, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(653, 77);
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
@@ -370,47 +370,53 @@ namespace RogueLike
             this.ShopBox.Controls.Add(this.itemThreeButton);
             this.ShopBox.Controls.Add(this.itemTwoButton);
             this.ShopBox.Controls.Add(this.itemOneButton);
-            this.ShopBox.Location = new System.Drawing.Point(726, 12);
+            this.ShopBox.Location = new System.Drawing.Point(656, 12);
             this.ShopBox.Name = "ShopBox";
-            this.ShopBox.Size = new System.Drawing.Size(594, 77);
+            this.ShopBox.Size = new System.Drawing.Size(713, 77);
             this.ShopBox.TabIndex = 15;
             this.ShopBox.TabStop = false;
             this.ShopBox.Text = "Shop";
             this.ShopBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // itemOneButton
+            // itemThreeButton
             // 
-            this.itemOneButton.Location = new System.Drawing.Point(6, 20);
-            this.itemOneButton.Name = "itemOneButton";
-            this.itemOneButton.Size = new System.Drawing.Size(177, 51);
-            this.itemOneButton.TabIndex = 0;
-            this.itemOneButton.Text = "button1";
-            this.itemOneButton.UseVisualStyleBackColor = true;
+            this.itemThreeButton.Font = new System.Drawing.Font("Courier New", 12.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.itemThreeButton.Location = new System.Drawing.Point(488, 20);
+            this.itemThreeButton.Name = "itemThreeButton";
+            this.itemThreeButton.Size = new System.Drawing.Size(219, 51);
+            this.itemThreeButton.TabIndex = 2;
+            this.itemThreeButton.Text = "Item3";
+            this.itemThreeButton.UseVisualStyleBackColor = true;
+            this.itemThreeButton.Click += new System.EventHandler(this.itemThreeButton_Click);
             // 
             // itemTwoButton
             // 
-            this.itemTwoButton.Location = new System.Drawing.Point(212, 19);
+            this.itemTwoButton.Font = new System.Drawing.Font("Courier New", 12.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.itemTwoButton.Location = new System.Drawing.Point(247, 20);
             this.itemTwoButton.Name = "itemTwoButton";
-            this.itemTwoButton.Size = new System.Drawing.Size(177, 51);
+            this.itemTwoButton.Size = new System.Drawing.Size(235, 51);
             this.itemTwoButton.TabIndex = 1;
-            this.itemTwoButton.Text = "button1";
+            this.itemTwoButton.Text = "Item2";
             this.itemTwoButton.UseVisualStyleBackColor = true;
+            this.itemTwoButton.Click += new System.EventHandler(this.itemTwoButton_Click);
             // 
-            // itemThreeButton
+            // itemOneButton
             // 
-            this.itemThreeButton.Location = new System.Drawing.Point(411, 19);
-            this.itemThreeButton.Name = "itemThreeButton";
-            this.itemThreeButton.Size = new System.Drawing.Size(177, 51);
-            this.itemThreeButton.TabIndex = 2;
-            this.itemThreeButton.Text = "button1";
-            this.itemThreeButton.UseVisualStyleBackColor = true;
+            this.itemOneButton.Font = new System.Drawing.Font("Courier New", 12.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemOneButton.Location = new System.Drawing.Point(6, 20);
+            this.itemOneButton.Name = "itemOneButton";
+            this.itemOneButton.Size = new System.Drawing.Size(235, 51);
+            this.itemOneButton.TabIndex = 0;
+            this.itemOneButton.Text = "Item1";
+            this.itemOneButton.UseVisualStyleBackColor = true;
+            this.itemOneButton.Click += new System.EventHandler(this.itemOneButton_Click);
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1366, 804);
+            this.ClientSize = new System.Drawing.Size(1381, 811);
             this.Controls.Add(this.ShopBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.musicCheckBox);
@@ -418,6 +424,7 @@ namespace RogueLike
             this.Controls.Add(this.bugLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Box);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Game_Load);
@@ -475,8 +482,8 @@ namespace RogueLike
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label AttackMsg;
         private System.Windows.Forms.GroupBox ShopBox;
-        private System.Windows.Forms.Button itemThreeButton;
-        private System.Windows.Forms.Button itemTwoButton;
-        private System.Windows.Forms.Button itemOneButton;
+        public System.Windows.Forms.Button itemThreeButton;
+        public System.Windows.Forms.Button itemTwoButton;
+        public System.Windows.Forms.Button itemOneButton;
     }
 }
