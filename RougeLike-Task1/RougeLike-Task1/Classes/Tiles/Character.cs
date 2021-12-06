@@ -101,21 +101,30 @@ namespace RogueLike
         public void Equip(Weapon weapon)
         {
             this.weapon = weapon;
+            
         }
 
         // attacks a target and decreases its health by attack character's damage
         public virtual void Attack(Character target)
         {
-            target.HP -= this.damage;
+            // no weapon
+            if (this.weapon == null)
+            {
+                target.HP -= this.damage;
+            }
+            
+            // weapon
+            else if (this.weapon != null)
+            {
+                target.HP -= this.weapon.Damage;
+            }
 
             // Looting
             // Mages only pick up gold
             // rest of them dont
-            bool isMage = false;
 
             if (this.GetType() == typeof(Mage) && target.IsDead())
             {
-                isMage = true;
                 this.purse += target.purse; //gold
             }
 
@@ -150,11 +159,22 @@ namespace RogueLike
         public virtual bool CheckRange(Character target)
         {
             bool canAttack;
+            
             // barehand range
-            if (DistanceTo(target) == 1 || DistanceTo(target) == 0)
+            if (weapon == null)
             {
-                canAttack = true;
+                if (DistanceTo(target) == 1 || DistanceTo(target) == 0)
+                {
+                    canAttack = true;
+                }
             }
+            
+            // weapon range
+            if (weapon != null)
+            {
+                canAttack = false;
+            }
+
 
             else
             {

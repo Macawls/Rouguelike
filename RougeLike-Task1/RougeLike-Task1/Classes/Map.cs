@@ -293,24 +293,35 @@ namespace RogueLike.Classes
         {
             for (int i = 0; i < itemArray.Length; i++)
             {
-                if (itemArray[i].X == character.X && itemArray[i].Y == character.Y)
+                if (itemArray[i].X == character.X && itemArray[i].Y == character.Y) // if same position as item
                 {
-                    if (itemArray[i].GetType() == typeof(Gold))
+                    if (itemArray[i].GetType() == typeof(Gold))  
                     {
-                        character.PickUp((Gold)itemArray[i]);
+                        character.PickUp((Gold)itemArray[i]); // Pick up
+
+                        if (itemArray[i].PickedUp) // if its picked up
+                        {
+                            itemArray = itemArray.Where((source, index) => index != i).ToArray(); // remove from itemArray
+                        }
                     }
 
-                    else if (itemArray[i].GetType() == typeof(Weapon))
+                    else if (itemArray[i].GetType() == typeof(Melee))
                     {
-                        character.PickUp((Weapon)itemArray[i]);
+                        character.PickUp((Melee)itemArray[i]);
+                        character.Equip((Melee)itemArray[i]);
+
+                        itemArray = itemArray.Where((source, index) => index != i).ToArray();
+                    }
+
+                    else if (itemArray[i].GetType() == typeof(Ranged))
+                    {
+                        character.PickUp((Ranged)itemArray[i]);
+                        character.Equip((Ranged)itemArray[i]);
+
+                        itemArray = itemArray.Where((source, index) => index != i).ToArray();
                     }
                       
                 }
-
-                if (itemArray[i].PickedUp)
-                {
-                    itemArray = itemArray.Where((source, index) => index != i).ToArray();
-                } 
             }
         }
 

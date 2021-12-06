@@ -125,7 +125,7 @@ namespace RogueLike.Classes
                         charMap[i, j] = goldTile;
                     }
 
-                    if (map.TileMap[i, j].GetType() == typeof(Weapon))
+                    if (map.TileMap[i, j].GetType() == typeof(Ranged) || map.TileMap[i, j].GetType() == typeof(Melee))
                     {
                         charMap[i, j] = weaponTile;
                     }

@@ -19,7 +19,7 @@ namespace RogueLike.Classes.Tiles.Items
 
         private Random rnd;
 
-        public Weapon[] weaponsArray = new Weapon[3];
+        private Weapon[] weaponsArray = new Weapon[3];
 
         private Character buyer;
 
@@ -27,7 +27,11 @@ namespace RogueLike.Classes.Tiles.Items
 
         private readonly int weaponVariations = Enum.GetNames(typeof(TypesofShopWeapons)).Length;
 
-        public Weapon[] WeaponsArray { get { return weaponsArray; } }
+        public Weapon[] WeaponsArray 
+        { 
+            get { return weaponsArray; } 
+            set { weaponsArray = value; }
+        }
 
 
         public Shop(Character hero)

@@ -84,8 +84,8 @@ namespace RogueLike
             playerGold = game.Map.Hero.Purse;
 
             // Shop
-            // Tried having a List of Buttons instead to prevent hardcoding.
-            // Not exactly sure how to implement it with forms
+            // Tried having a List of Buttons instead to prevent hardcoding
+            // Not exactly sure how to implement that 
             
             itemOneButton.Text = game.Map.shop.DisplayWeapon(game.Map.shop.WeaponsArray[0].Cost);
             itemTwoButton.Text = game.Map.shop.DisplayWeapon(game.Map.shop.WeaponsArray[1].Cost);
@@ -193,7 +193,7 @@ namespace RogueLike
                                 
                                 AttackMsg.Visible = true;
                                 AttackMsg.Text = $"Successful attack! {game.Map.enemyArray[i].GetType().Name} took {game.Map.Hero.Damage} damage!";
-                                AttackMsg.Text += $"\n{game.Map.enemyArray[i].GetType().Name} is now on {game.Map.enemyArray[i].HP}!";
+                                AttackMsg.Text += $"\n{game.Map.enemyArray[i].GetType().Name} is now on {game.Map.enemyArray[i].HP} HP!";
 
                                 if (game.Map.enemyArray[i].IsDead())
                                 {
@@ -347,9 +347,18 @@ namespace RogueLike
 
         private void enemyDropdown_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (enemySelected.Text != null)
+            if (enemySelected == null) // doesnt matter cos if enemies are dead you win but anyway
             {
-                enemySelected.Text = enemyDropdown.SelectedItem.ToString();
+                enemySelected.Text = "No more enemies";
+            }
+
+            else if (enemySelected.Text != null)
+            {
+                if (enemyDropdown.SelectedItem != null)
+                {
+                    enemySelected.Text = enemyDropdown.SelectedItem.ToString();
+                }
+                
             }
 
             // focuses the form
@@ -362,11 +371,19 @@ namespace RogueLike
 
         private void itemDropdown_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (itemSelected.Text != null)
+            if (itemSelected == null)
             {
-                itemSelected.Text = itemDropdown.SelectedItem.ToString();
+                itemSelected.Text = "No more items";
             }
-            
+
+            else if (itemSelected.Text != null)
+            {
+                if (itemDropdown.SelectedItem != null)
+                {
+                    itemSelected.Text = itemDropdown.SelectedItem.ToString();
+                }        
+            }
+
             this.Focus();
             this.KeyPreview = true;
 
@@ -471,7 +488,7 @@ namespace RogueLike
                 effectsPlayer.controls.play();
 
                 ItemMsg.Visible = true;
-                ItemMsg.Text = $"You cant afford a {game.Map.shop.weaponsArray[0]}!";
+                ItemMsg.Text = $"You cant afford a {game.Map.shop.WeaponsArray[0]}!";
 
                 DrawMap();
 
@@ -507,7 +524,7 @@ namespace RogueLike
                 effectsPlayer.controls.play();
 
                 ItemMsg.Visible = true;
-                ItemMsg.Text = $"You cant afford a {game.Map.shop.weaponsArray[1]}!";
+                ItemMsg.Text = $"You cant afford a {game.Map.shop.WeaponsArray[1]}!";
 
                 DrawMap();
 
@@ -541,7 +558,7 @@ namespace RogueLike
                 effectsPlayer.controls.play();
 
                 ItemMsg.Visible = true;
-                ItemMsg.Text = $"You cant afford a {game.Map.shop.weaponsArray[2]}!";
+                ItemMsg.Text = $"You cant afford a {game.Map.shop.WeaponsArray[2]}!";
 
                 DrawMap();
 
