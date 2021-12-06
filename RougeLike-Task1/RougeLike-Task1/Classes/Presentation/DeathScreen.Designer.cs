@@ -1,4 +1,4 @@
-﻿namespace RougeLike_Task1.Classes.Presentation
+﻿namespace RougeLike.Classes.Presentation
 {
     partial class DeathScreen
     {

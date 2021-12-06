@@ -13,7 +13,7 @@ using RogueLike.Characters;
 using WMPLib; //windows media player library
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using RougeLike_Task1.Classes.Presentation;
+using RougeLike.Classes.Presentation;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 
@@ -37,6 +37,8 @@ namespace RogueLike
 
         IFormatter formatter = new BinaryFormatter();
         Stream stream;
+
+        bool hasMoved; // at least once //using for changing save button colours
 
 
         public Game()
@@ -86,6 +88,12 @@ namespace RogueLike
             itemDropdown.DataSource = game.Map.itemArray;
 
             playerGold = game.Map.Hero.Purse;
+
+            if (hasMoved)
+            {
+                saveButton.ForeColor = Color.LightGreen;
+                loadButton.ForeColor = Color.Salmon;
+            }
 
             // Shop
             // Tried having a List of Buttons instead to prevent hardcoding
@@ -165,6 +173,7 @@ namespace RogueLike
                 case 'W':
                     
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.UP));
+                    hasMoved = true;
                     game.Map.MoveEnemies();
 
                     break;
@@ -175,7 +184,8 @@ namespace RogueLike
 
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.LEFT));
                     game.Map.MoveEnemies();
-                    
+                    hasMoved = true;
+
                     break;
 
                     //right
@@ -184,7 +194,8 @@ namespace RogueLike
                     
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.RIGHT));
                     game.Map.MoveEnemies();
-                    
+                    hasMoved = true;
+
                     break;
 
                     //down
@@ -193,7 +204,8 @@ namespace RogueLike
 
                     game.Map.Hero.Move(game.Map.Hero.ReturnMove(Character.MovementEnum.DOWN));
                     game.Map.MoveEnemies();
-                    
+                    hasMoved = true;
+
                     break;
                 
                     // Enemy Dropdown Menu
@@ -597,7 +609,10 @@ namespace RogueLike
             stream = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Savedata.dat", FileMode.Create, FileAccess.Write);
             
             formatter.Serialize(stream, game);
+            
             stream.Close();
+
+            ItemMsg.Text = "Your game has been saved";
         }
 
         // Load
@@ -608,6 +623,10 @@ namespace RogueLike
             game = (GameEngine)formatter.Deserialize(stream);
             game.Map.UpdateMap();
             DrawMap();
+            
+            stream.Close();
+
+            ItemMsg.Text = "Your old game save has been loaded";
         }
     }
 }

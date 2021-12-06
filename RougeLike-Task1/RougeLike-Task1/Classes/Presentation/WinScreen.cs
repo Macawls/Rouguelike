@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMPLib;
 
-namespace RougeLike_Task1.Classes.Presentation
+namespace RougeLike.Classes.Presentation
 {
     public partial class WinScreen : Form
     {

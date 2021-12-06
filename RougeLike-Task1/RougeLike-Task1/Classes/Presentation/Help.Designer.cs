@@ -184,7 +184,7 @@ namespace RogueLike.Classes
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::RougeLike_Task1.Properties.Resources.ghost;
+            this.pictureBox2.Image = global::RougeLike.Properties.Resources.ghost;
             this.pictureBox2.Location = new System.Drawing.Point(841, -12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(298, 436);

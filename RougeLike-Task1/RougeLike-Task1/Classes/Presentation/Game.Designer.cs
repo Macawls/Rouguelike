@@ -328,7 +328,7 @@ namespace RogueLike
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::RougeLike_Task1.Properties.Resources.torch;
+            this.pictureBox6.Image = global::RougeLike.Properties.Resources.torch;
             this.pictureBox6.Location = new System.Drawing.Point(1334, 541);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(51, 93);
@@ -338,7 +338,7 @@ namespace RogueLike
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::RougeLike_Task1.Properties.Resources.torch;
+            this.pictureBox3.Image = global::RougeLike.Properties.Resources.torch;
             this.pictureBox3.Location = new System.Drawing.Point(1334, 19);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(51, 93);
@@ -348,7 +348,7 @@ namespace RogueLike
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::RougeLike_Task1.Properties.Resources.torch;
+            this.pictureBox5.Image = global::RougeLike.Properties.Resources.torch;
             this.pictureBox5.Location = new System.Drawing.Point(6, 19);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(51, 93);
@@ -358,7 +358,7 @@ namespace RogueLike
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::RougeLike_Task1.Properties.Resources.torch;
+            this.pictureBox4.Image = global::RougeLike.Properties.Resources.torch;
             this.pictureBox4.Location = new System.Drawing.Point(6, 546);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(51, 93);
@@ -469,9 +469,10 @@ namespace RogueLike
             // 
             // saveButton
             // 
-            this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(196)))), ((int)(((byte)(161)))));
+            this.saveButton.BackColor = System.Drawing.Color.Black;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton.Font = new System.Drawing.Font("InputMono", 20F, System.Drawing.FontStyle.Bold);
+            this.saveButton.ForeColor = System.Drawing.Color.DimGray;
             this.saveButton.Location = new System.Drawing.Point(45, 730);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(229, 56);
@@ -587,7 +588,7 @@ namespace RogueLike
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::RougeLike_Task1.Properties.Resources.githubwhite;
+            this.pictureBox2.Image = global::RougeLike.Properties.Resources.githubwhite;
             this.pictureBox2.Location = new System.Drawing.Point(242, 10);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 36);
@@ -610,9 +611,10 @@ namespace RogueLike
             // 
             // loadButton
             // 
-            this.loadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(196)))), ((int)(((byte)(161)))));
+            this.loadButton.BackColor = System.Drawing.Color.Black;
             this.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadButton.Font = new System.Drawing.Font("InputMono", 20F, System.Drawing.FontStyle.Bold);
+            this.loadButton.ForeColor = System.Drawing.Color.DimGray;
             this.loadButton.Location = new System.Drawing.Point(46, 806);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(228, 56);
@@ -637,7 +639,7 @@ namespace RogueLike
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.Image = global::RougeLike_Task1.Properties.Resources.youtube_1_;
+            this.pictureBox7.Image = global::RougeLike.Properties.Resources.youtube_1_;
             this.pictureBox7.Location = new System.Drawing.Point(10, 10);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(31, 36);
@@ -650,7 +652,7 @@ namespace RogueLike
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(73)))), ((int)(((byte)(69)))));
-            this.BackgroundImage = global::RougeLike_Task1.Properties.Resources._fixed;
+            this.BackgroundImage = global::RougeLike.Properties.Resources._fixed;
             this.ClientSize = new System.Drawing.Size(1472, 874);
             this.Controls.Add(this.ShopBox);
             this.Controls.Add(this.panel2);
