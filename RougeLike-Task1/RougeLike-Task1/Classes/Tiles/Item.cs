@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RogueLike.Classes.Tiles
 {
+    [Serializable]
     abstract class Item : Tile 
     {
 

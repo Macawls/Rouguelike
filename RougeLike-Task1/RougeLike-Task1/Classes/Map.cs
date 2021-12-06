@@ -8,6 +8,7 @@ using RogueLike.Classes.Tiles.Items;
 
 namespace RogueLike.Classes
 {
+    [Serializable]
     class Map
     {
         //obj for randomizing enemy
@@ -228,7 +229,7 @@ namespace RogueLike.Classes
                 PlaceInMap(enemyArray[i]);
             }
 
-            PickupItemAtPosition(Hero);
+            GetItemAtPosition(Hero);
             PlaceInMap(Hero);
             
             // enemies will attack hero and pickup gold
@@ -239,7 +240,7 @@ namespace RogueLike.Classes
                     enemy.Attack(Hero);
                 }
 
-                PickupItemAtPosition(enemy);
+                GetItemAtPosition(enemy);
             }
 
             // mages friendly fire as well as attacking the hero
@@ -289,7 +290,7 @@ namespace RogueLike.Classes
             }
         }
 
-        public void PickupItemAtPosition(Character character) 
+        public void GetItemAtPosition(Character character) 
         {
             for (int i = 0; i < itemArray.Length; i++)
             {

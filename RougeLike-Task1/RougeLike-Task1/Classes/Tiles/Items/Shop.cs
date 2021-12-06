@@ -9,6 +9,7 @@ using static RogueLike.Classes.Tiles.Items.Ranged;
 
 namespace RogueLike.Classes.Tiles.Items
 {
+    [Serializable]
     class Shop
     {
         public enum TypesofShopWeapons

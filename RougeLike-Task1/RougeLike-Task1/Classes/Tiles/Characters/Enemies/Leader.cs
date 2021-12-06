@@ -9,6 +9,7 @@ using RogueLike.Classes.Tiles.Items;
 
 namespace RogueLike.Characters
 {
+    [Serializable]
     class Leader : Enemy
     {
         private Tile target;

@@ -9,20 +9,16 @@ using RogueLike.Characters;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using RogueLike.Classes.Tiles.Items;
+using System.Runtime.Serialization;
 
 namespace RogueLike.Classes
-{
-    class DataSerializer
-    {
-        //https://youtu.be/WHKPcA_xvE0 accessed 10 November 2021
-        
-    }
-    
+{   
     [Serializable]
     class GameEngine
     {
-        // saving
-        public DataSerializer dataSerializer = new DataSerializer();
+
+
+
         //chars
         private static readonly char heroTile = 'H';
         private static readonly char emptyTile = ' ';
@@ -36,39 +32,6 @@ namespace RogueLike.Classes
 
         private Map map;
 
-        public void Save(object data, string filePath) // serialize
-        {
-            FileStream fileStream;
-            BinaryFormatter bf = new BinaryFormatter();
-
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-            }
-
-            fileStream = File.Create(filePath);
-            bf.Serialize(fileStream, data);
-            fileStream.Close();
-        }
-
-        public object Load(string filePath) // deserialize
-        {
-            object obj = null;
-
-            FileStream fileStream;
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-
-            if (File.Exists(filePath))
-            {
-                fileStream = File.OpenRead(filePath);
-                obj = binaryFormatter.Deserialize(fileStream);
-                fileStream.Close();
-            }
-
-            return obj;
-        }
-
-
         public Map Map
         { 
             get { return map; }
@@ -77,6 +40,7 @@ namespace RogueLike.Classes
         public GameEngine()
         {
             map = new Map(14, 16, 18, 21, 6, 8);
+            
         }
 
         public override string ToString()

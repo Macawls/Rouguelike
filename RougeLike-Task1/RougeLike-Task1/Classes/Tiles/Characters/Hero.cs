@@ -8,6 +8,7 @@ using RogueLike.Classes.Tiles.Items;
 
 namespace RogueLike.Characters
 {
+    [Serializable]
     class Hero : Character
     {
         public Hero(int x, int y) : base(x, y, 'H', 2, 50)

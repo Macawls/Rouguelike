@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace RogueLike
 {
     // denote an empty tile
+    [Serializable]
     class EmptyTile : Tile
     {
         // Constructor for subclass

@@ -15,6 +15,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using RougeLike_Task1.Classes.Presentation;
 using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace RogueLike
 {
@@ -34,7 +35,9 @@ namespace RogueLike
         public int playerGold;
         public int playerScore;
 
-        string path = "game.save";
+        IFormatter formatter = new BinaryFormatter();
+        Stream stream;
+
 
         public Game()
         {
@@ -465,36 +468,6 @@ namespace RogueLike
             tutorial.Checked = false;
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void moveControls_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void attackControls_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bugLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gameTimer(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void itemOneButton_Click(object sender, EventArgs e)
         {
             // can buy
@@ -617,19 +590,24 @@ namespace RogueLike
             Process.Start(sInfo);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        
+        // Save
+        private void saveButton_Click(object sender, EventArgs e)
         {
-
+            stream = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Savedata.dat", FileMode.Create, FileAccess.Write);
+            
+            formatter.Serialize(stream, game);
+            stream.Close();
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        // Load
+        private void button1_Click(object sender, EventArgs e) 
         {
+            stream = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Savedata.dat", FileMode.Open, FileAccess.Read);
 
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
+            game = (GameEngine)formatter.Deserialize(stream);
+            game.Map.UpdateMap();
+            DrawMap();
         }
     }
 }

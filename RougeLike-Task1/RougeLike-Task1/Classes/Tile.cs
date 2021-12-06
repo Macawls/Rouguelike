@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RogueLike
 {
-    
+    [Serializable]
     // Base Class
     abstract class Tile
     {

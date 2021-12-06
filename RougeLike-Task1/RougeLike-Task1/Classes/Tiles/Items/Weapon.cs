@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RogueLike.Classes.Tiles.Items
 {
+    [Serializable]
     abstract class Weapon : Item
     {
        protected int damage;

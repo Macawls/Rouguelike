@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RogueLike.Classes.Tiles.Items
 {
+    [Serializable]
     class Ranged : Weapon
     {
         public enum RangedTypes

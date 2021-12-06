@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RogueLike.Characters
 {
+    [Serializable]
     class Mage : Enemy
     {
         public Mage(int x, int y) : base(x, y, 'M', 5, 5)

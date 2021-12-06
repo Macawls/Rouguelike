@@ -8,6 +8,7 @@ using RogueLike.Classes.Tiles.Items;
 
 namespace RogueLike.Characters
 {
+    [Serializable]
     class Goblin : Enemy
     {
         // Constructor

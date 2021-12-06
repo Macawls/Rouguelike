@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RogueLike.Characters
 {
+    [Serializable]
     abstract class Enemy : Character
     {
         // random object 

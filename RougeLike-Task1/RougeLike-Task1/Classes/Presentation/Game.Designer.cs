@@ -70,7 +70,7 @@ namespace RogueLike
             this.githubLink = new System.Windows.Forms.LinkLabel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.PlayerBox.SuspendLayout();
@@ -156,7 +156,6 @@ namespace RogueLike
             this.moveControls.TabIndex = 0;
             this.moveControls.Text = "Item list:  I\r\nEnemy List: J\r\nAttack: F\r\n\r\nUp:     W\r\nDown:   S\r\nLeft:   A\r\nRight" +
     ":  D";
-            this.moveControls.Click += new System.EventHandler(this.moveControls_Click);
             // 
             // enemyDropdown
             // 
@@ -239,7 +238,6 @@ namespace RogueLike
             this.attackControls.Size = new System.Drawing.Size(219, 38);
             this.attackControls.TabIndex = 0;
             this.attackControls.Text = "Navigate:  Arrow Keys\r\nInspect:   Enter\r\n";
-            this.attackControls.Click += new System.EventHandler(this.attackControls_Click);
             // 
             // attackStateBox
             // 
@@ -337,7 +335,6 @@ namespace RogueLike
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox6.TabIndex = 18;
             this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // pictureBox3
             // 
@@ -368,7 +365,6 @@ namespace RogueLike
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox4.TabIndex = 15;
             this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // itemListBox
             // 
@@ -470,7 +466,6 @@ namespace RogueLike
             this.bugLabel.Size = new System.Drawing.Size(663, 98);
             this.bugLabel.TabIndex = 11;
             this.bugLabel.Text = resources.GetString("bugLabel.Text");
-            this.bugLabel.Click += new System.EventHandler(this.bugLabel_Click);
             // 
             // saveButton
             // 
@@ -500,7 +495,6 @@ namespace RogueLike
             this.ShopBox.TabIndex = 15;
             this.ShopBox.TabStop = false;
             this.ShopBox.Text = "SHOP";
-            this.ShopBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // itemThreeButton
             // 
@@ -558,7 +552,6 @@ namespace RogueLike
             this.label1.Size = new System.Drawing.Size(487, 140);
             this.label1.TabIndex = 16;
             this.label1.Text = resources.GetString("label1.Text");
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // youtubeLink
             // 
@@ -615,17 +608,18 @@ namespace RogueLike
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // loadButton
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(196)))), ((int)(((byte)(161)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("InputMono", 20F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(46, 806);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(228, 56);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "LOAD";
-            this.button1.UseVisualStyleBackColor = false;
+            this.loadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(196)))), ((int)(((byte)(161)))));
+            this.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadButton.Font = new System.Drawing.Font("InputMono", 20F, System.Drawing.FontStyle.Bold);
+            this.loadButton.Location = new System.Drawing.Point(46, 806);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(228, 56);
+            this.loadButton.TabIndex = 21;
+            this.loadButton.Text = "LOAD";
+            this.loadButton.UseVisualStyleBackColor = false;
+            this.loadButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -660,7 +654,7 @@ namespace RogueLike
             this.ClientSize = new System.Drawing.Size(1472, 874);
             this.Controls.Add(this.ShopBox);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.loadButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.bugLabel);
@@ -745,7 +739,7 @@ namespace RogueLike
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox7;
     }

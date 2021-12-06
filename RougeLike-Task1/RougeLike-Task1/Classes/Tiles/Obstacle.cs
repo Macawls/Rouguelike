@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RogueLike
 {
+    [Serializable]
     // border map with obstacle tiles that no character can move past
     class Obstacle : Tile
     {

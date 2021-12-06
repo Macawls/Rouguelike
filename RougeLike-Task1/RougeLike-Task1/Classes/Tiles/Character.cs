@@ -9,6 +9,7 @@ using RogueLike.Characters;
 
 namespace RogueLike
 {
+    [Serializable]
     abstract class Character : Tile
     {
         //Member Variables
