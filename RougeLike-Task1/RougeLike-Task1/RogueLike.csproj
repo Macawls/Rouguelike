@@ -155,5 +155,20 @@
   <ItemGroup>
     <None Include="bin\Debug\ghost.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\torch.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\walltile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\fixed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\githubwhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\youtube%281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

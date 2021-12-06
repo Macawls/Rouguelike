@@ -24,7 +24,7 @@ namespace RougeLike_Task1.Classes.Presentation
         private void WinScreen_Load(object sender, EventArgs e)
         {
             musicPlayer.settings.setMode("Loop", true);
-            musicPlayer.settings.volume = 60;
+            musicPlayer.settings.volume = 40;
             musicPlayer.controls.play();
 
         }

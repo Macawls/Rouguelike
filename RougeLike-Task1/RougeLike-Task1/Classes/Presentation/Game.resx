@@ -118,14 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="bugLabel.Text" xml:space="preserve">
-    <value>Problems:
-
-• If you click outside a list with your mouse while its opened, the keyboard controls become unresponsive
-   - To fix this, open the list with your mouse on the left and click on the selected item
-• In the help menu, If you click close (top right) instead of the button (bottom), the music overlaps 
+    <value>Bugs:
+• If you click outside a list with your mouse while its opened, 
+  the keyboard controls become unresponsive
+   - To fix this, open the list with your mouse on the left and click on 
+     the selected item
 • Save button does not work
-• I struggled to fix the inital shop offering. Its a unique bug, I've tried MANY workarounds
-see the issue in this youtube video ↓
+• I made a youtube video explaing the shop bug, click on the link below to view it
 </value>
   </data>
   <data name="label1.Text" xml:space="preserve">
@@ -134,7 +133,8 @@ see the issue in this youtube video ↓
 • When you open the item list, you wont be able to see where
    that weapon is because you gotta find out!
 
-• Enemies can pickup weapons too! If a leader gets a rifle.... uh good luck :)
+• Enemies can pickup weapons too! If a leader gets a rifle
+  .... uh good luck :)
 
 •Try unlocking both the Win Screen and Loss Screen 
    through playing</value>

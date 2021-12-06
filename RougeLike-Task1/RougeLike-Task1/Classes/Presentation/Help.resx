@@ -131,14 +131,15 @@ _____________________________________________________
 The circles around each enemy; GOBLIN(G), 
 LEADER(L), MAGE(M) show their attack ranges.
 
-(doesn't work if they have a  ranged weapon equiped)
+(Doesn't work if they have a ranged weapon equipped)
 _____________________________________________________
-Open the menu to see how much damage they
+Open the enemy menu to see how much damage they
 will deal
 _____________________________________________________
 • GOBLINS move randomly
 • LEADERS will follow you, MAGES are stationary
 • MAGES will friendly fire other enemies
-_____________________________________________________</value>
+_____________________________________________________
+</value>
   </data>
 </root>

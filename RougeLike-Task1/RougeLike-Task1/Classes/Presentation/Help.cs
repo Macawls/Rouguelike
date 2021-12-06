@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,17 @@ namespace RogueLike.Classes
         private void HelpForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             musicPlayer.controls.stop();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://www.behance.net/gallery/45738323/Animationssprites");
+            Process.Start(sInfo);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

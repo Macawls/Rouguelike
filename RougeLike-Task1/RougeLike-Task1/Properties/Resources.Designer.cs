@@ -63,6 +63,16 @@ namespace RougeLike_Task1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _fixed {
+            get {
+                object obj = ResourceManager.GetObject("fixed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap game {
             get {
                 object obj = ResourceManager.GetObject("game", resourceCulture);
@@ -96,6 +106,46 @@ namespace RougeLike_Task1.Properties {
         internal static System.Drawing.Bitmap githubsmall {
             get {
                 object obj = ResourceManager.GetObject("githubsmall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap githubwhite {
+            get {
+                object obj = ResourceManager.GetObject("githubwhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap torch {
+            get {
+                object obj = ResourceManager.GetObject("torch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap walltile {
+            get {
+                object obj = ResourceManager.GetObject("walltile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap youtube_1_ {
+            get {
+                object obj = ResourceManager.GetObject("youtube(1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

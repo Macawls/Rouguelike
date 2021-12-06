@@ -92,9 +92,40 @@ namespace RogueLike
             itemTwoButton.Text = game.Map.shop.DisplayWeapon(game.Map.shop.WeaponsArray[1].Cost);
             itemThreeButton.Text = game.Map.shop.DisplayWeapon(game.Map.shop.WeaponsArray[2].Cost);
 
+            CheckCost();
             CheckGoldDiff();
             CheckLossCondition();
             CheckWinCondition();
+        }
+
+        // Chagning colors to indicate if the player can buy. Visual cues 
+        private void CheckCost()
+        {
+            if (game.Map.shop.WeaponsArray[0].Cost <= game.Map.Hero.Purse)
+            {
+                itemOneButton.ForeColor = Color.LightGreen;
+            }
+            else
+            {
+                itemOneButton.ForeColor = Color.DimGray;
+            }
+            if (game.Map.shop.WeaponsArray[1].Cost <= game.Map.Hero.Purse)
+            {
+                itemOneButton.ForeColor = Color.LightGreen;
+            }
+            else
+            {
+                itemOneButton.ForeColor = Color.DimGray;
+            }
+            if (game.Map.shop.WeaponsArray[2].Cost <= game.Map.Hero.Purse)
+            {
+                itemOneButton.ForeColor = Color.LightGreen;
+            }
+            else
+            {
+                itemOneButton.ForeColor = Color.DimGray;
+            }
+
         }
 
         private void CheckLossCondition()
@@ -217,7 +248,7 @@ namespace RogueLike
                         }
 
                         // This does work, but picking enemies from a menu just doesn't feel good at all
-                        // instead players can view enemies and their stats
+                        // instead players can view enemies and their stats // leaving it here cos? idk
 
                         // Manually Indicating
                         
@@ -436,7 +467,7 @@ namespace RogueLike
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            game.Save(game, path);
+           
         }
 
         private void moveControls_Click(object sender, EventArgs e)
@@ -480,6 +511,8 @@ namespace RogueLike
                 effectsPlayer.URL = "buyandequip.wav";
                 effectsPlayer.controls.play();
 
+                ItemMsg.Text = $"You bought a {game.Map.shop.WeaponsArray[0]}!";
+
                 DrawMap();
             }
 
@@ -516,6 +549,8 @@ namespace RogueLike
                 effectsPlayer.URL = "buyandequip.wav";
                 effectsPlayer.controls.play();
 
+                ItemMsg.Text = $"You bought a {game.Map.shop.WeaponsArray[1]}!";
+
                 DrawMap();
             }
 
@@ -550,6 +585,8 @@ namespace RogueLike
                 effectsPlayer.URL = "buyandequip.wav";
                 effectsPlayer.controls.play();
 
+                ItemMsg.Text = $"You bought a {game.Map.shop.WeaponsArray[2]}!";
+
                 DrawMap();
             }
 
@@ -578,6 +615,21 @@ namespace RogueLike
         {
             ProcessStartInfo sInfo = new ProcessStartInfo("https://github.com/Macawls");
             Process.Start(sInfo);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -51,8 +51,6 @@ namespace RogueLike.Classes
             fileStream.Close();
         }
 
-        
-
         public object Load(string filePath) // deserialize
         {
             object obj = null;
@@ -78,7 +76,7 @@ namespace RogueLike.Classes
 
         public GameEngine()
         {
-            map = new Map(13, 15, 13, 15, 4, 7);
+            map = new Map(14, 16, 18, 21, 6, 8);
         }
 
         public override string ToString()
@@ -115,49 +113,6 @@ namespace RogueLike.Classes
                             // bottom
                             charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y + 1] = range; // bottom left
                             charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y - 1] = range; // bottom right
-                        }
-
-                        if (enemy.Weapon != null)
-                        {
-                            if (enemy.Weapon.GetType() == typeof(Ranged))
-                            {
-                                if (enemy.Weapon.Range == 2)
-                                {
-
-                                    // top
-                                    charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y + 1] = range;
-                                    charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y - 1] = range;
-                                    // bottom
-                                    charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y + 1] = range;
-                                    charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y - 1] = range;
-
-                                    // uh my brain
-                                    charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y + 2] = range;
-                                    charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y - 2] = range;
-                                    charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y + 2] = range;
-                                    charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y - 2] = range;
-
-
-                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y] = range;
-                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y + 1] = range;
-                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y - 1] = range;
-                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y + 2] = range;
-                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y - 2] = range;
-
-                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y] = range;
-                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y + 1] = range;
-                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y - 1] = range;
-                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y + 2] = range;
-                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y - 2] = range;
-
-                                }
-
-                                else if (enemy.Weapon.Range == 3)
-                                {
-                                    break;
-                                }
-                            }
-                        
                         }
 
                     }
