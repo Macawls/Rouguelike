@@ -55,12 +55,16 @@ namespace RogueLike
             this.musicCheckBox = new System.Windows.Forms.CheckBox();
             this.bugLabel = new System.Windows.Forms.Label();
             this.tutorial = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.ShopBox = new System.Windows.Forms.GroupBox();
             this.itemThreeButton = new System.Windows.Forms.Button();
             this.itemTwoButton = new System.Windows.Forms.Button();
             this.itemOneButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.youtubeLink = new System.Windows.Forms.LinkLabel();
+            this.githubLink = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.MapBox.SuspendLayout();
             this.PlayerBox.SuspendLayout();
             this.movementControlsBox.SuspendLayout();
@@ -71,8 +75,9 @@ namespace RogueLike
             this.Box.SuspendLayout();
             this.ItemBox.SuspendLayout();
             this.itemListBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.ShopBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // map
@@ -197,7 +202,7 @@ namespace RogueLike
             this.attackControlsBox.Size = new System.Drawing.Size(340, 117);
             this.attackControlsBox.TabIndex = 4;
             this.attackControlsBox.TabStop = false;
-            this.attackControlsBox.Text = "Attack Controls";
+            this.attackControlsBox.Text = "Attacking";
             // 
             // attackControls
             // 
@@ -323,9 +328,9 @@ namespace RogueLike
             // 
             this.bugLabel.AutoSize = true;
             this.bugLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bugLabel.Location = new System.Drawing.Point(696, 670);
+            this.bugLabel.Location = new System.Drawing.Point(756, 676);
             this.bugLabel.Name = "bugLabel";
-            this.bugLabel.Size = new System.Drawing.Size(624, 96);
+            this.bugLabel.Size = new System.Drawing.Size(624, 128);
             this.bugLabel.TabIndex = 11;
             this.bugLabel.Text = resources.GetString("bugLabel.Text");
             this.bugLabel.Click += new System.EventHandler(this.bugLabel_Click);
@@ -342,24 +347,12 @@ namespace RogueLike
             this.tutorial.UseVisualStyleBackColor = true;
             this.tutorial.CheckedChanged += new System.EventHandler(this.tutorial_CheckedChanged);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(653, 77);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            // 
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
-            this.saveButton.Location = new System.Drawing.Point(12, 693);
+            this.saveButton.Location = new System.Drawing.Point(12, 732);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(135, 56);
+            this.saveButton.Size = new System.Drawing.Size(183, 56);
             this.saveButton.TabIndex = 14;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -411,12 +404,75 @@ namespace RogueLike
             this.itemOneButton.UseVisualStyleBackColor = true;
             this.itemOneButton.Click += new System.EventHandler(this.itemOneButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label1.Location = new System.Drawing.Point(287, 660);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(448, 144);
+            this.label1.TabIndex = 16;
+            this.label1.Text = resources.GetString("label1.Text");
+            // 
+            // youtubeLink
+            // 
+            this.youtubeLink.ActiveLinkColor = System.Drawing.Color.SlateBlue;
+            this.youtubeLink.AutoSize = true;
+            this.youtubeLink.Font = new System.Drawing.Font("Microsoft PhagsPa", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.youtubeLink.LinkColor = System.Drawing.Color.Red;
+            this.youtubeLink.Location = new System.Drawing.Point(940, 811);
+            this.youtubeLink.Name = "youtubeLink";
+            this.youtubeLink.Size = new System.Drawing.Size(75, 27);
+            this.youtubeLink.TabIndex = 17;
+            this.youtubeLink.TabStop = true;
+            this.youtubeLink.Text = "VIDEO";
+            this.youtubeLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.youtubeLink_LinkClicked);
+            // 
+            // githubLink
+            // 
+            this.githubLink.ActiveLinkColor = System.Drawing.Color.SlateBlue;
+            this.githubLink.AutoSize = true;
+            this.githubLink.Font = new System.Drawing.Font("Microsoft PhagsPa", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.githubLink.LinkColor = System.Drawing.Color.Black;
+            this.githubLink.Location = new System.Drawing.Point(1270, 811);
+            this.githubLink.Name = "githubLink";
+            this.githubLink.Size = new System.Drawing.Size(110, 25);
+            this.githubLink.TabIndex = 19;
+            this.githubLink.TabStop = true;
+            this.githubLink.Text = "My GitHub";
+            this.githubLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.githubLink_LinkClicked);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(664, 77);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::RougeLike_Task1.Properties.Resources.githubsmall;
+            this.pictureBox2.Location = new System.Drawing.Point(1233, 811);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 36);
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(1381, 811);
+            this.ClientSize = new System.Drawing.Size(1392, 845);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.githubLink);
+            this.Controls.Add(this.youtubeLink);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ShopBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.musicCheckBox);
@@ -447,8 +503,9 @@ namespace RogueLike
             this.ItemBox.ResumeLayout(false);
             this.ItemBox.PerformLayout();
             this.itemListBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ShopBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,5 +542,9 @@ namespace RogueLike
         public System.Windows.Forms.Button itemThreeButton;
         public System.Windows.Forms.Button itemTwoButton;
         public System.Windows.Forms.Button itemOneButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel youtubeLink;
+        private System.Windows.Forms.LinkLabel githubLink;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

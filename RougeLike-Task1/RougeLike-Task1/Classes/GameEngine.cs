@@ -95,7 +95,8 @@ namespace RogueLike.Classes
                         charMap[i, j] = emptyTile;
                     }
 
-                    // show enemy ranges 
+                    // show enemy ranges
+                    // I really wish I knew how to do this better, all this hardcoding is sooooooooo bad
                     foreach (var enemy in map.enemyArray)
                     {
                         // normal range
@@ -108,11 +109,57 @@ namespace RogueLike.Classes
                         // mage range
                         if (enemy.GetType() == typeof(Mage))
                         {
+                            // top
                             charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y + 1] = range; // top right
                             charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y - 1] = range; // top left
+                            // bottom
                             charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y + 1] = range; // bottom left
                             charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y - 1] = range; // bottom right
                         }
+
+                        if (enemy.Weapon != null)
+                        {
+                            if (enemy.Weapon.GetType() == typeof(Ranged))
+                            {
+                                if (enemy.Weapon.Range == 2)
+                                {
+
+                                    // top
+                                    charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y + 1] = range;
+                                    charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y - 1] = range;
+                                    // bottom
+                                    charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y + 1] = range;
+                                    charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y - 1] = range;
+
+                                    // uh my brain
+                                    charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y + 2] = range;
+                                    charMap[enemy.VisionArray[0].X, enemy.VisionArray[0].Y - 2] = range;
+                                    charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y + 2] = range;
+                                    charMap[enemy.VisionArray[1].X, enemy.VisionArray[1].Y - 2] = range;
+
+
+                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y] = range;
+                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y + 1] = range;
+                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y - 1] = range;
+                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y + 2] = range;
+                                    charMap[enemy.VisionArray[0].X - 1, enemy.VisionArray[0].Y - 2] = range;
+
+                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y] = range;
+                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y + 1] = range;
+                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y - 1] = range;
+                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y + 2] = range;
+                                    charMap[enemy.VisionArray[1].X - 1, enemy.VisionArray[1].Y - 2] = range;
+
+                                }
+
+                                else if (enemy.Weapon.Range == 3)
+                                {
+                                    break;
+                                }
+                            }
+                        
+                        }
+
                     }
 
                     if (map.TileMap[i, j].GetType() == typeof(Obstacle))

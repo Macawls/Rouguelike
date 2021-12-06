@@ -117,6 +117,13 @@ namespace RogueLike
             else if (this.weapon != null)
             {
                 target.HP -= this.weapon.Damage;
+                this.weapon.Durability -= 1;
+
+                if (this.weapon.Durability == 0)
+                {
+                    this.weapon = null;
+                }
+
             }
 
             // Looting
@@ -158,8 +165,8 @@ namespace RogueLike
         // determine distance via DistanceTo() method
         public virtual bool CheckRange(Character target)
         {
-            bool canAttack;
-            
+            bool canAttack = false;
+
             // barehand range
             if (weapon == null)
             {
@@ -168,13 +175,144 @@ namespace RogueLike
                     canAttack = true;
                 }
             }
-            
-            // weapon range
-            if (weapon != null)
-            {
-                canAttack = false;
-            }
 
+            else if (weapon.GetType() == typeof(Melee))
+            {
+                if (DistanceTo(target) == 1 || DistanceTo(target) == 0)
+                {
+                    canAttack = true;
+                }
+            }
+            
+            // ranged weapon ranges // barehand is melee range already so that doesnt matter
+            else if (weapon.GetType() == typeof(Ranged))
+            {
+                // xx-xx
+                // xx-xx    long bow
+                // --C--
+                // xx-xx
+                // xx-xx
+                
+                //   xxx    mage
+                //   xMx
+                //   xxx
+                
+                // xxxxxxx
+                // xxxxxxx  rifle
+                // xxxxxxx
+                // xxxCxxx
+                // xxxxxxx
+                // xxxxxxx
+                // xxxxxxx
+
+                bool checkDiags(Character weaponTarget, int range)
+                {
+                    // Really really hard to explain, basically my DistanceTo method only works for 
+                    // up, down, left, right, i.E horizontally and verticaly, sooo in other words
+
+                    // Basically we're cancelling out the stuff that we dont need through a bunch of if statements
+
+                    // It isn't easy to read at all
+                    // If I had more programing knowledge I would make a much much more modular and simpler solution
+                    // but I really wanted the ranged weapons to feel like ranged weapons
+                    // The mage class has the same logic, just simplified
+
+                    bool isInRange = true;
+
+                    // cant attack if the range is just outside horizontally and vertically only
+                    if (Math.Abs(this.Y - weaponTarget.Y) == range + 1 || Math.Abs(this.X - weaponTarget.X) == range + 1)
+                    {
+                        isInRange = false;
+                    }
+
+                    return isInRange;
+                }
+
+                // This is how I differentiate weapons. 
+
+                // if its a LongBow
+                if (this.weapon.Range == 2)
+                {
+                    if (DistanceTo(target) <= 2)
+                    {
+                        canAttack = true;
+                    }
+
+                    else if (DistanceTo(target) == 3)
+                    {
+                        if (checkDiags(target, this.weapon.Range + 1))
+                        {
+                            canAttack = true;
+                        }
+                        else
+                        {
+                            canAttack = false;
+                        }
+                    }
+
+                    else if (DistanceTo(target) == 4)
+                    {
+                        if (checkDiags(target, this.weapon.Range + 2))
+                        {
+                            canAttack = true;
+                        }
+                        else
+                        {
+                            canAttack = false;
+                        }
+                    }
+
+                    else
+                    {
+                        canAttack = false;
+                    }
+                }
+
+                // Rifle
+                else if (this.weapon.Range == 3)
+                {
+                    if (DistanceTo(target) <= this.weapon.Range)
+                    {
+                        canAttack = true;
+                    }
+
+                    else if (DistanceTo(target) == 4)
+                    {
+                        if (checkDiags(target, this.weapon.Range + 1))
+                        {
+                            canAttack = true;
+                        }
+                        else
+                        {
+                            canAttack = false;
+                        }
+                    }
+
+                    else if (DistanceTo(target) == 5)
+                    {
+                        if (checkDiags(target, this.weapon.Range + 2))
+                        {
+                            canAttack = true;
+                        }
+                        else
+                        {
+                            canAttack = false;
+                        }
+                    }
+
+                    else if (DistanceTo(target) == 6)
+                    {
+                        if (checkDiags(target, this.weapon.Range + 3))
+                        {
+                            canAttack = true;
+                        }
+                        else
+                        {
+                            canAttack = false;
+                        }
+                    }
+                }
+            }
 
             else
             {

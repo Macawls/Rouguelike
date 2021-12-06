@@ -37,5 +37,10 @@ namespace RogueLike.Classes
         {
 
         }
+
+        private void HelpForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            musicPlayer.controls.stop();
+        }
     }
 }

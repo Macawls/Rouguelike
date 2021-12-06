@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>You cannot move over OBSTACLES(X)
+    <value>____________________________________________________
+You cannot move over OBSTACLES(X)
 or enemies
 _____________________________________________________
 Step on GOLD($) to pick it up
@@ -128,26 +129,16 @@ i.e up, down, left, right unless
 a weapon is equipped
 _____________________________________________________
 The circles around each enemy; GOBLIN(G), 
-LEADER(L), MAGE(M) show their attack ranges. 
-_____________________________________________________
-If you step in one of their ranges, you will take
-damage based on how much that respective enemy
-deals
+LEADER(L), MAGE(M) show their attack ranges.
+
+(doesn't work if they have a  ranged weapon equiped)
 _____________________________________________________
 Open the menu to see how much damage they
 will deal
 _____________________________________________________
-• GOBLINS move randomly, 
-• LEADERS will follow you, MAGES are stationary.
+• GOBLINS move randomly
+• LEADERS will follow you, MAGES are stationary
 • MAGES will friendly fire other enemies
-_____________________________________________________
-
-
-
-
-</value>
+_____________________________________________________</value>
   </data>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

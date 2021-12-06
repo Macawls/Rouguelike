@@ -10,7 +10,7 @@ namespace RogueLike.Characters
 {
     class Hero : Character
     {
-        public Hero(int x, int y) : base(x, y, 'H', 2, 10)
+        public Hero(int x, int y) : base(x, y, 'H', 2, 50)
         {
 
         }
@@ -66,14 +66,17 @@ namespace RogueLike.Characters
             // Gold: 
             // [X, Y]
 
+            
+            // no weapon
             if (this.weapon == null)
             {
                 return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nCurrent Weapon: Bare Hands \nDamage: {this.damage} \nWeapon Range: 1 \nWeapon Damage: 2 \nGold: {this.purse}\n[{this.x}, {this.y}]";
             }
-
+            
+            // has weapon
             else if (this.weapon != null)
             {
-                return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nCurrent Weapon: {this.weapon.ToString()} \nDamage: {this.damage} \nWeapon Range: {this.weapon.Range} \nWeapon Damage: {this.weapon.Damage} \nGold: {this.purse}\n[{this.x}, {this.y}]";
+                return $"Player Stats:\nHP: {this.hp}/{this.maxHP} \nCurrent Weapon: {this.weapon} \nDamage: {this.damage} \nWeapon Range: {this.weapon.Range} \nWeapon Damage: {this.weapon.Damage}\nWeapon Durability: {this.weapon.Durability} \nGold: {this.purse}\n[{this.x}, {this.y}]";
             }
 
             else

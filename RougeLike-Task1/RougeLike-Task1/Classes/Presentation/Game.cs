@@ -14,6 +14,7 @@ using WMPLib; //windows media player library
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using RougeLike_Task1.Classes.Presentation;
+using System.Diagnostics;
 
 namespace RogueLike
 {
@@ -98,24 +99,24 @@ namespace RogueLike
 
         private void CheckLossCondition()
         {
-            //if (game.Map.Hero.IsDead())
-            //{
-            //    DeathScreen deathScreen = new DeathScreen();
-            //    musicPlayer.controls.stop();
-            //    deathScreen.Show();
-            //    this.Hide();
-            //}
+            if (game.Map.Hero.IsDead())
+            {
+                DeathScreen deathScreen = new DeathScreen();
+                musicPlayer.controls.stop();
+                deathScreen.Show();
+                this.Hide();
+            }
         }
 
         private void CheckWinCondition()
         {
-            //if (game.Map.enemyArray.Length == 0)
-            //{
-            //    WinScreen winScreen = new WinScreen();
-            //    musicPlayer.controls.stop();
-            //    winScreen.Show();
-            //    this.Hide();
-            //}
+            if (game.Map.enemyArray.Length == 0)
+            {
+                WinScreen winScreen = new WinScreen();
+                musicPlayer.controls.stop();
+                winScreen.Show();
+                this.Hide();
+            }
         }
 
         private void Game_KeyPress(object sender, KeyPressEventArgs e)
@@ -190,6 +191,8 @@ namespace RogueLike
                             if (game.Map.Hero.CheckRange(game.Map.enemyArray[i]))
                             {
                                 game.Map.Hero.Attack(game.Map.enemyArray[i]);
+                                
+                                game.Map.MoveEnemies();
                                 
                                 AttackMsg.Visible = true;
                                 AttackMsg.Text = $"Successful attack! {game.Map.enemyArray[i].GetType().Name} took {game.Map.Hero.Damage} damage!";
@@ -563,6 +566,18 @@ namespace RogueLike
                 DrawMap();
 
             }
+        }
+
+        private void youtubeLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://youtu.be/msONzs5DKC0");
+            Process.Start(sInfo);
+        }
+
+        private void githubLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://github.com/Macawls");
+            Process.Start(sInfo);
         }
     }
 }

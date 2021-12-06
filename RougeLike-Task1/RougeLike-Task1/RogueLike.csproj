@@ -146,6 +146,14 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="bin\Debug\github.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\githubsmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\ghost.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
